@@ -1,0 +1,26 @@
+<header class="header">
+
+  <form>
+    <input type="text" placeholder="Pesquisa">
+    <button><img src="/assets/lupa.png" alt="Lupa de pesquisa"></button>
+  </form>
+
+  <button class="botao-criar-novo">Adicionar</button>
+</header>
+
+<table class="tabela-alunos">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (aluno of alunos; track aluno.id) {
+    <tr>
+      <td class="coluna-id">{{ aluno.id }}</td>
+      <td class="coluna-nome">{{ aluno.nome }}</td>
+    </tr>
+    }
+  </tbody>
+</table>

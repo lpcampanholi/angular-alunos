@@ -1,0 +1,34 @@
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.menu-lateral {
+  flex: 0 0 230px;
+  background-color: #e84c3d;
+  color: white;
+  padding: 0.5em;
+  width: 250px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.conteudo-principal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--branco);
+  overflow-y: auto;
+}
+
+.rodape {
+  background-color: var(--fundo-cinza-claro);
+  height: 10em;
+  padding: 1.5em;
+}
+
+main {
+  padding: 1.5em;
+}
+

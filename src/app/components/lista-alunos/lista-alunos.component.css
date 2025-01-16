@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+}
+
+.botao-criar-novo {
+  background-color: var(--cor-destaque);
+  border: none;
+  color: white;
+  border-radius: 0.2em;
+  padding: 1em;
+}
+
+.botao-criar-novo:hover {
+  background-color: var(--cor-destaque-claro);
+  cursor: pointer;
+}
+
+table, th, td {
+  border: 1px solid var(--cinza-claro);
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 0.5em;
+  text-align: left;
+}
+
+.coluna-id {
+  width: 2em;
+}
+
+.coluna-nome {
+  width: 25em;
+}

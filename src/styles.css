@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --cinza-escuro: #444444;
+  --cor-destaque: #e84c3d;
+  --cor-destaque-claro: #f45c4e;
+  --branco: #eeeeee;
+  --cinza-claro: #c3c3c3;
+
+  font-family: "PT Sans", serif;
+  color: var(--cinza-escuro);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.titulo {
+  font-size: 2.5em;
+  border-bottom: 2px solid var(--fundo-cinza-claro);
+  margin-bottom: 0.5em;
+  padding-bottom: 0.3em;
+}

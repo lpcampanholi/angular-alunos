@@ -1,0 +1,15 @@
+{
+  "alunos": [
+    {
+      "id": 1,
+      "nome_completo": "José Andrade da Silva",
+      "endereco": "Rua tal tal tal, 2050",
+      "bairro:": "Vila Esperança",
+      "responsavel": {
+        "nome": "Maria Eduarda Souza",
+        "parentesco": "mãe",
+        "whatsapp": "44 98418-8917"
+      }
+    }
+  ]
+}
