@@ -2,6 +2,33 @@
   display: flex;
   justify-content: space-between;
   padding: 1em 0;
+  width: 70%;
+}
+
+.pesquisa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 2em;
+  width: 20em;
+  padding: 0 1em;
+}
+
+.pesquisa input {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.pesquisa button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pesquisa img {
+  height: 23px;
 }
 
 .botao-criar-novo {
@@ -17,14 +44,22 @@
   cursor: pointer;
 }
 
-table, th, td {
+.tabela-alunos,
+.tabela-alunos th,
+.tabela-alunos td {
   border: 1px solid var(--cinza-claro);
   border-collapse: collapse;
 }
 
-td, th {
+.tabela-alunos td,
+.tabela-alunos th {
   padding: 0.5em;
   text-align: left;
+}
+
+.coluna-nome:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .coluna-id {

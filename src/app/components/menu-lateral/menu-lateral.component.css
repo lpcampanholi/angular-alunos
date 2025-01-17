@@ -1,35 +1,69 @@
-.link-ativo {
-  font-weight: 900;
+:host {
+  width: 250px;
+  height: 100vh;
+  background-color: var(--cor-destaque);
   color: white;
-  text-decoration: none;
-}
-
-.link-ativo:hover {
-  cursor: default;
-  text-decoration: none;
-}
-
-ul {
+  padding: 2em 0.5em;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
-a {
+.menu-conteudo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.navegacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 0.5em;
+}
+
+.navegacao ul {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navegacao li {
+  padding: 0.5em;
+  border-bottom: 1px solid var(--branco);
+  list-style: none;
+  font-size: 1.2em;
+}
+
+.navegacao a {
   color: white;
   text-decoration: none;
   font-weight: 400;
 }
 
-li {
-  width: 80%;
-  padding: 0.5em;
-  border-bottom: 1px solid rgb(241, 241, 241);
-  list-style: none;
-  font-size: 1.2em;
-}
-
-a:hover {
+.navegacao a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.navegacao a.link-ativo {
+  font-weight: 900;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1em;
+  margin-top: auto;
+  justify-content: center;
+}
+
+.social-icons img {
+  height: 28px;
+  margin-bottom: 0;
 }
