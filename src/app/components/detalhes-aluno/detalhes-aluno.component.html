@@ -1,0 +1,29 @@
+<form>
+  <p>id: {{ aluno.id }} </p>
+  <div class="campo">
+    <label for="nomeCompleto">Nome completo</label>
+    <input type="text" id="nomeCompleto" [(ngModel)]="aluno.nomeCompleto">
+  </div>
+  <div class="campo">
+    <label for="endereco">Endereço</label>
+    <input type="text" id="endereco" [(ngModel)]="aluno.endereco">
+  </div>
+  <div class="campo">
+    <label for="bairro">Bairro</label>
+    <input type="text" id="bairro" [(ngModel)]="aluno.bairro">
+  </div>
+  <div class="campo">
+    <label for="resposavel">Responsável</label>
+    <input type="text" id="responsavel" [(ngModel)]="aluno.responsavelNome">
+  </div>
+  <div class="campo">
+    <label for="parentesco">Parentesco</label>
+    <input type="text" id="parentesco" [(ngModel)]="aluno.parentecoResponsavel">
+  </div>
+  <div class="campo">
+    <label for="whatsapp">WhatsApp</label>
+    <input type="text" id="whatsapp" [(ngModel)]="aluno.whatsappResponsavel">
+  </div>
+</form>
+
+<p>{{ aluno.nomeCompleto }}</p>

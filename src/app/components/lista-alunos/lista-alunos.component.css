@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 1em 0;
-  width: 70%;
+  width: 75%;
 }
 
 .pesquisa {
@@ -11,14 +11,16 @@
   align-items: center;
   background-color: white;
   border-radius: 2em;
-  width: 20em;
+  width: 25em;
   padding: 0 1em;
 }
 
 .pesquisa input {
+  width: 100%;
   border: none;
   background: transparent;
   outline: none;
+  padding: 1em;
 }
 
 .pesquisa button {
@@ -28,7 +30,14 @@
 }
 
 .pesquisa img {
-  height: 23px;
+  height: 21px;
+}
+
+.paginacao {
+  border: none;
+  background-color: white;
+  padding: 0 1em;
+  outline: none;
 }
 
 .botao-criar-novo {
@@ -68,4 +77,25 @@
 
 .coluna-nome {
   width: 25em;
+}
+
+.pagina {
+  margin: 1em 0;
+  display: flex;
+  gap: 1em;
+  background: transparent;
+}
+
+.pagina button {
+  border: none;
+  background-color: white;
+  padding: 1em;
+}
+
+.pagina img {
+  height: 15px;
+}
+
+.pagina button:hover {
+  cursor: pointer;
 }

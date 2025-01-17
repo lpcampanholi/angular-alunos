@@ -21,6 +21,6 @@ html, body {
 .titulo {
   font-size: 2.5em;
   border-bottom: 2px solid var(--cinza-claro);
-  margin: 0 0 0.5em 0;
+  margin: 0;
   padding-bottom: 0.3em;
 }

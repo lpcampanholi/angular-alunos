@@ -3,6 +3,11 @@
     <input type="text" placeholder="Pesquisa" />
     <button><img src="/assets/lupa.png" alt="Lupa de pesquisa" /></button>
   </form>
+  <select class="paginacao" [(ngModel)]="itensPorPaginaSelecionado" (change)="listarAlunos()">
+    @for (item of itensPorPagina; track item) {
+      <option [value]="item">{{ item }}</option>
+    }
+  </select>
   <button class="botao-criar-novo">Adicionar</button>
 </header>
 
@@ -17,8 +22,13 @@
     @for (aluno of alunos; track aluno.id) {
     <tr>
       <td class="coluna-id">{{ aluno.id }}</td>
-      <td class="coluna-nome">{{ aluno.nome }}</td>
+      <td class="coluna-nome">{{ aluno.nomeCompleto }}</td>
     </tr>
     }
   </tbody>
 </table>
+
+<div class="pagina">
+  <button><img src="assets/back.png" alt="seta para trás"></button>
+  <button><img src="assets/forward.png" alt="seta para frente"></button>
+</div>

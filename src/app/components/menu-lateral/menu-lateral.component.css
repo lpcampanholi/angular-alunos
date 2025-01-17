@@ -36,7 +36,7 @@
 
 .navegacao li {
   padding: 0.5em;
-  border-bottom: 1px solid var(--branco);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   list-style: none;
   font-size: 1.2em;
 }

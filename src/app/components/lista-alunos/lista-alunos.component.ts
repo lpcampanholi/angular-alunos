@@ -1,29 +1,36 @@
-import { Component, signal } from '@angular/core';
-
-interface Aluno {
-  id: number,
-  nome: string
-}
+import { Aluno } from '../../../types/aluno';
+import { AlunosService } from '../../services/aluno.service';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-alunos',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './lista-alunos.component.html',
   styleUrl: './lista-alunos.component.css'
 })
 export class ListaAlunosComponent {
 
-  alunos: Aluno[] = [
-    {id: 0, nome: "José Cézar"},
-    {id: 1, nome: "Daniel"},
-    {id: 2, nome: "Júnior"},
-    {id: 3, nome: "Maria"},
-    {id: 4, nome: "Juliano"},
-    {id: 5, nome: "Jonivaldo"},
-    {id: 6, nome: "André"},
-    {id: 7, nome: "Juliano"},
-    {id: 8, nome: "Jonivaldo"},
-    {id: 9, nome: "André"}
-  ]
+  alunos: Aluno[] = [];
+  itensPorPagina: number[] = [10, 20, 30];
+  itensPorPaginaSelecionado = 10;
+  pagina = 1;
+
+  constructor(private service: AlunosService) { }
+
+  ngOnInit(): void {
+    this.listarAlunos();
+  }
+
+  listarAlunos() {
+    this.pagina = 1;
+    this.service.listar(this.pagina, this.itensPorPaginaSelecionado).subscribe((listaAlunos) => {
+      this.alunos = listaAlunos;
+    })
+  }
+
+  listarAlunosProximaPagina() {
+
+  }
 
 }
