@@ -1,0 +1,27 @@
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog {
+  position: relative;
+  max-width: 70%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 2;
+}
+
+.dialog button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

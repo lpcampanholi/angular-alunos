@@ -4,6 +4,6 @@ export type Aluno = {
   endereco: string;
   bairro: string;
   responsavelNome: string;
-  parentecoResponsavel: string,
+  parentescoResponsavel: string,
   whatsappResponsavel: string
 }

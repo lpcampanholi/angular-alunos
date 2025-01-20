@@ -1,29 +1,38 @@
-<form>
-  <p>id: {{ aluno.id }} </p>
+<form (submit)="submeterForm()">
+  @if (aluno.id) {
+    <p>id: {{ aluno.id }} </p>
+  }
   <div class="campo">
     <label for="nomeCompleto">Nome completo</label>
-    <input type="text" id="nomeCompleto" [(ngModel)]="aluno.nomeCompleto">
+    <input type="text" id="nomeCompleto" name="nomeCompleto" [(ngModel)]="aluno.nomeCompleto" >
   </div>
   <div class="campo">
     <label for="endereco">Endereço</label>
-    <input type="text" id="endereco" [(ngModel)]="aluno.endereco">
+    <input type="text" id="endereco" name="endereco" [(ngModel)]="aluno.endereco" >
   </div>
   <div class="campo">
     <label for="bairro">Bairro</label>
-    <input type="text" id="bairro" [(ngModel)]="aluno.bairro">
+    <input type="text" id="bairro" name="bairro" [(ngModel)]="aluno.bairro" >
   </div>
   <div class="campo">
-    <label for="resposavel">Responsável</label>
-    <input type="text" id="responsavel" [(ngModel)]="aluno.responsavelNome">
+    <label for="responsavelNome">Responsável</label>
+    <input type="text" id="responsavelNome" name="responsavelNome" [(ngModel)]="aluno.responsavelNome" >
+  </div>
+  <div class="bloco">
+    <div class="campo">
+      <label for="parentescoResponsavel">Parentesco</label>
+      <input type="text" id="parentescoResponsavel" name="parentescoResponsavel" [(ngModel)]="aluno.parentescoResponsavel" >
+    </div>
+    <app-botao-destaque>Cadastrar</app-botao-destaque>
   </div>
   <div class="campo">
-    <label for="parentesco">Parentesco</label>
-    <input type="text" id="parentesco" [(ngModel)]="aluno.parentecoResponsavel">
+    <label for="whatsappResponsavel">WhatsApp</label>
+    <input type="text" id="whatsappResponsavel" name="whatsappResponsavel" [(ngModel)]="aluno.whatsappResponsavel" >
   </div>
-  <div class="campo">
-    <label for="whatsapp">WhatsApp</label>
-    <input type="text" id="whatsapp" [(ngModel)]="aluno.whatsappResponsavel">
-  </div>
+  <footer class="detalhes-rodape">
+    <app-botao-destaque>{{ aluno.id ? "Salvar" : "Criar" }}</app-botao-destaque>
+    @if (aluno.id) {
+      <app-botao-destaque (click)="excluirAluno()">Excluir</app-botao-destaque>
+    }
+  </footer>
 </form>
-
-<p>{{ aluno.nomeCompleto }}</p>

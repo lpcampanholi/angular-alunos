@@ -1,0 +1,13 @@
+.botao-destaque {
+  background-color: var(--cor-destaque);
+  font-weight: 900;
+  border: none;
+  color: white;
+  border-radius: 0.2em;
+  padding: 1em;
+}
+
+.botao-destaque:hover {
+  background-color: var(--cor-destaque-claro);
+  cursor: pointer;
+}

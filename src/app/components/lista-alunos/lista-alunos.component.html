@@ -3,32 +3,58 @@
     <input type="text" placeholder="Pesquisa" />
     <button><img src="/assets/lupa.png" alt="Lupa de pesquisa" /></button>
   </form>
-  <select class="paginacao" [(ngModel)]="itensPorPaginaSelecionado" (change)="listarAlunos()">
-    @for (item of itensPorPagina; track item) {
-      <option [value]="item">{{ item }}</option>
-    }
-  </select>
-  <button class="botao-criar-novo">Adicionar</button>
+  <app-botao-destaque class="botao-criar-novo" routerLink="/alunos/novo">Adicionar</app-botao-destaque>
 </header>
 
 <table class="tabela-alunos">
   <thead>
     <tr>
-      <th>id</th>
-      <th>Nome</th>
+      <th><span>id<img src="assets/expand-arrow.png" alt="expand arrow"></span></th>
+      <th><span>Nome<img src="assets/expand-arrow.png" alt="expand arrow"></span></th>
+      <th><span>Responsável<img src="assets/expand-arrow.png" alt="expand arrow"></span></th>
     </tr>
   </thead>
   <tbody>
     @for (aluno of alunos; track aluno.id) {
     <tr>
       <td class="coluna-id">{{ aluno.id }}</td>
-      <td class="coluna-nome">{{ aluno.nomeCompleto }}</td>
+      <td class="coluna-principal"><a routerLink="/alunos/{{ aluno.id }}">{{ aluno.nomeCompleto }}</a></td>
+      <td class="coluna"><a>{{ aluno.responsavelNome }}</a></td>
     </tr>
     }
   </tbody>
 </table>
 
-<div class="pagina">
-  <button><img src="assets/back.png" alt="seta para trás"></button>
-  <button><img src="assets/forward.png" alt="seta para frente"></button>
+<div class="paginacao">
+  <span>Linhas por página</span>
+  <select class="limite-por-pagina" [(ngModel)]="itensPorPaginaSelecionado" (change)="listarAlunosPrimeiraPagina()">
+    @for (item of itensPorPagina; track item) {
+      <option [value]="item">{{ item }}</option>
+    }
+  </select>
+  <span>Página {{ paginaAtual }} de {{ ultimaPagina }}</span>
+  <button
+    (click)="listarAlunosPrimeiraPagina()"
+    [disabled]="paginaAtual === 1"
+    [class.disabled]="paginaAtual === 1">
+    <img src="assets/double-left.png" alt="seta dupla para trás">
+  </button>
+  <button
+    (click)="listarAlunosPaginaAnterior()"
+    [disabled]="paginaAtual === 1"
+    [class.disabled]="paginaAtual === 1">
+    <img src="assets/left.png" alt="seta para trás">
+  </button>
+  <button
+    (click)="listarAlunosProximaPagina()"
+    [disabled]="paginaAtual === ultimaPagina"
+    [class.disabled]="paginaAtual === ultimaPagina">
+    <img src="assets/right.png" alt="seta para frente">
+  </button>
+  <button
+    (click)="listarAlunosUltimaPagina()"
+    [disabled]="paginaAtual === ultimaPagina"
+    [class.disabled]="paginaAtual === ultimaPagina">
+    <img src="assets/double-right.png" alt="seta dupla para frente">
+  </button>
 </div>

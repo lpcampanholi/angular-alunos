@@ -13,6 +13,10 @@ export const routes: Routes = [
     component: AlunosComponent
   },
   {
+    path: 'alunos/novo',
+    component: DetalhesAlunoComponent
+  },
+  {
     path: 'alunos/:id',
     component: DetalhesAlunoComponent
   }
