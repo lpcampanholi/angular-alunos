@@ -5,16 +5,17 @@ import { AlunosService } from '../../services/aluno.service';
 import { TituloPrincipalComponent } from "../titulo-principal/titulo-principal.component";
 import { BotaoComIconeComponent } from '../botao-com-icone/botao-com-icone.component';
 import { Aluno } from '../../../types/aluno';
+import { BotaoOutlineComponent } from "../botao-outline/botao-outline.component";
 
 @Component({
   selector: 'app-detalhes-aluno',
-  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComIconeComponent],
+  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComIconeComponent, BotaoOutlineComponent],
   templateUrl: './detalhes-aluno.component.html',
   styleUrl: './detalhes-aluno.component.css'
 })
 export class DetalhesAlunoComponent {
 
-  idAluno: number = 0;
+  idAluno: number | null = null;
 
   formularioAluno = new FormGroup({
     nomeCompleto: new FormControl('', Validators.required),
@@ -58,7 +59,7 @@ export class DetalhesAlunoComponent {
   }
 
   criarAluno() {
-    const novoAluno: Aluno = this.formularioAluno.value;
+    const novoAluno: Aluno = this.formularioAluno.value as Aluno;
     this.service.criar(novoAluno).subscribe(() => {
       this.router.navigate(['/alunos']);
     });
@@ -68,7 +69,7 @@ export class DetalhesAlunoComponent {
     const alunoAtualizado: Aluno = {
       id: this.idAluno,
       ...this.formularioAluno.value
-    }
+    } as Aluno
     this.service.atualizar(alunoAtualizado).subscribe(() => {
       this.router.navigate(['/alunos']);
     });
@@ -80,6 +81,10 @@ export class DetalhesAlunoComponent {
         this.router.navigate(['/alunos']);
       });
     }
+  }
+
+  cancelar() {
+    this.router.navigate(['/alunos']);
   }
 
 }
