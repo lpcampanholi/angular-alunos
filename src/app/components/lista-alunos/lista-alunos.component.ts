@@ -3,12 +3,11 @@ import { Aluno } from '../../../types/aluno';
 import { AlunosService } from '../../services/aluno.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BotaoDestaqueComponent } from '../botao-destaque/botao-destaque.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-lista-alunos',
-  imports: [FormsModule, RouterModule, BotaoDestaqueComponent, CommonModule],
+  imports: [FormsModule, RouterModule, CommonModule],
   templateUrl: './lista-alunos.component.html',
   styleUrl: './lista-alunos.component.css'
 })

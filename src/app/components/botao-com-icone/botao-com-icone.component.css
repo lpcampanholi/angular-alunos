@@ -1,0 +1,21 @@
+.botao-com-icone {
+  font-weight: 900;
+  border: none;
+  color: white;
+  border-radius: 0.2em;
+  padding: 1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1em;
+  cursor: pointer;
+  background-color: var(--cor-destaque);
+}
+
+.botao-com-icone img {
+  height: 20px;
+  vertical-align: text-bottom;
+}
+
+.botao-com-icone:hover {
+  background-color: var(--cor-destaque-hover);
+}

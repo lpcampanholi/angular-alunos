@@ -1,38 +1,113 @@
-<form (submit)="submeterForm()">
-  @if (aluno.id) {
-    <p>id: {{ aluno.id }} </p>
-  }
+@if (idAluno) {
+<app-titulo-principal>{{
+  formularioAluno.value.nomeCompleto
+}}</app-titulo-principal>
+} @else {
+<app-titulo-principal>Criar novo aluno</app-titulo-principal>
+}
+
+<form [formGroup]="formularioAluno" (ngSubmit)="submeterForm()">
   <div class="campo">
     <label for="nomeCompleto">Nome completo</label>
-    <input type="text" id="nomeCompleto" name="nomeCompleto" [(ngModel)]="aluno.nomeCompleto" >
+    <input
+      type="text"
+      id="nomeCompleto"
+      placeholder="Nome completo"
+      formControlName="nomeCompleto"
+    />
+    @if (formularioAluno.get('nomeCompleto').invalid) {
+      <p>Nome é obrigatório.</p>
+    }
   </div>
   <div class="campo">
     <label for="endereco">Endereço</label>
-    <input type="text" id="endereco" name="endereco" [(ngModel)]="aluno.endereco" >
+    <input
+      type="text"
+      id="endereco"
+      placeholder="Endereço"
+      formControlName="endereco"
+    />
+    @if (formularioAluno.get('endereco').invalid) {
+      <p>Endereço é obrigatório.</p>
+    }
   </div>
   <div class="campo">
     <label for="bairro">Bairro</label>
-    <input type="text" id="bairro" name="bairro" [(ngModel)]="aluno.bairro" >
+    <input
+      type="text"
+      id="bairro"
+      placeholder="Bairro"
+      formControlName="bairro"
+    />
+    @if (formularioAluno.get('bairro').invalid) {
+      <p>Bairro é obrigatório.</p>
+    }
   </div>
   <div class="campo">
     <label for="responsavelNome">Responsável</label>
-    <input type="text" id="responsavelNome" name="responsavelNome" [(ngModel)]="aluno.responsavelNome" >
+    <input
+      type="text"
+      id="responsavelNome"
+      placeholder="Nome do responsável"
+      formControlName="responsavelNome"
+    />
+    @if (formularioAluno.get('responsavelNome').invalid) {
+      <p>Nome do responsável é obrigatório.</p>
+    }
   </div>
   <div class="bloco">
     <div class="campo">
       <label for="parentescoResponsavel">Parentesco</label>
-      <input type="text" id="parentescoResponsavel" name="parentescoResponsavel" [(ngModel)]="aluno.parentescoResponsavel" >
+      <input
+        type="text"
+        id="parentescoResponsavel"
+        placeholder="Parentesco do responsável"
+        formControlName="parentescoResponsavel"
+      />
+      @if (formularioAluno.get('parentescoResponsavel').invalid) {
+        <p>Parentesco do responsável é obrigatório.</p>
+      }
     </div>
-    <app-botao-destaque>Cadastrar</app-botao-destaque>
+    <button>Cadastrar</button>
   </div>
   <div class="campo">
     <label for="whatsappResponsavel">WhatsApp</label>
-    <input type="text" id="whatsappResponsavel" name="whatsappResponsavel" [(ngModel)]="aluno.whatsappResponsavel" >
-  </div>
-  <footer class="detalhes-rodape">
-    <app-botao-destaque>{{ aluno.id ? "Salvar" : "Criar" }}</app-botao-destaque>
-    @if (aluno.id) {
-      <app-botao-destaque (click)="excluirAluno()">Excluir</app-botao-destaque>
+    <input
+      type="text"
+      id="whatsappResponsavel"
+      placeholder="WhatsApp do responsável"
+      formControlName="whatsappResponsavel"
+    />
+    @if (formularioAluno.get('whatsappResponsavel').invalid) {
+      <p>WhatsApp do responsável é obrigatório.</p>
     }
+  </div>
+
+  <footer class="detalhes-rodape">
+    <app-botao-com-icone
+      type="submit"
+      caminhoIcone="assets/save.png"
+      altIcone="ícone de salvar"
+      corFundo="--cor-destaque"
+    >
+      {{ idAluno ? "Salvar" : "Criar" }}
+    </app-botao-com-icone>
+    @if (idAluno) {
+    <app-botao-com-icone
+      caminhoIcone="assets/trash.png"
+      altIcone="ícone de excluir"
+      corFundo="--vermelho"
+    >
+      Excluir
+    </app-botao-com-icone>
+    }
+    <app-botao-com-icone
+    caminhoIcone="assets/trash.png"
+    altIcone="ícone de excluir"
+    corFundo="--vermelho"
+  >
+    Cancelar
+  </app-botao-com-icone>
   </footer>
+
 </form>

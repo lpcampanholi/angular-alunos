@@ -1,7 +1,8 @@
 # angular
 
 6 horas iniciais
-20/01 - início às 10h - 12h / 13:30 - 
+20/01 - início às 10h - 12h / 13:30 - 18h
+21/01 09h às 12h, 13:30 às 18h
 
 
 ## Implementações:

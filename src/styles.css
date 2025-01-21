@@ -4,8 +4,10 @@
 
 :root {
   --cinza-escuro: #444444;
-  --cor-destaque: #e84c3d;
-  --cor-destaque-claro: #f45c4e;
+  --cor-destaque: #e83d3d;
+  --cor-destaque-hover: #f45c4e;
+  --vermelho: #7f1d1d;
+  --vermelho-hover: #9f2e2e;
   --branco: #eeeeee;
   --cinza-claro: #c3c3c3;
 
@@ -16,11 +18,4 @@
 html, body {
   margin: 0;
   padding: 0;
-}
-
-.titulo {
-  font-size: 2.5em;
-  border-bottom: 2px solid var(--cinza-claro);
-  margin: 0;
-  padding-bottom: 0.3em;
 }

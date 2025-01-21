@@ -1,0 +1,27 @@
+.pesquisa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 2em;
+  width: 30em;
+  padding: 0 1em;
+}
+
+.pesquisa input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 1em;
+}
+
+.pesquisa button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pesquisa img {
+  height: 21px;
+}

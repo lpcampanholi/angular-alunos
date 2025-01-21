@@ -1,73 +1,85 @@
 import { Component } from '@angular/core';
-import { Aluno } from '../../../types/aluno';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlunosService } from '../../services/aluno.service';
-import { BotaoDestaqueComponent } from '../botao-destaque/botao-destaque.component';
+import { TituloPrincipalComponent } from "../titulo-principal/titulo-principal.component";
+import { BotaoComIconeComponent } from '../botao-com-icone/botao-com-icone.component';
+import { Aluno } from '../../../types/aluno';
 
 @Component({
   selector: 'app-detalhes-aluno',
-  imports: [FormsModule, BotaoDestaqueComponent],
+  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComIconeComponent],
   templateUrl: './detalhes-aluno.component.html',
   styleUrl: './detalhes-aluno.component.css'
 })
 export class DetalhesAlunoComponent {
 
-  aluno: Aluno = {
-    id: 0,
-    nomeCompleto: "",
-    endereco: "",
-    bairro: "",
-    responsavelNome: "",
-    parentescoResponsavel: "",
-    whatsappResponsavel: ""
-  }
+  idAluno: number = 0;
+
+  formularioAluno = new FormGroup({
+    nomeCompleto: new FormControl('', Validators.required),
+    endereco: new FormControl('', Validators.required),
+    bairro: new FormControl('', Validators.required),
+    responsavelNome: new FormControl('', Validators.required),
+    parentescoResponsavel: new FormControl('', Validators.required),
+    whatsappResponsavel: new FormControl('', Validators.required)
+  });
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: AlunosService
+    private service: AlunosService,
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
+      this.idAluno = id;
       if (id) {
         this.buscarAluno(id);
       }
     });
   }
 
-  submeterForm() {
-    if (this.aluno.id) {
-      this.atualizarAluno(this.aluno);
-    } else {
-      this.criarAluno(this.aluno);
-    }
-  }
-
   buscarAluno(id: number) {
     this.service.buscarPorId(id).subscribe(aluno => {
-      this.aluno = aluno;
+      this.formularioAluno.patchValue(aluno);
     });
   }
 
-  criarAluno(novoAluno: Aluno) {
+  submeterForm() {
+    if (this.formularioAluno.valid) {
+      if (this.idAluno) {
+        this.atualizarAluno();
+      } else {
+        this.criarAluno();
+      }
+    }
+  }
+
+  criarAluno() {
+    const novoAluno: Aluno = this.formularioAluno.value;
     this.service.criar(novoAluno).subscribe(() => {
       this.router.navigate(['/alunos']);
     });
   }
 
-  atualizarAluno(aluno: Aluno) {
-    this.service.atualizar(aluno).subscribe(() => {
+  atualizarAluno() {
+    const alunoAtualizado: Aluno = {
+      id: this.idAluno,
+      ...this.formularioAluno.value
+    }
+    this.service.atualizar(alunoAtualizado).subscribe(() => {
       this.router.navigate(['/alunos']);
     });
   }
 
   excluirAluno() {
-    this.service.excluir(this.aluno.id).subscribe(() => {
-      this.router.navigate(['/alunos']);
-    })
+    if (this.idAluno) {
+      this.service.excluir(this.idAluno).subscribe(() => {
+        this.router.navigate(['/alunos']);
+      });
+    }
   }
 
 }

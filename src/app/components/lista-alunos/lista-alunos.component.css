@@ -1,36 +1,18 @@
-.header {
-  display: flex;
-  gap: 19em;
-  padding: 1em 0;
-  width: 75%;
-}
-
-.pesquisa {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  border-radius: 2em;
-  width: 30em;
-  padding: 0 1em;
-}
-
-.pesquisa input {
-  width: 100%;
+.botao-flutuante {
+  border-radius: 50%;
+  background-color: var(--cor-destaque);
   border: none;
-  background: transparent;
-  outline: none;
-  padding: 1em;
-}
-
-.pesquisa button {
-  border: none;
-  background: transparent;
   cursor: pointer;
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
+  height: 50px;
+  width: 50px;
 }
 
-.pesquisa img {
-  height: 21px;
+.botao-flutuante img {
+  height: 30px;
+  width: 30px;
 }
 
 .tabela-alunos {
