@@ -4,10 +4,11 @@ import { AlunosService } from '../../services/aluno.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BotaoDestaqueComponent } from '../botao-destaque/botao-destaque.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-lista-alunos',
-  imports: [FormsModule, RouterModule, BotaoDestaqueComponent],
+  imports: [FormsModule, RouterModule, BotaoDestaqueComponent, CommonModule],
   templateUrl: './lista-alunos.component.html',
   styleUrl: './lista-alunos.component.css'
 })
@@ -18,6 +19,19 @@ export class ListaAlunosComponent {
   itensPorPaginaSelecionado = 20;
   paginaAtual = 1;
   ultimaPagina = 0;
+  campoDeOrdenacao = '-id';
+  srcSetaOrdenacao = '';
+
+  setasOrdenacao = {
+    id: 'assets/collapse-arrow.png',
+    nomeCompleto: '',
+    responsavelNome: ''
+  };
+  ordem = {
+    id: 'desc',
+    nomeCompleto: 'asc',
+    responsavelNome: 'asc'
+  };
 
   constructor(private service: AlunosService) { }
 
@@ -27,7 +41,7 @@ export class ListaAlunosComponent {
 
   listarAlunosPrimeiraPagina() {
     this.paginaAtual = 1;
-    this.service.listar(this.paginaAtual, this.itensPorPaginaSelecionado).subscribe((listaAlunos) => {
+    this.service.listar(this.paginaAtual,this.itensPorPaginaSelecionado, this.campoDeOrdenacao).subscribe((listaAlunos) => {
       this.alunos = listaAlunos.data;
       this.ultimaPagina = listaAlunos.last;
     })
@@ -36,7 +50,7 @@ export class ListaAlunosComponent {
   listarAlunosProximaPagina() {
     if (this.paginaAtual < this.ultimaPagina) {
       this.paginaAtual++;
-      this.service.listar(this.paginaAtual, this.itensPorPaginaSelecionado).subscribe((listaAlunos) => {
+      this.service.listar(this.paginaAtual, this.itensPorPaginaSelecionado, this.campoDeOrdenacao).subscribe((listaAlunos) => {
         this.alunos = listaAlunos.data;
       });
     }
@@ -45,7 +59,7 @@ export class ListaAlunosComponent {
   listarAlunosPaginaAnterior() {
     if (this.paginaAtual > 1) {
       this.paginaAtual--;
-      this.service.listar(this.paginaAtual, this.itensPorPaginaSelecionado).subscribe((listaAlunos) => {
+      this.service.listar(this.paginaAtual, this.itensPorPaginaSelecionado, this.campoDeOrdenacao).subscribe((listaAlunos) => {
         this.alunos = listaAlunos.data;
       })
     }
@@ -53,9 +67,29 @@ export class ListaAlunosComponent {
 
   listarAlunosUltimaPagina() {
     this.paginaAtual = this.ultimaPagina;
-    this.service.listar(this.paginaAtual, this.itensPorPaginaSelecionado).subscribe((listaAlunos) => {
+    this.service.listar(this.paginaAtual, this.itensPorPaginaSelecionado, this.campoDeOrdenacao).subscribe((listaAlunos) => {
       this.alunos = listaAlunos.data;
     })
+  }
+
+  alterarCampoDeOrdenacao(campo: string) {
+    if (this.campoDeOrdenacao === campo || this.campoDeOrdenacao === `-${campo}`) {
+      this.ordem[campo] = this.ordem[campo] === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.ordem[campo] = 'asc';
+    }
+
+    this.campoDeOrdenacao = this.ordem[campo] === 'asc' ? campo : `-${campo}`;
+
+    Object.keys(this.setasOrdenacao).forEach(key => {
+      if (key === campo) {
+        this.setasOrdenacao[key] = this.ordem[key] === 'asc' ? 'assets/expand-arrow.png' : 'assets/collapse-arrow.png';
+      } else {
+        this.setasOrdenacao[key] = '';
+      }
+    });
+
+    this.listarAlunosPrimeiraPagina();
   }
 
 }

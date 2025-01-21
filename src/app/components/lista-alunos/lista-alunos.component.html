@@ -3,23 +3,43 @@
     <input type="text" placeholder="Pesquisa" />
     <button><img src="/assets/lupa.png" alt="Lupa de pesquisa" /></button>
   </form>
-  <app-botao-destaque class="botao-criar-novo" routerLink="/alunos/novo">Adicionar</app-botao-destaque>
+  <app-botao-destaque class="botao-criar-novo" routerLink="/alunos/novo"
+    >Adicionar</app-botao-destaque
+  >
 </header>
 
 <table class="tabela-alunos">
   <thead>
     <tr>
-      <th><span>id<img src="assets/expand-arrow.png" alt="expand arrow"></span></th>
-      <th><span>Nome<img src="assets/expand-arrow.png" alt="expand arrow"></span></th>
-      <th><span>Responsável<img src="assets/expand-arrow.png" alt="expand arrow"></span></th>
+      <th>
+        <span (click)="alterarCampoDeOrdenacao('id')"
+          >id<img *ngIf="setasOrdenacao.id" [src]="setasOrdenacao.id" alt="Seta de ordenação"
+        /></span>
+      </th>
+      <th>
+        <span (click)="alterarCampoDeOrdenacao('nomeCompleto')"
+          >Nome<img *ngIf="setasOrdenacao.nomeCompleto" [src]="setasOrdenacao.nomeCompleto" alt="Seta de ordenação"
+        /></span>
+      </th>
+      <th>
+        <span (click)="alterarCampoDeOrdenacao('responsavelNome')"
+          >Responsável<img *ngIf="setasOrdenacao.responsavelNome" [src]="setasOrdenacao.responsavelNome" alt="Seta de ordenação"
+        /></span>
+      </th>
+      <th>Parentesco</th>
+      <th>WhatsApp</th>
     </tr>
   </thead>
   <tbody>
     @for (aluno of alunos; track aluno.id) {
     <tr>
       <td class="coluna-id">{{ aluno.id }}</td>
-      <td class="coluna-principal"><a routerLink="/alunos/{{ aluno.id }}">{{ aluno.nomeCompleto }}</a></td>
-      <td class="coluna"><a>{{ aluno.responsavelNome }}</a></td>
+      <td class="coluna-principal">
+        <a routerLink="/alunos/{{ aluno.id }}">{{ aluno.nomeCompleto }}</a>
+      </td>
+      <td class="coluna">{{ aluno.responsavelNome }}</td>
+      <td class="coluna">{{ aluno.parentescoResponsavel }}</td>
+      <td class="coluna">{{ aluno.whatsappResponsavel }}</td>
     </tr>
     }
   </tbody>
@@ -27,34 +47,42 @@
 
 <div class="paginacao">
   <span>Linhas por página</span>
-  <select class="limite-por-pagina" [(ngModel)]="itensPorPaginaSelecionado" (change)="listarAlunosPrimeiraPagina()">
+  <select
+    class="limite-por-pagina"
+    [(ngModel)]="itensPorPaginaSelecionado"
+    (change)="listarAlunosPrimeiraPagina()"
+  >
     @for (item of itensPorPagina; track item) {
-      <option [value]="item">{{ item }}</option>
+    <option [value]="item">{{ item }}</option>
     }
   </select>
   <span>Página {{ paginaAtual }} de {{ ultimaPagina }}</span>
   <button
     (click)="listarAlunosPrimeiraPagina()"
     [disabled]="paginaAtual === 1"
-    [class.disabled]="paginaAtual === 1">
-    <img src="assets/double-left.png" alt="seta dupla para trás">
+    [class.disabled]="paginaAtual === 1"
+  >
+    <img src="assets/double-left.png" alt="seta dupla para trás" />
   </button>
   <button
     (click)="listarAlunosPaginaAnterior()"
     [disabled]="paginaAtual === 1"
-    [class.disabled]="paginaAtual === 1">
-    <img src="assets/left.png" alt="seta para trás">
+    [class.disabled]="paginaAtual === 1"
+  >
+    <img src="assets/left.png" alt="seta para trás" />
   </button>
   <button
     (click)="listarAlunosProximaPagina()"
     [disabled]="paginaAtual === ultimaPagina"
-    [class.disabled]="paginaAtual === ultimaPagina">
-    <img src="assets/right.png" alt="seta para frente">
+    [class.disabled]="paginaAtual === ultimaPagina"
+  >
+    <img src="assets/right.png" alt="seta para frente" />
   </button>
   <button
     (click)="listarAlunosUltimaPagina()"
     [disabled]="paginaAtual === ultimaPagina"
-    [class.disabled]="paginaAtual === ultimaPagina">
-    <img src="assets/double-right.png" alt="seta dupla para frente">
+    [class.disabled]="paginaAtual === ultimaPagina"
+  >
+    <img src="assets/double-right.png" alt="seta dupla para frente" />
   </button>
 </div>

@@ -18,10 +18,11 @@ export class AlunosService {
     return this.http.get<Aluno>(url);
   }
 
-  listar(pagina: number, itensPorPagina: number): Observable<AlunoPaginado> {
-    let params = new HttpParams()
+  listar(pagina: number, itensPorPagina: number, campoDeOrdenacao: string): Observable<AlunoPaginado> {
+    const params = new HttpParams()
       .set("_page", pagina)
-      .set("_per_page", itensPorPagina);
+      .set("_per_page", itensPorPagina)
+      .set("_sort", campoDeOrdenacao);
     return this.http.get<AlunoPaginado>(this.api, { params });
   }
 

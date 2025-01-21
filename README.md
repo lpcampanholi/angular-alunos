@@ -7,6 +7,8 @@
 ## Implementações:
 - Criar novo aluno OK
 - Atualizar aluno OK
+- Ordenação OK
+- Filtro
 - Modal Categoria
 - Modal excluir
 - paginação mais completa
