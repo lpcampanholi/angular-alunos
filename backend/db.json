@@ -1,33 +1,6 @@
 {
   "alunos": [
     {
-      "id": "6",
-      "nomeCompleto": "Matheus Silva Costa",
-      "endereco": "Rua Vitória, 400",
-      "bairro": "Nova Esperança",
-      "responsavelNome": "Roberta Costa",
-      "parentescoResponsavel": "mãe",
-      "whatsappResponsavel": "44 98722-3344"
-    },
-    {
-      "id": "7",
-      "nomeCompleto": "Giovana Pereira Lopes",
-      "endereco": "Rua Aurora, 98",
-      "bairro": "Bela Vista",
-      "responsavelNome": "Renato Lopes",
-      "parentescoResponsavel": "pai",
-      "whatsappResponsavel": "44 98333-5566"
-    },
-    {
-      "id": "9",
-      "nomeCompleto": "Camila Alves Rochaaaa",
-      "endereco": "Rua Bela Vista, 101",
-      "bairro": "Jardim das Rosas",
-      "responsavelNome": "Adriana Rocha",
-      "parentescoResponsavel": "mãe",
-      "whatsappResponsavel": "44 98555-6677"
-    },
-    {
       "id": "10",
       "nomeCompleto": "Gabriel Souza Lima",
       "endereco": "Rua Horizonte, 33",
@@ -143,15 +116,6 @@
       "responsavelNome": "Eduardo Silva",
       "parentescoResponsavel": "pai",
       "whatsappResponsavel": "44 98456-1234"
-    },
-    {
-      "id": "23",
-      "nomeCompleto": "Beatriz Ferreira Martins",
-      "endereco": "Rua das Amendoeiras, 120",
-      "bairro": "Vila dos Sonhos",
-      "responsavelNome": "Mariana Ferreira",
-      "parentescoResponsavel": "mãe",
-      "whatsappResponsavel": "44 98122-3444"
     },
     {
       "id": "24",
@@ -323,87 +287,6 @@
       "responsavelNome": "Paula Lima",
       "parentescoResponsavel": "mãe",
       "whatsappResponsavel": "44 98122-5566"
-    },
-    {
-      "id": "43",
-      "nomeCompleto": "Tiago Costa Lima",
-      "endereco": "Avenida das Acácias, 890",
-      "bairro": "Vila Primavera",
-      "responsavelNome": "Carlos Lima",
-      "parentescoResponsavel": "pai",
-      "whatsappResponsavel": "44 98223-3344"
-    },
-    {
-      "id": "44",
-      "nomeCompleto": "Luan Pereira Souza",
-      "endereco": "Rua do Campo, 72",
-      "bairro": "Centro",
-      "responsavelNome": "Luciana Souza",
-      "parentescoResponsavel": "mãe",
-      "whatsappResponsavel": "44 98677-2233"
-    },
-    {
-      "id": "45",
-      "nomeCompleto": "Alana Costa Ferreira",
-      "endereco": "Avenida Brasil, 420",
-      "bairro": "Jardim Sol Nascente",
-      "responsavelNome": "Ricardo Costa",
-      "parentescoResponsavel": "pai",
-      "whatsappResponsavel": "44 98245-5566"
-    },
-    {
-      "id": "46",
-      "nomeCompleto": "Marcos Souza Lima",
-      "endereco": "Rua das Andorinhas, 220",
-      "bairro": "Vila Esperança",
-      "responsavelNome": "Gustavo Lima",
-      "parentescoResponsavel": "pai",
-      "whatsappResponsavel": "44 98322-9988"
-    },
-    {
-      "id": "47",
-      "nomeCompleto": "Juliana Rocha Souza",
-      "endereco": "Rua do Sol, 56",
-      "bairro": "Jardim Nova Era",
-      "responsavelNome": "Ana Rocha",
-      "parentescoResponsavel": "mãe",
-      "whatsappResponsavel": "44 98211-3344"
-    },
-    {
-      "id": "48",
-      "nomeCompleto": "Bruna Costa Lima",
-      "endereco": "Rua da Paz, 350",
-      "bairro": "Centro",
-      "responsavelNome": "Tatiane Lima",
-      "parentescoResponsavel": "mãe",
-      "whatsappResponsavel": "44 98644-2233"
-    },
-    {
-      "id": "49",
-      "nomeCompleto": "Raul Ferreira Santos",
-      "endereco": "Rua das Palmeiras, 510",
-      "bairro": "Vila Verde",
-      "responsavelNome": "Marcos Santos",
-      "parentescoResponsavel": "pai",
-      "whatsappResponsavel": "44 98700-5566"
-    },
-    {
-      "id": "50",
-      "nomeCompleto": "Camila Lima Souza",
-      "endereco": "Avenida Central, 760",
-      "bairro": "Jardim do Sol",
-      "responsavelNome": "Renato Souza",
-      "parentescoResponsavel": "pai",
-      "whatsappResponsavel": "44 98555-3344"
-    },
-    {
-      "id": "7101",
-      "nomeCompleto": "Luís Plinio Gabriel Campanholi dos Santos",
-      "endereco": "Rua Santos Dumont, 1203",
-      "bairro": "Zona 03",
-      "responsavelNome": "João",
-      "parentescoResponsavel": "pai",
-      "whatsappResponsavel": "44 98555-6677"
     }
   ]
 }

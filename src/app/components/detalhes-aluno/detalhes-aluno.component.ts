@@ -5,16 +5,18 @@ import { AlunosService } from '../../services/aluno.service';
 import { TituloPrincipalComponent } from "../titulo-principal/titulo-principal.component";
 import { Aluno } from '../../../types/aluno';
 import { BotaoComponent } from "../botao/botao.component";
+import { AlertDialogExcluirComponent } from "../alert-dialog-excluir/alert-dialog-excluir.component";
 
 @Component({
   selector: 'app-detalhes-aluno',
-  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComponent],
+  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComponent, AlertDialogExcluirComponent],
   templateUrl: './detalhes-aluno.component.html',
   styleUrl: './detalhes-aluno.component.css'
 })
 export class DetalhesAlunoComponent {
 
-  idAluno: number | null = null;
+  id: number | string | null = null;
+  exibirModalExcluir: boolean = false;
 
   formulario = new FormGroup({
     nomeCompleto: new FormControl('', Validators.required),
@@ -33,15 +35,15 @@ export class DetalhesAlunoComponent {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const id = Number(params.get('id'));
-      this.idAluno = id;
+      const id = params.get('id');
+      this.id = id;
       if (id) {
         this.buscarAluno(id);
       }
     });
   }
 
-  buscarAluno(id: number) {
+  buscarAluno(id: number | string) {
     this.service.buscarPorId(id).subscribe(aluno => {
       this.formulario.patchValue(aluno);
     });
@@ -49,7 +51,7 @@ export class DetalhesAlunoComponent {
 
   submeterForm() {
     if (this.formulario.valid) {
-      if (this.idAluno) {
+      if (this.id) {
         this.atualizarAluno();
       } else {
         this.criarAluno();
@@ -66,7 +68,7 @@ export class DetalhesAlunoComponent {
 
   atualizarAluno() {
     const alunoAtualizado: Aluno = {
-      id: this.idAluno,
+      id: this.id,
       ...this.formulario.value
     } as Aluno
     this.service.atualizar(alunoAtualizado).subscribe(() => {
@@ -75,11 +77,25 @@ export class DetalhesAlunoComponent {
   }
 
   excluirAluno() {
-    if (this.idAluno) {
-      this.service.excluir(this.idAluno).subscribe(() => {
+    if (this.id) {
+      this.service.excluir(this.id).subscribe(() => {
+        console.log("excluiu");
         this.router.navigate(['/alunos']);
       });
     }
+  }
+
+  abrirModalExcluir() {
+    this.exibirModalExcluir = true;
+  }
+
+  fecharModalExcluir() {
+    this.exibirModalExcluir = false;
+  }
+
+  confirmarExclusao() {
+    this.fecharModalExcluir();
+    this.excluirAluno();
   }
 
   cancelar() {

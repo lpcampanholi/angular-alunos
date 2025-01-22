@@ -13,12 +13,12 @@ export class AlunosService {
 
   constructor(private http: HttpClient) { }
 
-  buscarPorId(id: number): Observable<Aluno> {
+  buscarPorId(id: number | string): Observable<Aluno> {
     const url = `${this.api}/${id}`;
     return this.http.get<Aluno>(url);
   }
 
-  listar(pagina: number, itensPorPagina: number, campoDeOrdenacao: string): Observable<AlunoPaginado> {
+  listar(pagina: number | string, itensPorPagina: number, campoDeOrdenacao: string): Observable<AlunoPaginado> {
     const params = new HttpParams()
       .set("_page", pagina)
       .set("_per_page", itensPorPagina)
@@ -35,7 +35,7 @@ export class AlunosService {
     return this.http.put<Aluno>(url, aluno);
   }
 
-  excluir(id: number): Observable<Aluno> {
+  excluir(id: number | string): Observable<Aluno> {
     const url = `${this.api}/${id}`;
     return this.http.delete<Aluno>(url);
   }

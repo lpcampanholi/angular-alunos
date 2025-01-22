@@ -10,7 +10,9 @@
 - Atualizar aluno OK
 - Ordenação OK
 - Filtro
-- Modal Categoria
-- Modal excluir
-- paginação mais completa
-- Validação de formulário
+- Modal excluir OK
+- Modal Categoria e select no Form
+- paginação mais completa OK
+- Validação de formulário OK
+
+- Tag dialog não herda estilos de cor

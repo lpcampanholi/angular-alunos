@@ -1,10 +1,24 @@
-<div class="overlay">
-  <dialog class="dialog">
+<div class="overlay" (click)="fecharModal()">
+  <dialog class="dialog-modal" (click)="aoClicarNoModal($event)">
     <h2>Excluir registro</h2>
-    <form>
-      <p>Você está prestes a excluir um registro. Esta ação não pode ser revertida. Tem certeza?</p>
-      <button>Excluir</button>
-      <button>Cancelar</button>
+    <button (click)="fecharModal()">
+      <img src="assets/close.png" alt="ícone de fechar" />
+    </button>
+    <form (submit)="confirmarExclusao($event)">
+      <p>
+        Você está prestes a excluir um registro. Esta ação não pode ser
+        revertida. Tem certeza?
+      </p>
+      <footer>
+        <app-botao
+          tipo="excluir"
+          type="submit"
+          (click)="confirmarExclusao($event)"
+          autofocus
+          >Excluir</app-botao
+        >
+        <app-botao tipo="outline" (click)="fecharModal()">Cancelar</app-botao>
+      </footer>
     </form>
   </dialog>
 </div>

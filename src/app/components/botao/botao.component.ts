@@ -11,6 +11,7 @@ export class BotaoComponent {
 
   @Input() tipo: 'destaque' | 'excluir' | 'outline' = 'destaque';
   @Input() disabled = false;
+  @Input() type: string = 'button';
 
   get classeBotao(): string {
     return `botao-${this.tipo}`;
