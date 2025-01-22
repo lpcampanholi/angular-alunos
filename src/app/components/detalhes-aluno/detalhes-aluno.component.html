@@ -61,18 +61,11 @@
   <div class="bloco">
     <div class="campo">
       <label for="parentescoResponsavel">Parentesco</label>
-      <input
-        type="text"
-        id="parentescoResponsavel"
-        placeholder="Parentesco do responsável"
-        formControlName="parentescoResponsavel"
-      />
-      @if (formulario.get('parentescoResponsavel')?.invalid &&
-      formulario.get('parentescoResponsavel')?.touched) {
-      <span class="mensagem-validacao"
-        >Parentesco do responsável é obrigatório.</span
-      >
-      }
+      <select name="" id="">
+        @for (parentesco of parentescos; track parentesco.id) {
+        <option [ngValue]="parentesco.nome">{{ parentesco.nome }}</option>
+        }
+      </select>
     </div>
     <button>Cadastrar</button>
   </div>

@@ -6,6 +6,8 @@ import { TituloPrincipalComponent } from "../titulo-principal/titulo-principal.c
 import { Aluno } from '../../../types/aluno';
 import { BotaoComponent } from "../botao/botao.component";
 import { AlertDialogExcluirComponent } from "../alert-dialog-excluir/alert-dialog-excluir.component";
+import { ParentescosService } from '../../services/parentescos.service';
+import { Parentesco } from '../../../types/parentesco';
 
 @Component({
   selector: 'app-detalhes-aluno',
@@ -17,20 +19,22 @@ export class DetalhesAlunoComponent {
 
   id: number | string | null = null;
   exibirModalExcluir: boolean = false;
+  parentescos: Parentesco[] = [];
 
   formulario = new FormGroup({
     nomeCompleto: new FormControl('', Validators.required),
     endereco: new FormControl('', Validators.required),
     bairro: new FormControl('', Validators.required),
     responsavelNome: new FormControl('', Validators.required),
-    parentescoResponsavel: new FormControl('', Validators.required),
+    parentescoResponsavel: new FormControl(this.parentescos[2]),
     whatsappResponsavel: new FormControl('', Validators.required)
   });
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: AlunosService,
+    private alunosService: AlunosService,
+    private paretescosService: ParentescosService
   ) { }
 
   ngOnInit() {
@@ -44,7 +48,7 @@ export class DetalhesAlunoComponent {
   }
 
   buscarAluno(id: number | string) {
-    this.service.buscarPorId(id).subscribe(aluno => {
+    this.alunosService.buscarPorId(id).subscribe(aluno => {
       this.formulario.patchValue(aluno);
     });
   }
@@ -61,7 +65,7 @@ export class DetalhesAlunoComponent {
 
   criarAluno() {
     const novoAluno: Aluno = this.formulario.value as Aluno;
-    this.service.criar(novoAluno).subscribe(() => {
+    this.alunosService.criar(novoAluno).subscribe(() => {
       this.router.navigate(['/alunos']);
     });
   }
@@ -71,14 +75,14 @@ export class DetalhesAlunoComponent {
       id: this.id,
       ...this.formulario.value
     } as Aluno
-    this.service.atualizar(alunoAtualizado).subscribe(() => {
+    this.alunosService.atualizar(alunoAtualizado).subscribe(() => {
       this.router.navigate(['/alunos']);
     });
   }
 
   excluirAluno() {
     if (this.id) {
-      this.service.excluir(this.id).subscribe(() => {
+      this.alunosService.excluir(this.id).subscribe(() => {
         console.log("excluiu");
         this.router.navigate(['/alunos']);
       });
@@ -100,6 +104,12 @@ export class DetalhesAlunoComponent {
 
   cancelar() {
     this.router.navigate(['/alunos']);
+  }
+
+  buscarParentescos() {
+    this.paretescosService.listarParentescos().subscribe((listaParentescos) => {
+      this.parentescos = listaParentescos;
+    });
   }
 
 }

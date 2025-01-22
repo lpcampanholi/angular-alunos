@@ -6,7 +6,7 @@
       "endereco": "Rua Horizonte, 33",
       "bairro": "Centro",
       "responsavelNome": "Ricardo Lima",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98222-7788"
     },
     {
@@ -15,7 +15,7 @@
       "endereco": "Avenida Rio Branco, 1000",
       "bairro": "Jardim Imperial",
       "responsavelNome": "Patrícia Borges",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98888-9900"
     },
     {
@@ -24,7 +24,7 @@
       "endereco": "Rua das Acácias, 205",
       "bairro": "Vila Rica",
       "responsavelNome": "Cristina Mendes",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98119-2233"
     },
     {
@@ -33,7 +33,7 @@
       "endereco": "Rua Esperança, 250",
       "bairro": "Jardim Europa",
       "responsavelNome": "Antônio Santos",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98644-5566"
     },
     {
@@ -42,7 +42,7 @@
       "endereco": "Rua do Sol, 15",
       "bairro": "Nova Era",
       "responsavelNome": "Júlia Silva",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98321-1234"
     },
     {
@@ -51,7 +51,7 @@
       "endereco": "Avenida do Trabalhador, 800",
       "bairro": "Vila Progresso",
       "responsavelNome": "Marcelo Costa",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98100-2233"
     },
     {
@@ -60,7 +60,7 @@
       "endereco": "Rua Nova, 60",
       "bairro": "Jardim Tropical",
       "responsavelNome": "Luciana Souza",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98555-6677"
     },
     {
@@ -69,7 +69,7 @@
       "endereco": "Rua dos Pássaros, 123",
       "bairro": "Parque das Nações",
       "responsavelNome": "João Ribeiro",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98234-5566"
     },
     {
@@ -78,7 +78,7 @@
       "endereco": "Rua da Paz, 80",
       "bairro": "Jardim União",
       "responsavelNome": "Tatiane Oliveira",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98456-7890"
     },
     {
@@ -87,7 +87,7 @@
       "endereco": "Avenida das Árvores, 67",
       "bairro": "Vila do Sol",
       "responsavelNome": "Mariana Lima",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98711-2233"
     },
     {
@@ -96,7 +96,7 @@
       "endereco": "Rua Central, 44",
       "bairro": "Centro",
       "responsavelNome": "Fernando Rocha",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98322-4455"
     },
     {
@@ -105,7 +105,7 @@
       "endereco": "Rua dos Girassóis, 234",
       "bairro": "Jardim Esperança",
       "responsavelNome": "Joana Costa",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98743-5566"
     },
     {
@@ -114,7 +114,7 @@
       "endereco": "Avenida São Paulo, 500",
       "bairro": "Vila Progresso",
       "responsavelNome": "Eduardo Silva",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98456-1234"
     },
     {
@@ -123,7 +123,7 @@
       "endereco": "Rua do Campo, 305",
       "bairro": "Jardim das Acácias",
       "responsavelNome": "Paula Rocha",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98234-6677"
     },
     {
@@ -132,7 +132,7 @@
       "endereco": "Rua Bela Vista, 88",
       "bairro": "Centro",
       "responsavelNome": "Gustavo Pereira",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98445-2332"
     },
     {
@@ -141,7 +141,7 @@
       "endereco": "Avenida do Sol, 1050",
       "bairro": "Vila Nova",
       "responsavelNome": "Tatiane Lima",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98155-6677"
     },
     {
@@ -150,7 +150,7 @@
       "endereco": "Rua Verde, 90",
       "bairro": "Jardim Imperial",
       "responsavelNome": "Carlos Costa",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98766-1122"
     },
     {
@@ -159,7 +159,7 @@
       "endereco": "Rua do Lago, 35",
       "bairro": "Vila Real",
       "responsavelNome": "André Alves",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98312-4455"
     },
     {
@@ -168,7 +168,7 @@
       "endereco": "Rua das Palmeiras, 77",
       "bairro": "Parque São Paulo",
       "responsavelNome": "Ricardo Costa",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98211-6677"
     },
     {
@@ -177,7 +177,7 @@
       "endereco": "Avenida Central, 540",
       "bairro": "Vila Verde",
       "responsavelNome": "Juliana Martins",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98333-9988"
     },
     {
@@ -186,7 +186,7 @@
       "endereco": "Rua Nova Era, 275",
       "bairro": "Bairro Novo",
       "responsavelNome": "Tatiane Ferreira",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98111-4455"
     },
     {
@@ -195,7 +195,7 @@
       "endereco": "Rua Central, 187",
       "bairro": "Jardim Florido",
       "responsavelNome": "Carlos Alves",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98799-6655"
     },
     {
@@ -204,7 +204,7 @@
       "endereco": "Avenida do Rio, 453",
       "bairro": "Parque Rio",
       "responsavelNome": "Patrícia Lima",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98177-3322"
     },
     {
@@ -213,7 +213,7 @@
       "endereco": "Rua das Árvores, 85",
       "bairro": "Vila do Sol",
       "responsavelNome": "Renato Oliveira",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98201-3344"
     },
     {
@@ -222,7 +222,7 @@
       "endereco": "Avenida São José, 123",
       "bairro": "Jardim Jardim",
       "responsavelNome": "Júlia Costa",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98311-9988"
     },
     {
@@ -231,7 +231,7 @@
       "endereco": "Rua Horizonte, 500",
       "bairro": "Centro",
       "responsavelNome": "Renato Lima",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98677-2233"
     },
     {
@@ -240,7 +240,7 @@
       "endereco": "Rua Verde, 32",
       "bairro": "Vila Progresso",
       "responsavelNome": "Carlos Silva",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98300-5678"
     },
     {
@@ -249,7 +249,7 @@
       "endereco": "Avenida das Rosas, 120",
       "bairro": "Jardim Azul",
       "responsavelNome": "Tatiane Rocha",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98122-3344"
     },
     {
@@ -258,7 +258,7 @@
       "endereco": "Rua das Andorinhas, 112",
       "bairro": "Vila Olímpica",
       "responsavelNome": "André Oliveira",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98344-7788"
     },
     {
@@ -267,7 +267,7 @@
       "endereco": "Rua da Paz, 700",
       "bairro": "Centro",
       "responsavelNome": "Luciana Rocha",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98111-6677"
     },
     {
@@ -276,7 +276,7 @@
       "endereco": "Avenida do Sol, 600",
       "bairro": "Vila do Sol",
       "responsavelNome": "Renato Costa",
-      "parentescoResponsavel": "pai",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98233-8899"
     },
     {
@@ -285,8 +285,42 @@
       "endereco": "Rua do Sol, 130",
       "bairro": "Jardim das Flores",
       "responsavelNome": "Paula Lima",
-      "parentescoResponsavel": "mãe",
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98122-5566"
+    }
+  ],
+  "parentescos": [
+    {
+      "id": "1",
+      "nome": "Pai"
+    },
+    {
+      "id": "2",
+      "nome": "Mãe"
+    },
+    {
+      "id": "3",
+      "nome": "Avô"
+    },
+    {
+      "id": "4",
+      "nome": "Avó"
+    },
+    {
+      "id": "5",
+      "nome": "Irmão"
+    },
+    {
+      "id": "6",
+      "nome": "Irmã"
+    },
+    {
+      "id": "7",
+      "nome": "Irmão"
+    },
+    {
+      "id": "8",
+      "nome": "Irmã"
     }
   ]
 }
