@@ -1,0 +1,44 @@
+button {
+  color: white;
+  font-weight: 900;
+  border-radius: 0.2em;
+  padding: 1em;
+  min-width: 90px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.botao-destaque {
+  border: none;
+  background-color: var(--cor-destaque);
+}
+
+.botao-destaque:hover {
+  background-color: var(--cor-destaque-hover);
+}
+
+.botao-outline {
+  border: 1px solid var(--cor-destaque);
+  color: var(--cor-destaque);
+  background: none;
+}
+
+.botao-outline:hover {
+  background-color: rgb(225, 225, 225);
+}
+
+.botao-excluir {
+  border: none;
+  background-color: var(--vermelho);
+}
+
+.botao-excluir:hover {
+  background-color: var(--vermelho-hover);
+}

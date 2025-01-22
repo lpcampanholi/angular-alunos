@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BotaoOutlineComponent } from './botao-outline.component';
+import { BotaoComponent } from './botao.component';
 
-describe('BotaoOutlineComponent', () => {
-  let component: BotaoOutlineComponent;
-  let fixture: ComponentFixture<BotaoOutlineComponent>;
+describe('BotaoComponent', () => {
+  let component: BotaoComponent;
+  let fixture: ComponentFixture<BotaoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BotaoOutlineComponent]
+      imports: [BotaoComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BotaoOutlineComponent);
+    fixture = TestBed.createComponent(BotaoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

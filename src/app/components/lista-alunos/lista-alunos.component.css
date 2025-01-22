@@ -29,6 +29,10 @@
   border-bottom: 1px solid var(--cinza-claro);
 }
 
+.tabela-alunos span {
+  text-decoration: underline;
+}
+
 .tabela-alunos span:hover {
   cursor: pointer;
 }
@@ -51,7 +55,7 @@
 }
 
 .coluna-id {
-  width: 2em;
+  width: 3em;
 }
 
 .coluna-principal {
@@ -87,7 +91,6 @@
 }
 
 .paginacao button.disabled {
-  border: 1px solid var(--cinza-claro);
   opacity: 0.3;
   cursor: not-allowed;
 }

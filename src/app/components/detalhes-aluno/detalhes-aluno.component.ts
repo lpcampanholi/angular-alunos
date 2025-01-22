@@ -3,13 +3,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlunosService } from '../../services/aluno.service';
 import { TituloPrincipalComponent } from "../titulo-principal/titulo-principal.component";
-import { BotaoComIconeComponent } from '../botao-com-icone/botao-com-icone.component';
 import { Aluno } from '../../../types/aluno';
-import { BotaoOutlineComponent } from "../botao-outline/botao-outline.component";
+import { BotaoComponent } from "../botao/botao.component";
 
 @Component({
   selector: 'app-detalhes-aluno',
-  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComIconeComponent, BotaoOutlineComponent],
+  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComponent],
   templateUrl: './detalhes-aluno.component.html',
   styleUrl: './detalhes-aluno.component.css'
 })
@@ -17,7 +16,7 @@ export class DetalhesAlunoComponent {
 
   idAluno: number | null = null;
 
-  formularioAluno = new FormGroup({
+  formulario = new FormGroup({
     nomeCompleto: new FormControl('', Validators.required),
     endereco: new FormControl('', Validators.required),
     bairro: new FormControl('', Validators.required),
@@ -44,12 +43,12 @@ export class DetalhesAlunoComponent {
 
   buscarAluno(id: number) {
     this.service.buscarPorId(id).subscribe(aluno => {
-      this.formularioAluno.patchValue(aluno);
+      this.formulario.patchValue(aluno);
     });
   }
 
   submeterForm() {
-    if (this.formularioAluno.valid) {
+    if (this.formulario.valid) {
       if (this.idAluno) {
         this.atualizarAluno();
       } else {
@@ -59,7 +58,7 @@ export class DetalhesAlunoComponent {
   }
 
   criarAluno() {
-    const novoAluno: Aluno = this.formularioAluno.value as Aluno;
+    const novoAluno: Aluno = this.formulario.value as Aluno;
     this.service.criar(novoAluno).subscribe(() => {
       this.router.navigate(['/alunos']);
     });
@@ -68,7 +67,7 @@ export class DetalhesAlunoComponent {
   atualizarAluno() {
     const alunoAtualizado: Aluno = {
       id: this.idAluno,
-      ...this.formularioAluno.value
+      ...this.formulario.value
     } as Aluno
     this.service.atualizar(alunoAtualizado).subscribe(() => {
       this.router.navigate(['/alunos']);

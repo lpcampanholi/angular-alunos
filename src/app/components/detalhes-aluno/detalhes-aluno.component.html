@@ -1,12 +1,12 @@
 @if (idAluno) {
 <app-titulo-principal>{{
-  formularioAluno.value.nomeCompleto
+  formulario.value.nomeCompleto
 }}</app-titulo-principal>
 } @else {
-<app-titulo-principal>Criar novo aluno</app-titulo-principal>
+<app-titulo-principal>Novo aluno</app-titulo-principal>
 }
 
-<form [formGroup]="formularioAluno" (ngSubmit)="submeterForm()">
+<form [formGroup]="formulario" (ngSubmit)="submeterForm()">
   <div class="campo">
     <label for="nomeCompleto">Nome completo</label>
     <input
@@ -14,9 +14,10 @@
       id="nomeCompleto"
       placeholder="Nome completo"
       formControlName="nomeCompleto"
+      autofocus
     />
-    @if (formularioAluno.get('nomeCompleto').invalid) {
-      <p>Nome é obrigatório.</p>
+    @if (formulario.get('nomeCompleto')?.invalid && formulario.get('nomeCompleto')?.touched) {
+      <span class="mensagem-validacao">Nome é obrigatório.</span>
     }
   </div>
   <div class="campo">
@@ -27,8 +28,8 @@
       placeholder="Endereço"
       formControlName="endereco"
     />
-    @if (formularioAluno.get('endereco').invalid) {
-      <p>Endereço é obrigatório.</p>
+    @if (formulario.get('endereco')?.invalid && formulario.get('endereco')?.touched) {
+      <span class="mensagem-validacao">Endereço é obrigatório.</span>
     }
   </div>
   <div class="campo">
@@ -39,8 +40,8 @@
       placeholder="Bairro"
       formControlName="bairro"
     />
-    @if (formularioAluno.get('bairro').invalid) {
-      <p>Bairro é obrigatório.</p>
+    @if (formulario.get('bairro')?.invalid && formulario.get('bairro')?.touched) {
+      <span class="mensagem-validacao">Bairro é obrigatório.</span>
     }
   </div>
   <div class="campo">
@@ -51,8 +52,8 @@
       placeholder="Nome do responsável"
       formControlName="responsavelNome"
     />
-    @if (formularioAluno.get('responsavelNome').invalid) {
-      <p>Nome do responsável é obrigatório.</p>
+    @if (formulario.get('responsavelNome')?.invalid && formulario.get('responsavelNome')?.touched) {
+      <span class="mensagem-validacao">Nome do responsável é obrigatório.</span>
     }
   </div>
   <div class="bloco">
@@ -64,8 +65,8 @@
         placeholder="Parentesco do responsável"
         formControlName="parentescoResponsavel"
       />
-      @if (formularioAluno.get('parentescoResponsavel').invalid) {
-        <p>Parentesco do responsável é obrigatório.</p>
+      @if (formulario.get('parentescoResponsavel')?.invalid && formulario.get('parentescoResponsavel')?.touched) {
+        <span class="mensagem-validacao">Parentesco do responsável é obrigatório.</span>
       }
     </div>
     <button>Cadastrar</button>
@@ -78,30 +79,17 @@
       placeholder="WhatsApp do responsável"
       formControlName="whatsappResponsavel"
     />
-    @if (formularioAluno.get('whatsappResponsavel').invalid) {
-      <p>WhatsApp do responsável é obrigatório.</p>
+    @if (formulario.get('whatsappResponsavel')?.invalid && formulario.get('whatsappResponsavel')?.touched) {
+      <span class="mensagem-validacao">WhatsApp do responsável é obrigatório.</span>
     }
   </div>
 
   <footer class="detalhes-rodape">
-    <app-botao-com-icone
-      type="submit"
-      caminhoIcone="assets/save.png"
-      altIcone="ícone de salvar"
-      corFundo="--cor-destaque"
-    >
-      {{ idAluno ? "Salvar" : "Criar" }}
-    </app-botao-com-icone>
+    <app-botao type="submit" [disabled]="!formulario.valid">{{ idAluno ? "Salvar" : "Criar" }}</app-botao>
     @if (idAluno) {
-    <app-botao-com-icone
-      caminhoIcone="assets/trash.png"
-      altIcone="ícone de excluir"
-      corFundo="--vermelho"
-    >
-      Excluir
-    </app-botao-com-icone>
+      <app-botao tipo="excluir">Excluir</app-botao>
     }
-    <app-botao-outline (click)="cancelar()">Cancelar</app-botao-outline>
+    <app-botao tipo="outline" (click)="cancelar()">Cancelar</app-botao>
   </footer>
 
 </form>
