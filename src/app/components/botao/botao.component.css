@@ -2,8 +2,8 @@ button {
   color: white;
   font-weight: 900;
   border-radius: 0.2em;
-  padding: 1em;
-  min-width: 90px;
+  padding: 0.8em;
+  min-width: 80px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;

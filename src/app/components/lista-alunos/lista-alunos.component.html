@@ -1,24 +1,26 @@
-<button class="botao-flutuante" routerLink="/alunos/novo"><img src="assets/plus.png" alt="Símbolo de mais"></button>
-
 <table class="tabela-alunos">
   <thead>
     <tr>
       <th>
         <span (click)="alterarCampoDeOrdenacao('id')"
-          >id<img *ngIf="setasOrdenacao.id" [src]="setasOrdenacao.id" alt="Seta de ordenação"
-        /></span>
+          >id @if (setasOrdenacao.id) {
+          <img [src]="setasOrdenacao.id" alt="Seta de ordenação" /> }</span
+        >
       </th>
       <th>
         <span (click)="alterarCampoDeOrdenacao('nomeCompleto')"
-          >Nome<img *ngIf="setasOrdenacao.nomeCompleto" [src]="setasOrdenacao.nomeCompleto" alt="Seta de ordenação"
-        /></span>
+          >Nome@if (setasOrdenacao.nomeCompleto) {
+          <img [src]="setasOrdenacao.nomeCompleto" alt="Seta de ordenação" />
+          }
+        </span>
       </th>
       <th>
         <span (click)="alterarCampoDeOrdenacao('responsavelNome')"
-          >Responsável<img *ngIf="setasOrdenacao.responsavelNome" [src]="setasOrdenacao.responsavelNome" alt="Seta de ordenação"
-        /></span>
+          >Responsável @if (setasOrdenacao.responsavelNome) {
+          <img [src]="setasOrdenacao.responsavelNome" alt="Seta de ordenação" />
+          }
+        </span>
       </th>
-      <th>Parentesco</th>
       <th>WhatsApp</th>
     </tr>
   </thead>
@@ -30,7 +32,6 @@
         <a routerLink="/alunos/{{ aluno.id }}">{{ aluno.nomeCompleto }}</a>
       </td>
       <td class="coluna">{{ aluno.responsavelNome }}</td>
-      <td class="coluna">{{ aluno.parentescoResponsavel }}</td>
       <td class="coluna">{{ aluno.whatsappResponsavel }}</td>
     </tr>
     }
@@ -78,3 +79,5 @@
     <img src="assets/double-right.png" alt="seta dupla para frente" />
   </button>
 </div>
+
+<app-botao-adicionar></app-botao-adicionar>

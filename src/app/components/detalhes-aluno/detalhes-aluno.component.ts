@@ -8,10 +8,11 @@ import { BotaoComponent } from "../botao/botao.component";
 import { AlertDialogExcluirComponent } from "../alert-dialog-excluir/alert-dialog-excluir.component";
 import { ParentescosService } from '../../services/parentescos.service';
 import { Parentesco } from '../../../types/parentesco';
+import { ModalCadastroParentescoComponent } from "../modal-cadastro-parentesco/modal-cadastro-parentesco.component";
 
 @Component({
   selector: 'app-detalhes-aluno',
-  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComponent, AlertDialogExcluirComponent],
+  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComponent, AlertDialogExcluirComponent, ModalCadastroParentescoComponent],
   templateUrl: './detalhes-aluno.component.html',
   styleUrl: './detalhes-aluno.component.css'
 })
@@ -20,14 +21,15 @@ export class DetalhesAlunoComponent {
   id: number | string | null = null;
   exibirModalExcluir: boolean = false;
   parentescos: Parentesco[] = [];
+  modalCadastroParentescoAberto: boolean = false;
 
   formulario = new FormGroup({
-    nomeCompleto: new FormControl('', Validators.required),
-    endereco: new FormControl('', Validators.required),
-    bairro: new FormControl('', Validators.required),
-    responsavelNome: new FormControl('', Validators.required),
-    parentescoResponsavel: new FormControl(this.parentescos[2]),
-    whatsappResponsavel: new FormControl('', Validators.required)
+    nomeCompleto: new FormControl<string>('', Validators.required),
+    endereco: new FormControl<string>('', Validators.required),
+    bairro: new FormControl<string>('', Validators.required),
+    responsavelNome: new FormControl<string>('', Validators.required),
+    parentescoResponsavelId: new FormControl<number>(2, Validators.required),
+    whatsappResponsavel: new FormControl<string>('', Validators.required)
   });
 
   constructor(
@@ -45,11 +47,15 @@ export class DetalhesAlunoComponent {
         this.buscarAluno(id);
       }
     });
+    this.buscarParentescos();
   }
 
   buscarAluno(id: number | string) {
     this.alunosService.buscarPorId(id).subscribe(aluno => {
-      this.formulario.patchValue(aluno);
+      this.formulario.patchValue({
+        ...aluno,
+        parentescoResponsavelId: aluno.parentescoResponsavelId
+      });
     });
   }
 
@@ -83,7 +89,6 @@ export class DetalhesAlunoComponent {
   excluirAluno() {
     if (this.id) {
       this.alunosService.excluir(this.id).subscribe(() => {
-        console.log("excluiu");
         this.router.navigate(['/alunos']);
       });
     }
@@ -110,6 +115,15 @@ export class DetalhesAlunoComponent {
     this.paretescosService.listarParentescos().subscribe((listaParentescos) => {
       this.parentescos = listaParentescos;
     });
+  }
+
+  abrirModalCadastroParentesco(event: Event) {
+    event.preventDefault();
+    this.modalCadastroParentescoAberto = true;
+  }
+
+  fecharModalCadastroParentesco() {
+    this.modalCadastroParentescoAberto = false;
   }
 
 }

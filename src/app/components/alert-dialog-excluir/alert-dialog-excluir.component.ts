@@ -1,28 +1,25 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { BotaoComponent } from "../botao/botao.component";
+import { DialogModalComponent } from "../dialog-modal/dialog-modal.component";
 
 @Component({
   selector: 'app-alert-dialog-excluir',
-  imports: [BotaoComponent],
+  imports: [BotaoComponent, DialogModalComponent],
   templateUrl: './alert-dialog-excluir.component.html',
   styleUrl: './alert-dialog-excluir.component.css'
 })
 export class AlertDialogExcluirComponent {
 
-  @Output() fechar = new EventEmitter<void>();
+  @Output() aoModalFechado = new EventEmitter<void>();
   @Output() confirmar = new EventEmitter<void>();
 
-  fecharModal() {
-    this.fechar.emit();
+  aoFecharModal() {
+    this.aoModalFechado.emit();
   }
 
   confirmarExclusao(event: Event) {
     event.preventDefault();
     this.confirmar.emit();
-  }
-
-  aoClicarNoModal(event: Event) {
-    event.stopPropagation();
   }
 
 }

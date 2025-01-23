@@ -19,6 +19,7 @@
     <span class="mensagem-validacao">Nome é obrigatório.</span>
     }
   </div>
+
   <div class="campo">
     <label for="endereco">Endereço</label>
     <input
@@ -32,6 +33,7 @@
     <span class="mensagem-validacao">Endereço é obrigatório.</span>
     }
   </div>
+
   <div class="campo">
     <label for="bairro">Bairro</label>
     <input
@@ -45,6 +47,7 @@
     <span class="mensagem-validacao">Bairro é obrigatório.</span>
     }
   </div>
+
   <div class="campo">
     <label for="responsavelNome">Responsável</label>
     <input
@@ -58,17 +61,24 @@
     <span class="mensagem-validacao">Nome do responsável é obrigatório.</span>
     }
   </div>
-  <div class="bloco">
-    <div class="campo">
-      <label for="parentescoResponsavel">Parentesco</label>
-      <select name="" id="">
+
+  <div class="campo">
+    <label for="parentescoResponsavel">Parentesco</label>
+    <div class="bloco">
+      <select
+        id="parentescoResponsavel"
+        formControlName="parentescoResponsavelId"
+      >
         @for (parentesco of parentescos; track parentesco.id) {
-        <option [ngValue]="parentesco.nome">{{ parentesco.nome }}</option>
+        <option [ngValue]="parentesco.id">{{ parentesco.nome }}</option>
         }
       </select>
+      <app-botao (click)="abrirModalCadastroParentesco($event)"
+        >Cadastrar</app-botao
+      >
     </div>
-    <button>Cadastrar</button>
   </div>
+
   <div class="campo">
     <label for="whatsappResponsavel">WhatsApp</label>
     <input
@@ -98,8 +108,14 @@
 
 @if (exibirModalExcluir) {
 <app-alert-dialog-excluir
-  (fechar)="fecharModalExcluir()"
+  (aoModalFechado)="fecharModalExcluir()"
   (confirmar)="confirmarExclusao()"
 >
 </app-alert-dialog-excluir>
+} @if (modalCadastroParentescoAberto) {
+<app-modal-cadastro-parentesco
+  (aoModalCadastroFechado)="fecharModalCadastroParentesco()"
+  (aoModalCadastroSubmetido)="buscarParentescos()"
+>
+</app-modal-cadastro-parentesco>
 }

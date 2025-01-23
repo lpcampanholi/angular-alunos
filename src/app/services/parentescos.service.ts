@@ -19,4 +19,5 @@ export class ParentescosService {
   criarParentesco(parentesco: Parentesco): Observable<Parentesco> {
     return this.http.post<Parentesco>(this.api, parentesco);
   }
+
 }

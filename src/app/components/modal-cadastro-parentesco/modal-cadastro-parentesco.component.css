@@ -1,9 +1,3 @@
-.bloco {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
 .campo {
   display: flex;
   flex-direction: column;
@@ -29,26 +23,12 @@
   border: 1px solid var(--cor-destaque);
 }
 
-.campo select {
-  color: var(--cinza-escuro);
-  padding: 0.65em 0.5em;
-  width: 8em;
-  border: 1px solid var(--cinza-claro);
-  background-color: white;
-}
-
-.campo select:focus {
-  outline: none;
-  border: 1px solid var(--cor-destaque);
-}
-
-.detalhes-rodape {
-  display: flex;
-  gap: 1em;
-  margin-top: 2em;
-}
-
 .mensagem-validacao {
   color: var(--vermelho);
   font-size: 0.8em;
+}
+
+.rodape {
+  display: flex;
+  gap: 1em;
 }

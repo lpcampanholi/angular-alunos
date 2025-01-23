@@ -1,0 +1,51 @@
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-modal {
+  display: block;
+  width: 30em;
+  min-height: 200px;
+  position: relative;
+  max-width: 70%;
+  background-color: var(--branco);
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 2;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: var(--cinza-escuro);
+}
+
+.botao-fechar {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao-fechar:hover {
+  background-color: var(--branco-hover);
+  border-radius: 50%;
+}
+
+.botao-fechar img {
+  width: 15px;
+  height: 15px;
+}

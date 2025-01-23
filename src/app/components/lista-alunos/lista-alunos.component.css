@@ -1,20 +1,3 @@
-.botao-flutuante {
-  border-radius: 50%;
-  background-color: var(--cor-destaque);
-  border: none;
-  cursor: pointer;
-  position: fixed;
-  bottom: 100px;
-  right: 100px;
-  height: 50px;
-  width: 50px;
-}
-
-.botao-flutuante img {
-  height: 30px;
-  width: 30px;
-}
-
 .tabela-alunos {
   border-collapse: collapse;
 }

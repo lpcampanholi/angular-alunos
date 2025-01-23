@@ -1,0 +1,22 @@
+<app-dialog-modal (aoDialogModalFechado)="aoFecharModal()">
+  <h2>Novo Parentesco</h2>
+  <form [formGroup]="formulario" (ngSubmit)="submeterForm()">
+    <div class="campo">
+      <label for="nome">Parentesco</label>
+      <input
+        type="text"
+        id="nome"
+        placeholder="Parentesco"
+        formControlName="nome"
+        autofocus
+      />
+      @if (formulario.get('nome')?.invalid && formulario.get('nome')?.touched) {
+      <span class="mensagem-validacao">O campo está vazio</span>
+      }
+    </div>
+    <footer class="rodape">
+      <app-botao type="submit" [disabled]="!formulario.valid">Criar</app-botao>
+      <app-botao tipo="outline" (click)="aoFecharModal()">Cancelar</app-botao>
+    </footer>
+  </form>
+</app-dialog-modal>

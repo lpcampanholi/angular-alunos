@@ -4,10 +4,11 @@ import { AlunosService } from '../../services/aluno.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BotaoAdicionarComponent } from "../botao-adicionar/botao-adicionar.component";
 
 @Component({
   selector: 'app-lista-alunos',
-  imports: [FormsModule, RouterModule, CommonModule],
+  imports: [FormsModule, RouterModule, CommonModule, BotaoAdicionarComponent],
   templateUrl: './lista-alunos.component.html',
   styleUrl: './lista-alunos.component.css'
 })
@@ -18,16 +19,17 @@ export class ListaAlunosComponent {
   itensPorPaginaSelecionado = 20;
   paginaAtual = 1;
   ultimaPagina = 0;
-  campoDeOrdenacao = '-id';
+  campoDeOrdenacao = 'nomeCompleto';
   srcSetaOrdenacao = '';
 
   setasOrdenacao = {
-    id: 'assets/collapse-arrow.png',
-    nomeCompleto: '',
+    id: '',
+    nomeCompleto: 'assets/expand-arrow.png',
     responsavelNome: ''
   };
+
   ordem = {
-    id: 'desc',
+    id: 'asc',
     nomeCompleto: 'asc',
     responsavelNome: 'asc'
   };

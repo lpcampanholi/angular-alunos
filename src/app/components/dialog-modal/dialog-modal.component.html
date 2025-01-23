@@ -1,0 +1,8 @@
+<div class="overlay" (click)="aoFecharModal()">
+  <dialog class="dialog-modal" (click)="aoClicarNoModal($event)">
+    <button class="botao-fechar" (click)="aoFecharModal()">
+      <img src="assets/close.png" alt="ícone de fechar" />
+    </button>
+    <ng-content></ng-content>
+  </dialog>
+</div>
