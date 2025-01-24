@@ -146,4 +146,10 @@ export class DetalhesAlunoComponent {
     this.router.navigate(['/alunos']);
   }
 
+  get podeEditarParentesco(): boolean {
+    const idSelecionado = this.formulario.get('parentescoResponsavelId')?.value;
+    const parentesco = this.parentescos.find((p) => p.id === idSelecionado);
+    return !!parentesco?.nome;
+  }
+
 }

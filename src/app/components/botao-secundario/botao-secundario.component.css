@@ -21,3 +21,8 @@
 .botao-secundario:hover {
   background-color: var(--cor-destaque-hover);
 }
+
+.botao-secundario:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

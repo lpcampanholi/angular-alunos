@@ -77,6 +77,7 @@
         }
       </select>
       <app-botao-secundario (click)="abrirModalCadastroEditar($event)"
+      [disabled]="!podeEditarParentesco"
         >Editar</app-botao-secundario
       >
       <app-botao-secundario (click)="abrirModalCadastroNovo($event)"
