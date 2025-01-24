@@ -1,5 +1,9 @@
 <app-dialog-modal (aoDialogModalFechado)="aoFecharModal()">
-  <h2>Novo Parentesco</h2>
+  @if (parentesco) {
+  <h2>Editar parentesco</h2>
+  } @else {
+  <h2>Novo parentesco</h2>
+  }
   <form [formGroup]="formulario" (ngSubmit)="submeterForm()">
     <div class="campo">
       <label for="nome">Parentesco</label>
@@ -15,7 +19,12 @@
       }
     </div>
     <footer class="rodape">
-      <app-botao type="submit" [disabled]="!formulario.valid">Criar</app-botao>
+      <app-botao type="submit" [disabled]="!formulario.valid">{{
+        parentesco ? "Salvar" : "Criar"
+      }}</app-botao>
+      @if (parentesco) {<app-botao tipo="excluir" (click)="excluirParentesco()"
+        >Excluir</app-botao
+      >}
       <app-botao tipo="outline" (click)="aoFecharModal()">Cancelar</app-botao>
     </footer>
   </form>

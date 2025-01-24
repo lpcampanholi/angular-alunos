@@ -42,7 +42,7 @@ export class ListaAlunosComponent {
 
   listarAlunosPrimeiraPagina() {
     this.paginaAtual = 1;
-    this.service.listar(this.paginaAtual,this.itensPorPaginaSelecionado, this.campoDeOrdenacao).subscribe((listaAlunos) => {
+    this.service.listar(this.paginaAtual, this.itensPorPaginaSelecionado, this.campoDeOrdenacao).subscribe((listaAlunos) => {
       this.alunos = listaAlunos.data;
       this.ultimaPagina = listaAlunos.last;
     })

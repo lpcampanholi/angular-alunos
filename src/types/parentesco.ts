@@ -1,4 +1,4 @@
 export type Parentesco = {
-  id?: number | string;
+  id?: string,
   nome: string
 }

@@ -1,0 +1,23 @@
+.botao-secundario {
+  color: white;
+  font-weight: 900;
+  font-size: 0.8em;
+  border-radius: 0.2em;
+  padding: 0.5em;
+  min-width: 55px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--cinza-medio);
+}
+
+.botao-secundario:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.botao-secundario:hover {
+  background-color: var(--cor-destaque-hover);
+}

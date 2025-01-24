@@ -9,26 +9,28 @@ import { AlertDialogExcluirComponent } from "../alert-dialog-excluir/alert-dialo
 import { ParentescosService } from '../../services/parentescos.service';
 import { Parentesco } from '../../../types/parentesco';
 import { ModalCadastroParentescoComponent } from "../modal-cadastro-parentesco/modal-cadastro-parentesco.component";
+import { BotaoSecundarioComponent } from "../botao-secundario/botao-secundario.component";
 
 @Component({
   selector: 'app-detalhes-aluno',
-  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComponent, AlertDialogExcluirComponent, ModalCadastroParentescoComponent],
+  imports: [ReactiveFormsModule, TituloPrincipalComponent, BotaoComponent, AlertDialogExcluirComponent, ModalCadastroParentescoComponent, BotaoSecundarioComponent],
   templateUrl: './detalhes-aluno.component.html',
   styleUrl: './detalhes-aluno.component.css'
 })
 export class DetalhesAlunoComponent {
 
-  id: number | string | null = null;
+  id: string | null = null;
   exibirModalExcluir: boolean = false;
   parentescos: Parentesco[] = [];
-  modalCadastroParentescoAberto: boolean = false;
+  parentescoSelecionado: Parentesco | null = null;
+  modalCadastroAberto: boolean = false;
 
   formulario = new FormGroup({
     nomeCompleto: new FormControl<string>('', Validators.required),
     endereco: new FormControl<string>('', Validators.required),
     bairro: new FormControl<string>('', Validators.required),
     responsavelNome: new FormControl<string>('', Validators.required),
-    parentescoResponsavelId: new FormControl<number>(2, Validators.required),
+    parentescoResponsavelId: new FormControl<string>(null, Validators.required),
     whatsappResponsavel: new FormControl<string>('', Validators.required)
   });
 
@@ -50,15 +52,6 @@ export class DetalhesAlunoComponent {
     this.buscarParentescos();
   }
 
-  buscarAluno(id: number | string) {
-    this.alunosService.buscarPorId(id).subscribe(aluno => {
-      this.formulario.patchValue({
-        ...aluno,
-        parentescoResponsavelId: aluno.parentescoResponsavelId
-      });
-    });
-  }
-
   submeterForm() {
     if (this.formulario.valid) {
       if (this.id) {
@@ -67,6 +60,15 @@ export class DetalhesAlunoComponent {
         this.criarAluno();
       }
     }
+  }
+
+  buscarAluno(id: string) {
+    this.alunosService.buscarPorId(id).subscribe(aluno => {
+      this.formulario.patchValue({
+        ...aluno,
+        parentescoResponsavelId: aluno.parentescoResponsavelId
+      });
+    });
   }
 
   criarAluno() {
@@ -94,6 +96,21 @@ export class DetalhesAlunoComponent {
     }
   }
 
+  buscarParentescos() {
+    this.paretescosService.listar().subscribe((listaParentescos) => {
+      this.parentescos = listaParentescos;
+    });
+  }
+
+  selecionarParentesco(id: string) {
+    this.parentescoSelecionado = this.parentescos.find(parentesco => parentesco.id === id);
+  }
+
+  onParentescoChange(evento: Event) {
+    const idSelecionado = (evento.target as HTMLSelectElement).value.split(" ")[1];
+    this.selecionarParentesco(idSelecionado);
+  }
+
   abrirModalExcluir() {
     this.exibirModalExcluir = true;
   }
@@ -107,23 +124,25 @@ export class DetalhesAlunoComponent {
     this.excluirAluno();
   }
 
+  fecharModalCadastro() {
+    this.modalCadastroAberto = false;
+    this.buscarParentescos();
+  }
+
+  abrirModalCadastroEditar(event: Event) {
+    event.preventDefault();
+    this.selecionarParentesco(this.formulario.get('parentescoResponsavelId')?.value);
+    this.modalCadastroAberto = true;
+  }
+
+  abrirModalCadastroNovo(event: Event) {
+    event.preventDefault();
+    this.parentescoSelecionado = null;
+    this.modalCadastroAberto = true;
+  }
+
   cancelar() {
     this.router.navigate(['/alunos']);
-  }
-
-  buscarParentescos() {
-    this.paretescosService.listarParentescos().subscribe((listaParentescos) => {
-      this.parentescos = listaParentescos;
-    });
-  }
-
-  abrirModalCadastroParentesco(event: Event) {
-    event.preventDefault();
-    this.modalCadastroParentescoAberto = true;
-  }
-
-  fecharModalCadastroParentesco() {
-    this.modalCadastroParentescoAberto = false;
   }
 
 }

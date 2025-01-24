@@ -68,13 +68,20 @@
       <select
         id="parentescoResponsavel"
         formControlName="parentescoResponsavelId"
+        (change)="onParentescoChange($event)"
       >
+      @if (!formulario.get('parentescoResponsavelId')?.value) {
+        <option [ngValue]="null" disabled>Selecione</option>
+      }
         @for (parentesco of parentescos; track parentesco.id) {
         <option [ngValue]="parentesco.id">{{ parentesco.nome }}</option>
         }
       </select>
-      <app-botao (click)="abrirModalCadastroParentesco($event)"
-        >Cadastrar</app-botao
+      <app-botao-secundario (click)="abrirModalCadastroEditar($event)"
+        >Editar</app-botao-secundario
+      >
+      <app-botao-secundario (click)="abrirModalCadastroNovo($event)"
+        >Novo</app-botao-secundario
       >
     </div>
   </div>
@@ -112,10 +119,11 @@
   (confirmar)="confirmarExclusao()"
 >
 </app-alert-dialog-excluir>
-} @if (modalCadastroParentescoAberto) {
+
+} @if (modalCadastroAberto) {
 <app-modal-cadastro-parentesco
-  (aoModalCadastroFechado)="fecharModalCadastroParentesco()"
-  (aoModalCadastroSubmetido)="buscarParentescos()"
+  (aoModalCadastroFechado)="fecharModalCadastro()"
+  [parentesco]="parentescoSelecionado"
 >
 </app-modal-cadastro-parentesco>
 }

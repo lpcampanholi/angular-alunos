@@ -150,7 +150,7 @@
       "endereco": "Rua Verde, 90",
       "bairro": "Jardim Imperial",
       "responsavelNome": "Carlos Costa",
-      "parentescoResponsavelId": "8",
+      "parentescoResponsavelId": "8828",
       "whatsappResponsavel": "44 98766-1122"
     },
     {
@@ -213,7 +213,7 @@
       "endereco": "Rua das Árvores, 85",
       "bairro": "Vila do Sol",
       "responsavelNome": "Renato Oliveira",
-      "parentescoResponsavelId": "4",
+      "parentescoResponsavelId": "8828",
       "whatsappResponsavel": "44 98201-3344"
     },
     {
@@ -303,7 +303,7 @@
       "endereco": "R. das Canções, 2022",
       "bairro": "Vila Paraíba",
       "responsavelNome": "Roger",
-      "parentescoResponsavelId": 1,
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 92394234"
     },
     {
@@ -312,14 +312,14 @@
       "endereco": "asdfsadf",
       "bairro": "lkjsdf",
       "responsavelNome": "lçjsadf",
-      "parentescoResponsavelId": 2,
+      "parentescoResponsavelId": "2",
       "whatsappResponsavel": "asdfsdfsdf"
     }
   ],
   "parentescos": [
     {
       "id": "0",
-      "nome": "Pai"
+      "nome": "Paiiiii"
     },
     {
       "id": "1",
@@ -330,16 +330,8 @@
       "nome": "Avô"
     },
     {
-      "id": "3",
-      "nome": "Avó"
-    },
-    {
       "id": "4",
       "nome": "Irmão"
-    },
-    {
-      "id": "5",
-      "nome": "Irmã"
     },
     {
       "id": "6",
@@ -382,12 +374,8 @@
       "nome": "Entiado"
     },
     {
-      "id": "8828",
-      "nome": "Entiada"
-    },
-    {
-      "id": "6e2c",
-      "nome": "Craudia"
+      "id": "0b68",
+      "nome": "Craudiaaaa"
     }
   ]
 }
