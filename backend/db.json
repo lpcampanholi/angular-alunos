@@ -150,7 +150,7 @@
       "endereco": "Rua Verde, 90",
       "bairro": "Jardim Imperial",
       "responsavelNome": "Carlos Costa",
-      "parentescoResponsavelId": "8828",
+      "parentescoResponsavelId": "1",
       "whatsappResponsavel": "44 98766-1122"
     },
     {
@@ -206,15 +206,6 @@
       "responsavelNome": "Patrícia Lima",
       "parentescoResponsavelId": "2",
       "whatsappResponsavel": "44 98177-3322"
-    },
-    {
-      "id": "34",
-      "nomeCompleto": "Adriana Oliveira Costa",
-      "endereco": "Rua das Árvores, 85",
-      "bairro": "Vila do Sol",
-      "responsavelNome": "Renato Oliveira",
-      "parentescoResponsavelId": "8828",
-      "whatsappResponsavel": "44 98201-3344"
     },
     {
       "id": "35",
@@ -318,10 +309,6 @@
   ],
   "parentescos": [
     {
-      "id": "0",
-      "nome": "Paiiiii"
-    },
-    {
       "id": "1",
       "nome": "Mãe"
     },
@@ -346,36 +333,16 @@
       "nome": "Cachorro"
     },
     {
-      "id": "b3f1",
-      "nome": "dfgdfg"
-    },
-    {
-      "id": "4eb8",
-      "nome": "dfgdfg"
-    },
-    {
-      "id": "b37a",
-      "nome": "dfgdfg"
-    },
-    {
       "id": "a638",
       "nome": "Sogra"
-    },
-    {
-      "id": "d0f3",
-      "nome": "gata"
     },
     {
       "id": "c3d3",
       "nome": "gato"
     },
     {
-      "id": "7f0f",
-      "nome": "Entiado"
-    },
-    {
-      "id": "0b68",
-      "nome": "Craudiaaaa"
+      "id": "b76d",
+      "nome": "Pai"
     }
   ]
 }

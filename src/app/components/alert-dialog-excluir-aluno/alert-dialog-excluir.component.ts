@@ -11,15 +11,15 @@ import { DialogModalComponent } from "../dialog-modal/dialog-modal.component";
 export class AlertDialogExcluirComponent {
 
   @Output() aoModalFechado = new EventEmitter<void>();
-  @Output() confirmar = new EventEmitter<void>();
+  @Output() aoConfirmarExclusao = new EventEmitter<void>();
 
-  aoFecharModal() {
+  fecharModal() {
     this.aoModalFechado.emit();
   }
 
   confirmarExclusao(event: Event) {
     event.preventDefault();
-    this.confirmar.emit();
+    this.aoConfirmarExclusao.emit();
   }
 
 }

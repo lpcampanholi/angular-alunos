@@ -22,10 +22,18 @@
       <app-botao type="submit" [disabled]="!formulario.valid">{{
         parentesco ? "Salvar" : "Criar"
       }}</app-botao>
-      @if (parentesco) {<app-botao tipo="excluir" (click)="excluirParentesco()"
+      @if (parentesco) {<app-botao tipo="excluir" (click)="abrirModalExcluir()"
         >Excluir</app-botao
       >}
       <app-botao tipo="outline" (click)="aoFecharModal()">Cancelar</app-botao>
     </footer>
   </form>
 </app-dialog-modal>
+
+@if (modalExcluirAberto) {
+<app-alert-dialog-excluir
+  (aoModalFechado)="fecharModalExcluir()"
+  (aoConfirmarExclusao)="confirmarExclusao()"
+>
+</app-alert-dialog-excluir>
+}

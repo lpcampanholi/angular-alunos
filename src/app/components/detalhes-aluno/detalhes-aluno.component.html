@@ -70,10 +70,9 @@
         formControlName="parentescoResponsavelId"
         (change)="onParentescoChange($event)"
       >
-      @if (!formulario.get('parentescoResponsavelId')?.value) {
+        @if (!formulario.get('parentescoResponsavelId')?.value) {
         <option [ngValue]="null" disabled>Selecione</option>
-      }
-        @for (parentesco of parentescos; track parentesco.id) {
+        } @for (parentesco of parentescos; track parentesco.id) {
         <option [ngValue]="parentesco.id">{{ parentesco.nome }}</option>
         }
       </select>
@@ -116,7 +115,7 @@
 @if (exibirModalExcluir) {
 <app-alert-dialog-excluir
   (aoModalFechado)="fecharModalExcluir()"
-  (confirmar)="confirmarExclusao()"
+  (aoConfirmarExclusao)="confirmarExclusao()"
 >
 </app-alert-dialog-excluir>
 

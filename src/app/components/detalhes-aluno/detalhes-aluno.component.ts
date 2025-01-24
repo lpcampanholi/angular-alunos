@@ -5,7 +5,7 @@ import { AlunosService } from '../../services/aluno.service';
 import { TituloPrincipalComponent } from "../titulo-principal/titulo-principal.component";
 import { Aluno } from '../../../types/aluno';
 import { BotaoComponent } from "../botao/botao.component";
-import { AlertDialogExcluirComponent } from "../alert-dialog-excluir/alert-dialog-excluir.component";
+import { AlertDialogExcluirComponent } from "../alert-dialog-excluir-aluno/alert-dialog-excluir.component";
 import { ParentescosService } from '../../services/parentescos.service';
 import { Parentesco } from '../../../types/parentesco';
 import { ModalCadastroParentescoComponent } from "../modal-cadastro-parentesco/modal-cadastro-parentesco.component";
@@ -24,6 +24,7 @@ export class DetalhesAlunoComponent {
   parentescos: Parentesco[] = [];
   parentescoSelecionado: Parentesco | null = null;
   modalCadastroAberto: boolean = false;
+  exclusaoConfirmada: boolean = false;
 
   formulario = new FormGroup({
     nomeCompleto: new FormControl<string>('', Validators.required),

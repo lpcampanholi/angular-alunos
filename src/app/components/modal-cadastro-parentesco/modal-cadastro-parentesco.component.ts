@@ -4,10 +4,11 @@ import { DialogModalComponent } from "../dialog-modal/dialog-modal.component";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ParentescosService } from '../../services/parentescos.service';
 import { Parentesco } from '../../../types/parentesco';
+import { AlertDialogExcluirComponent } from "../alert-dialog-excluir-aluno/alert-dialog-excluir.component";
 
 @Component({
   selector: 'app-modal-cadastro-parentesco',
-  imports: [ReactiveFormsModule, BotaoComponent, DialogModalComponent],
+  imports: [ReactiveFormsModule, BotaoComponent, DialogModalComponent, AlertDialogExcluirComponent],
   templateUrl: './modal-cadastro-parentesco.component.html',
   styleUrl: './modal-cadastro-parentesco.component.css'
 })
@@ -15,6 +16,7 @@ export class ModalCadastroParentescoComponent {
 
   @Input() parentesco: Parentesco | null = null;
   @Output() aoModalCadastroFechado = new EventEmitter<void>();
+  modalExcluirAberto: boolean = false;
 
   formulario = new FormGroup({
     nome: new FormControl<string>('', Validators.required)
@@ -63,6 +65,19 @@ export class ModalCadastroParentescoComponent {
 
   aoFecharModal() {
     this.aoModalCadastroFechado.emit();
+  }
+
+  abrirModalExcluir() {
+    this.modalExcluirAberto = true;
+  }
+
+  fecharModalExcluir() {
+    this.modalExcluirAberto = false;
+  }
+
+  confirmarExclusao() {
+    this.excluirParentesco();
+    this.modalExcluirAberto = false;
   }
 
 }

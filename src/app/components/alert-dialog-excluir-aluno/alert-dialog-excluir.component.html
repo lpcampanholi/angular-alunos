@@ -1,4 +1,4 @@
-<app-dialog-modal (aoDialogModalFechado)="aoFecharModal()">
+<app-dialog-modal (aoDialogModalFechado)="fecharModal()">
   <h2>Excluir registro</h2>
   <form (submit)="confirmarExclusao($event)">
     <p class="texto">
@@ -12,7 +12,7 @@
         (click)="confirmarExclusao($event)"
         >Excluir</app-botao
       >
-      <app-botao tipo="outline" (click)="aoFecharModal()">Cancelar</app-botao>
+      <app-botao tipo="outline" (click)="fecharModal()">Cancelar</app-botao>
     </footer>
   </form>
 </app-dialog-modal>
