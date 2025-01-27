@@ -2,6 +2,7 @@
 
 /backend-json-server/node_modules
 /backend-nest/node_modules
+/backend-nest/dist
 
 # Compiled output
 /dist
