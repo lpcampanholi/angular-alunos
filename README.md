@@ -5,6 +5,7 @@
 21/01 09h às 12h, 13:30 às 18h
 22/01 09h às 12h, 13:30 às 18h
 23/01
+24/01
 
 ## Implementações:
 
@@ -29,10 +30,10 @@
 - Colocar subtítulos no Menu e escalar o menu OK
 - Evitar repetição de código nos modais (componentizar e usar ng-content) OK
 
-- CRUD de parentesco (botão editar, excluir)
-- Criar componente de mensagem (exibir mensagem quando editar, excluir, )
-- Confirmar exclusão do parentesco
+- CRUD de parentesco (botão editar, excluir) OK
+- Confirmar exclusão do parentesco OK
 
 
+- Criar componente de mensagem Toast (exibir mensagem quando editar, excluir, criar novo)
 - BACKEND
 - LOGIN

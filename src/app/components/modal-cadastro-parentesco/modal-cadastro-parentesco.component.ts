@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BotaoComponent } from "../botao/botao.component";
-import { DialogModalComponent } from "../dialog-modal/dialog-modal.component";
+import { BotaoComponent } from "../../shared/botao/botao.component";
+import { DialogModalComponent } from "../../shared/dialog-modal/dialog-modal.component";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ParentescosService } from '../../services/parentescos.service';
 import { Parentesco } from '../../../types/parentesco';
