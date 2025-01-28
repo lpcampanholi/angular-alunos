@@ -12,21 +12,20 @@ import { UserRepository } from '../user.repository';
 @Injectable()
 @ValidatorConstraint({ async: true })
 export class EmailIsUniqueValidator implements ValidatorConstraintInterface {
-  constructor(private userRepository: UserRepository) {}
+  constructor(private userRepository: UserRepository) { }
 
   async validate(
     value: any,
     validationArguments?: ValidationArguments,
   ): Promise<boolean> {
-    const usuarioComEmailExiste = await this.userRepository.existWithEmail(
-      value,
-    );
+    const usuarioComEmailExiste =
+      await this.userRepository.existWithEmail(value);
     return !usuarioComEmailExiste;
   }
 }
 
 export const EmailIsUnique = (validationOptions: ValidationOptions) => {
-  return (objeto: Object, propriedade: string) => {
+  return (objeto: object, propriedade: string) => {
     registerDecorator({
       target: objeto.constructor,
       propertyName: propriedade,
