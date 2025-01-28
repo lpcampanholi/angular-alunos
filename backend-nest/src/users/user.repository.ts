@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './user';
+import { CreateUserDTO } from './dto/CreateUser.dto';
 
 @Injectable()
 export class UserRepository {
-  private users: User[] = [];
+  private users: CreateUserDTO[] = [];
 
-  listar(): User[] {
+  listar(): CreateUserDTO[] {
     return this.users;
   }
 
-  salvar(user: User) {
+  salvar(user: CreateUserDTO) {
     this.users.push(user);
   }
 }
