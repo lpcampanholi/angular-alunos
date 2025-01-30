@@ -5,10 +5,10 @@ import {
   TypeOrmModuleOptions,
   TypeOrmOptionsFactory,
 } from '@nestjs/typeorm/dist/interfaces/typeorm-options.interface';
-import { ProductFeature } from 'src/produto/product-feature.entity';
-import { ProductImage } from 'src/produto/product-image.entity';
+import { ProductFeature } from 'src/products/product-feature.entity';
+import { ProductImage } from 'src/products/product-image.entity';
 
-import { ProductEntity } from 'src/produto/product.entity';
+import { ProductEntity } from 'src/products/product.entity';
 
 @Injectable()
 export class PostgresConfigService implements TypeOrmOptionsFactory {

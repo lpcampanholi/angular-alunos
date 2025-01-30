@@ -8,6 +8,6 @@ export class ProductFeature {
   @Column({ name: 'name', length: 100, nullable: false })
   name: string;
 
-  @Column({ name: 'name', length: 100, nullable: false })
+  @Column({ name: 'description', length: 100, nullable: false })
   description: string;
 }

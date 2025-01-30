@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import {
   Body,
   Controller,
@@ -8,15 +9,18 @@ import {
   Put,
 } from '@nestjs/common';
 import { UserRepository } from './user.repository';
-import { CreateUserDTO } from './dto/CreateUser.dto';
+import { CreateUserDTO } from './dto/create-user.dto';
 import { UserEntity } from './user.entity';
 import { v4 as uuid } from 'uuid';
-import { ListUserDTO } from './dto/ListUser.dto';
-import { UpdateUserDTO } from './dto/UpdateUser.dto';
+import { ListUserDTO } from './dto/list-user-dto';
+import { UpdateUserDTO } from './dto/update-user-dto';
 
 @Controller('users')
 export class UserController {
-  constructor(private userRepository: UserRepository) {}
+  constructor(
+    private userRepository: UserRepository,
+    private userService: UserService,
+  ) {}
 
   @Get('/:id')
   async findOneUser(@Param('id') id: string) {
@@ -25,12 +29,9 @@ export class UserController {
   }
 
   @Get()
-  async findAll(): Promise<ListUserDTO[]> {
-    const savedUsers = await this.userRepository.list();
-    const usersList = savedUsers.map(
-      (user) => new ListUserDTO(user.id, user.name),
-    );
-    return usersList;
+  async findAllUsers(): Promise<ListUserDTO[]> {
+    const users = await this.userService.listUsers();
+    return users;
   }
 
   @Post()
