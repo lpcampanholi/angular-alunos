@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Parentesco } from '../../types/parentesco';
+import { Parentesco } from '../../models/parentesco';
 import { Observable } from 'rxjs';
 
 @Injectable({

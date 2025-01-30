@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { AlunosComponent } from './pages/alunos/alunos.component';
-import { DetalhesAlunoComponent } from './pages/detalhes-aluno/detalhes-aluno.component';
+import { EstudantesComponent } from './pages/estudantes/estudantes.component';
+import { DetalhesEstudanteComponent } from './pages/detalhes-estudante/detalhes-estudante.component';
 
 export const routes: Routes = [
   {
@@ -9,15 +9,15 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'alunos',
-    component: AlunosComponent
+    path: 'estudantes',
+    component: EstudantesComponent
   },
   {
-    path: 'alunos/novo',
-    component: DetalhesAlunoComponent
+    path: 'estudantes/novo',
+    component: DetalhesEstudanteComponent
   },
   {
-    path: 'alunos/:id',
-    component: DetalhesAlunoComponent
+    path: 'estudantes/:id',
+    component: DetalhesEstudanteComponent
   }
 ];

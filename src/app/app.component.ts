@@ -10,5 +10,5 @@ import { RodapeComponent } from "./components/rodape/rodape.component";
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'angular-alunos';
+  title = 'angular-estudantes';
 }

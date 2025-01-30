@@ -1,14 +1,11 @@
-import { UserEntity } from './../users/user.entity';
+import { UsuarioEntity } from './../usuarios/usuario.entity';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   TypeOrmModuleOptions,
   TypeOrmOptionsFactory,
 } from '@nestjs/typeorm/dist/interfaces/typeorm-options.interface';
-import { ProductFeature } from 'src/products/product-feature.entity';
-import { ProductImage } from 'src/products/product-image.entity';
-
-import { ProductEntity } from 'src/products/product.entity';
+import { EstudanteEntity } from 'src/estudantes/estudante.entity';
 
 @Injectable()
 export class PostgresConfigService implements TypeOrmOptionsFactory {
@@ -22,7 +19,7 @@ export class PostgresConfigService implements TypeOrmOptionsFactory {
       username: this.configService.get<string>('DB_USERNAME'),
       password: this.configService.get<string>('DB_PASSWORD'),
       database: this.configService.get<string>('DB_NAME'),
-      entities: [UserEntity, ProductEntity, ProductFeature, ProductImage],
+      entities: [UsuarioEntity, EstudanteEntity],
       synchronize: true,
     };
   }
