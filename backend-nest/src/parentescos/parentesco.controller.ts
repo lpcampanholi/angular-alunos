@@ -4,14 +4,13 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
   Post,
   Put,
 } from '@nestjs/common';
 import { CriarParentescoDTO } from './dto/criar-parentesco.dto';
-import { ListarParentescoDTO } from './dto/listar-parentesco-dto';
 import { AtualizarParentescoDTO } from './dto/atualizar-parentesco-dto';
+import { ParentescoEntity } from './parentesco.entity';
 
 @Controller('parentescos')
 export class ParentescoController {
@@ -20,17 +19,13 @@ export class ParentescoController {
   @Get('/:id')
   async buscarParentescoPorId(
     @Param('id') id: number,
-  ): Promise<ListarParentescoDTO> {
+  ): Promise<ParentescoEntity> {
     const parentesco = await this.service.buscarUm(id);
-    if (parentesco) {
-      return parentesco;
-    } else {
-      throw new NotFoundException('Parentesco não encontrado');
-    }
+    return parentesco;
   }
 
   @Get()
-  async buscarTodosParentescos(): Promise<ListarParentescoDTO[]> {
+  async buscarTodosParentescos(): Promise<ParentescoEntity[]> {
     const parentescos = await this.service.listar();
     return parentescos;
   }

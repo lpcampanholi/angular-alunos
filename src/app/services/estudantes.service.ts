@@ -13,7 +13,7 @@ export class EstudantesService {
 
   constructor(private http: HttpClient) { }
 
-  buscarPorId(id: string): Observable<Estudante> {
+  buscarPorId(id: number): Observable<Estudante> {
     const url = `${this.api}/${id}`;
     return this.http.get<Estudante>(url);
   }
@@ -35,7 +35,7 @@ export class EstudantesService {
     return this.http.put<Estudante>(url, estudante);
   }
 
-  excluir(id: string): Observable<Estudante> {
+  excluir(id: number): Observable<Estudante> {
     const url = `${this.api}/${id}`;
     return this.http.delete<Estudante>(url);
   }

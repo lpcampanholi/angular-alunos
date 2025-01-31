@@ -1,3 +1,4 @@
+import { EstudanteEntity } from 'src/estudantes/estudante.entity';
 import {
   Entity,
   Column,
@@ -5,6 +6,7 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity({ name: 'parentescos' })
@@ -14,6 +16,9 @@ export class ParentescoEntity {
 
   @Column({ name: 'nome', length: 100, nullable: false })
   nome: string;
+
+  @OneToMany(() => EstudanteEntity, (estudante) => estudante.parentesco)
+  estudantes: EstudanteEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

@@ -4,7 +4,6 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
   Post,
   Put,
@@ -20,11 +19,7 @@ export class UsuarioController {
   @Get('/:id')
   async findUserById(@Param('id') id: number): Promise<ListarUsuarioDTO> {
     const usuario = await this.service.buscarUm(id);
-    if (usuario) {
-      return usuario;
-    } else {
-      throw new NotFoundException('Usuário não encontrado');
-    }
+    return usuario;
   }
 
   @Get()

@@ -1,6 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ListarParentescoDTO } from './dto/listar-parentesco-dto';
 import { ParentescoEntity } from './parentesco.entity';
 import { Repository } from 'typeorm';
 import { CriarParentescoDTO } from './dto/criar-parentesco.dto';
@@ -13,22 +12,22 @@ export class ParentescoService {
     private readonly repository: Repository<ParentescoEntity>,
   ) {}
 
-  async buscarUm(id: number): Promise<ParentescoEntity | null> {
-    return await this.repository.findOneBy({ id });
+  async buscarUm(id: number): Promise<ParentescoEntity> {
+    const parentesco = await this.repository.findOneBy({ id });
+    if (parentesco) {
+      return parentesco;
+    } else {
+      throw new NotFoundException('Parentesco não encontrado');
+    }
   }
 
-  async listar(): Promise<ListarParentescoDTO[]> {
-    const usuariosSalvos = await this.repository.find();
-    const parentescosLista = usuariosSalvos.map(
-      (parentesco) => new ListarParentescoDTO(parentesco.id, parentesco.nome),
-    );
-    return parentescosLista;
+  async listar(): Promise<ParentescoEntity[]> {
+    const parentescos = await this.repository.find();
+    return parentescos;
   }
 
   async criar(novoParentesco: CriarParentescoDTO) {
-    const parentescoEntity: ParentescoEntity = new ParentescoEntity();
-    parentescoEntity.nome = novoParentesco.nome;
-    await this.repository.save(parentescoEntity);
+    await this.repository.save(novoParentesco);
   }
 
   async atualizar(id: number, parentesco: AtualizarParentescoDTO) {

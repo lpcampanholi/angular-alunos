@@ -4,14 +4,13 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
   Post,
   Put,
 } from '@nestjs/common';
 import { CriarEstudanteDTO } from './dto/criar-estudante.dto';
-import { ListarEstudanteDTO } from './dto/listar-estudante-dto';
 import { AtualizarEstudanteDTO } from './dto/atualizar-estudante-dto';
+import { EstudanteEntity } from './estudante.entity';
 
 @Controller('estudantes')
 export class EstudanteController {
@@ -20,17 +19,13 @@ export class EstudanteController {
   @Get('/:id')
   async buscarEstudantePorID(
     @Param('id') id: number,
-  ): Promise<ListarEstudanteDTO> {
+  ): Promise<EstudanteEntity> {
     const estudante = await this.service.buscarUm(id);
-    if (estudante) {
-      return estudante;
-    } else {
-      throw new NotFoundException('Estudante não encontrado');
-    }
+    return estudante;
   }
 
   @Get()
-  async buscarTodosEstudantes(): Promise<ListarEstudanteDTO[]> {
+  async buscarTodosEstudantes(): Promise<EstudanteEntity[]> {
     const estudantes = await this.service.listar();
     return estudantes;
   }

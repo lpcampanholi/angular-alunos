@@ -25,7 +25,7 @@ export class ParentescosService {
     return this.http.put<Parentesco>(url, parentesco);
   }
 
-  excluir(id: string): Observable<Parentesco> {
+  excluir(id: number): Observable<Parentesco> {
     const url = `${this.api}/${id}`;
     return this.http.delete<Parentesco>(url);
   }

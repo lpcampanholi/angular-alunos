@@ -23,11 +23,11 @@ import { BotaoSecundarioComponent } from '../../shared/botao-secundario/botao-se
     BotaoSecundarioComponent
   ],
   templateUrl: './detalhes-estudante.component.html',
-  styleUrl: './detalhes-estudante.component.css'
+  styleUrls: ['./detalhes-estudante.component.css']
 })
 export class DetalhesEstudanteComponent {
 
-  id: string | null = null;
+  id: number | null = null;
   exibirModalExcluir: boolean = false;
   parentescos: Parentesco[] = [];
   parentescoSelecionado: Parentesco | null = null;
@@ -39,7 +39,7 @@ export class DetalhesEstudanteComponent {
     endereco: new FormControl<string>('', Validators.required),
     bairro: new FormControl<string>('', Validators.required),
     responsavelNome: new FormControl<string>('', Validators.required),
-    parentescoResponsavelId: new FormControl<string>(null, Validators.required),
+    parentescoResponsavelId: new FormControl<number | null>(null, Validators.required),
     whatsappResponsavel: new FormControl<string>('', Validators.required)
   });
 
@@ -53,9 +53,9 @@ export class DetalhesEstudanteComponent {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
-      this.id = id;
       if (id) {
-        this.buscarEstudante(id);
+        this.id = Number(id);
+        this.buscarEstudante(this.id);
       }
     });
     this.buscarParentescos();
@@ -71,7 +71,7 @@ export class DetalhesEstudanteComponent {
     }
   }
 
-  buscarEstudante(id: string) {
+  buscarEstudante(id: number) {
     this.estudantesService.buscarPorId(id).subscribe(aluno => {
       this.formulario.patchValue({
         ...aluno,
@@ -111,13 +111,13 @@ export class DetalhesEstudanteComponent {
     });
   }
 
-  selecionarParentesco(id: string) {
+  selecionarParentesco(id: number) {
     this.parentescoSelecionado = this.parentescos.find(parentesco => parentesco.id === id);
   }
 
   onParentescoChange(evento: Event) {
     const idSelecionado = (evento.target as HTMLSelectElement).value.split(" ")[1];
-    this.selecionarParentesco(idSelecionado);
+    this.selecionarParentesco(Number(idSelecionado));
   }
 
   abrirModalExcluir() {

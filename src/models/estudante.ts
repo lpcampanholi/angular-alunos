@@ -1,9 +1,9 @@
 export type Estudante = {
-  id?: string,
+  id?: number,
   nomeCompleto: string,
   endereco: string,
   bairro: string,
   responsavelNome: string,
-  parentescoResponsavelId: string,
+  parentescoResponsavelId: number,
   whatsappResponsavel: string
 }

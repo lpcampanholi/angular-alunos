@@ -1,3 +1,4 @@
+import { ParentescoEntity } from 'src/parentescos/parentesco.entity';
 import {
   Entity,
   Column,
@@ -5,6 +6,8 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 @Entity({ name: 'estudantes' })
@@ -24,8 +27,11 @@ export class EstudanteEntity {
   @Column({ name: 'responsavel', length: 100, nullable: false })
   responsavel: string;
 
-  @Column({ name: 'parentesco_id' })
-  parentescoId: number;
+  @ManyToOne(() => ParentescoEntity, (parentesco) => parentesco.estudantes, {
+    nullable: false,
+  })
+  @JoinColumn({ name: 'parentesco_id' })
+  parentesco: ParentescoEntity;
 
   @Column({ name: 'whatsapp', length: 50, nullable: false })
   whatsapp: string;

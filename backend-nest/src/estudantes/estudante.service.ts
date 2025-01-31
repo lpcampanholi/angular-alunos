@@ -1,6 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ListarEstudanteDTO } from './dto/listar-estudante-dto';
 import { EstudanteEntity } from './estudante.entity';
 import { Repository } from 'typeorm';
 import { AtualizarEstudanteDTO } from './dto/atualizar-estudante-dto';
@@ -13,36 +12,24 @@ export class EstudanteService {
     private readonly repository: Repository<EstudanteEntity>,
   ) {}
 
-  async buscarUm(id: number): Promise<EstudanteEntity | null> {
-    return await this.repository.findOneBy({ id });
+  async buscarUm(id: number): Promise<EstudanteEntity> {
+    const estudante = await this.repository.findOneBy({ id });
+    if (estudante) {
+      return estudante;
+    } else {
+      throw new NotFoundException('Estudante não encontrado');
+    }
   }
 
-  async listar(): Promise<ListarEstudanteDTO[]> {
-    const usuariosSalvos = await this.repository.find();
-    const listaEstudantes = usuariosSalvos.map(
-      (estudante) =>
-        new ListarEstudanteDTO(
-          estudante.id,
-          estudante.nomeCompleto,
-          estudante.endereco,
-          estudante.bairro,
-          estudante.responsavel,
-          estudante.parentescoId,
-          estudante.whatsapp,
-        ),
-    );
+  async listar(): Promise<EstudanteEntity[]> {
+    const listaEstudantes = await this.repository.find({
+      relations: ['parentesco'],
+    });
     return listaEstudantes;
   }
 
   async criar(novoEstudante: CriarEstudanteDTO) {
-    const estudanteEntity: EstudanteEntity = new EstudanteEntity();
-    estudanteEntity.nomeCompleto = novoEstudante.nomeCompleto;
-    estudanteEntity.endereco = novoEstudante.endereco;
-    estudanteEntity.bairro = novoEstudante.bairro;
-    estudanteEntity.responsavel = novoEstudante.responsavel;
-    estudanteEntity.parentescoId = novoEstudante.parentescoId;
-    estudanteEntity.whatsapp = novoEstudante.whatsapp;
-    await this.repository.save(estudanteEntity);
+    await this.repository.save(novoEstudante);
   }
 
   async atualizar(id: number, estudante: AtualizarEstudanteDTO) {

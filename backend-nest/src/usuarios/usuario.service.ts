@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ListarUsuarioDTO } from './dto/listar-usuario-dto';
 import { UsuarioEntity } from './usuario.entity';
@@ -13,8 +13,13 @@ export class UsuarioService {
     private readonly repository: Repository<UsuarioEntity>,
   ) {}
 
-  async buscarUm(id: number): Promise<UsuarioEntity | null> {
-    return await this.repository.findOneBy({ id });
+  async buscarUm(id: number): Promise<ListarUsuarioDTO> {
+    const usuario = await this.repository.findOneBy({ id });
+    if (usuario) {
+      return new ListarUsuarioDTO(usuario.id, usuario.nome);
+    } else {
+      throw new NotFoundException('Usuário não encontrado');
+    }
   }
 
   async existeComEmail(email: string): Promise<boolean> {
