@@ -13,7 +13,10 @@ export class EstudanteService {
   ) {}
 
   async buscarUm(id: number): Promise<EstudanteEntity> {
-    const estudante = await this.repository.findOneBy({ id });
+    const estudante = await this.repository.findOne({
+      where: { id },
+      relations: ['parentesco'],
+    });
     if (estudante) {
       return estudante;
     } else {
