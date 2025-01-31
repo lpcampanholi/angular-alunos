@@ -6,6 +6,7 @@ import {
   TypeOrmOptionsFactory,
 } from '@nestjs/typeorm/dist/interfaces/typeorm-options.interface';
 import { EstudanteEntity } from 'src/estudantes/estudante.entity';
+import { ParentescoEntity } from 'src/parentescos/parentesco.entity';
 
 @Injectable()
 export class PostgresConfigService implements TypeOrmOptionsFactory {
@@ -19,7 +20,7 @@ export class PostgresConfigService implements TypeOrmOptionsFactory {
       username: this.configService.get<string>('DB_USERNAME'),
       password: this.configService.get<string>('DB_PASSWORD'),
       database: this.configService.get<string>('DB_NAME'),
-      entities: [UsuarioEntity, EstudanteEntity],
+      entities: [UsuarioEntity, EstudanteEntity, ParentescoEntity],
       synchronize: true,
     };
   }

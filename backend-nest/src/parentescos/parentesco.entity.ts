@@ -7,19 +7,13 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity({ name: 'usuarios' })
-export class UsuarioEntity {
+@Entity({ name: 'parentescos' })
+export class ParentescoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ name: 'nome', length: 100, nullable: false })
   nome: string;
-
-  @Column({ name: 'email', length: 70, nullable: false })
-  email: string;
-
-  @Column({ name: 'senha', length: 255, nullable: false })
-  senha: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

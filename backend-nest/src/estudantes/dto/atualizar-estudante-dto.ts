@@ -1,15 +1,29 @@
-import { IsEmail, IsNotEmpty, IsOptional, MinLength } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class AtualizarEstudanteDTO {
   @IsNotEmpty({ message: 'O nome não pode ser vazio' })
   @IsOptional()
-  nome: string;
+  nomeCompleto: string;
 
-  @IsEmail(undefined, { message: 'O e-mail informado é inválido' })
+  @IsNotEmpty({ message: 'O endereco não pode ser vazio' })
   @IsOptional()
-  email: string;
+  endereco: string;
 
-  @MinLength(6, { message: 'A senha precisa ter pelo menos 6 caracteres' })
+  @IsNotEmpty({ message: 'O bairro não pode ser vazio' })
   @IsOptional()
-  senha: string;
+  bairro: string;
+
+  @IsNotEmpty({ message: 'O responsavel não pode ser vazio' })
+  @IsOptional()
+  responsavel: string;
+
+  @IsNotEmpty({
+    message: 'O id do parentesco do responsável não pode ser vazio',
+  })
+  @IsOptional()
+  parentescoId: number;
+
+  @IsOptional()
+  @IsNotEmpty({ message: 'O whatsapp não pode ser vazio' })
+  whatsapp: string;
 }

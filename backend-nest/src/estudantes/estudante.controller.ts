@@ -13,13 +13,15 @@ import { CriarEstudanteDTO } from './dto/criar-estudante.dto';
 import { ListarEstudanteDTO } from './dto/listar-estudante-dto';
 import { AtualizarEstudanteDTO } from './dto/atualizar-estudante-dto';
 
-@Controller('students')
+@Controller('estudantes')
 export class EstudanteController {
-  constructor(private estudanteService: EstudanteService) {}
+  constructor(private service: EstudanteService) {}
 
   @Get('/:id')
-  async findStudentById(@Param('id') id: string): Promise<ListarEstudanteDTO> {
-    const estudante = await this.estudanteService.buscarUm(id);
+  async buscarEstudantePorID(
+    @Param('id') id: number,
+  ): Promise<ListarEstudanteDTO> {
+    const estudante = await this.service.buscarUm(id);
     if (estudante) {
       return estudante;
     } else {
@@ -29,40 +31,28 @@ export class EstudanteController {
 
   @Get()
   async buscarTodosEstudantes(): Promise<ListarEstudanteDTO[]> {
-    const estudantes = await this.estudanteService.listar();
+    const estudantes = await this.service.listar();
     return estudantes;
   }
 
   @Post()
   async criarEstudante(@Body() student: CriarEstudanteDTO) {
-    const estudanteCriado = await this.estudanteService.criar(student);
-    return {
-      student: estudanteCriado,
-      message: 'Student created successfully',
-    };
+    await this.service.criar(student);
+    return 'Estudante criado com sucesso';
   }
 
   @Put('/:id')
   async atualizarEstudante(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() newData: AtualizarEstudanteDTO,
   ) {
-    const estudanteAtualizado = await this.estudanteService.atualizar(
-      id,
-      newData,
-    );
-    return {
-      student: estudanteAtualizado,
-      message: 'Student updated successfully',
-    };
+    await this.service.atualizar(id, newData);
+    return 'Estudante atualizado com sucesso';
   }
 
   @Delete('/:id')
-  async excluirEstudante(@Param('id') id: string) {
-    const estudanteExcluido = await this.estudanteService.excluir(id);
-    return {
-      student: estudanteExcluido,
-      message: 'Student deleted successfully',
-    };
+  async excluirEstudante(@Param('id') id: number) {
+    await this.service.excluir(id);
+    return 'Estudante excluído com sucesso';
   }
 }

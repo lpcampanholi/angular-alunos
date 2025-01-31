@@ -15,51 +15,42 @@ import { AtualizarUsuarioDTO } from './dto/atualizar-usuario-dto';
 
 @Controller('usuarios')
 export class UsuarioController {
-  constructor(private userService: UsuarioService) {}
+  constructor(private service: UsuarioService) {}
 
   @Get('/:id')
-  async findUserById(@Param('id') id: string): Promise<ListarUsuarioDTO> {
-    const usuario = await this.userService.buscarUm(id);
+  async findUserById(@Param('id') id: number): Promise<ListarUsuarioDTO> {
+    const usuario = await this.service.buscarUm(id);
     if (usuario) {
       return usuario;
     } else {
-      throw new NotFoundException('User não encontrado');
+      throw new NotFoundException('Usuário não encontrado');
     }
   }
 
   @Get()
   async findAllUsers(): Promise<ListarUsuarioDTO[]> {
-    const usuarios = await this.userService.listar();
+    const usuarios = await this.service.listar();
     return usuarios;
   }
 
   @Post()
   async createUser(@Body() user: CriarUsuarioDTO) {
-    const createdUser = await this.userService.criar(user);
-    return {
-      user: createdUser,
-      message: 'User created successfully',
-    };
+    await this.service.criar(user);
+    return 'Usuário criado com sucesso';
   }
 
   @Put('/:id')
   async updateUser(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() newData: AtualizarUsuarioDTO,
   ) {
-    const usuarioAtualizado = await this.userService.atualizar(id, newData);
-    return {
-      user: usuarioAtualizado,
-      message: 'User updated successfully',
-    };
+    await this.service.atualizar(id, newData);
+    return 'Usuário atualizado com sucesso';
   }
 
   @Delete('/:id')
-  async deleteUser(@Param('id') id: string) {
-    const deletedUser = await this.userService.excluir(id);
-    return {
-      user: deletedUser,
-      message: 'User deleted successfully',
-    };
+  async deleteUser(@Param('id') id: number) {
+    await this.service.excluir(id);
+    return 'Usuário excluído com sucesso';
   }
 }

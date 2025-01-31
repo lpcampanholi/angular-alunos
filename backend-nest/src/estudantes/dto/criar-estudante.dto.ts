@@ -14,9 +14,9 @@ export class CriarEstudanteDTO {
   responsavel: string;
 
   @IsNotEmpty({
-    message: 'Indique o id do parentesco do responsável não pode ser vazio',
+    message: 'O id do parentesco do responsável não pode ser vazio',
   })
-  parentescoId: string;
+  parentescoId: number;
 
   @IsNotEmpty({ message: 'O whatsapp não pode ser vazio' })
   whatsapp: string;

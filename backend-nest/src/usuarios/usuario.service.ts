@@ -5,47 +5,44 @@ import { UsuarioEntity } from './usuario.entity';
 import { Repository } from 'typeorm';
 import { AtualizarUsuarioDTO } from './dto/atualizar-usuario-dto';
 import { CriarUsuarioDTO } from './dto/criar-usuario.dto';
-import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class UsuarioService {
   constructor(
     @InjectRepository(UsuarioEntity)
-    private readonly usuarioRepository: Repository<UsuarioEntity>,
+    private readonly repository: Repository<UsuarioEntity>,
   ) {}
 
-  async buscarUm(id: string): Promise<UsuarioEntity | null> {
-    return await this.usuarioRepository.findOneBy({ id });
+  async buscarUm(id: number): Promise<UsuarioEntity | null> {
+    return await this.repository.findOneBy({ id });
   }
 
   async existeComEmail(email: string): Promise<boolean> {
-    const user = await this.usuarioRepository.findOneBy({ email });
-    return user !== undefined;
+    const usuario = await this.repository.findOneBy({ email });
+    return !!usuario;
   }
 
-  async listar() {
-    const savedUsers = await this.usuarioRepository.find();
-    const usersList = savedUsers.map(
+  async listar(): Promise<ListarUsuarioDTO[]> {
+    const usuariosSalvos = await this.repository.find();
+    const usuariosLista = usuariosSalvos.map(
       (usuario) => new ListarUsuarioDTO(usuario.id, usuario.nome),
     );
-    return usersList;
+    return usuariosLista;
   }
 
-  async criar(novoUsuario: CriarUsuarioDTO): Promise<ListarUsuarioDTO> {
-    const userEntity: UsuarioEntity = new UsuarioEntity();
-    userEntity.id = uuid();
-    userEntity.nome = novoUsuario.nome;
-    userEntity.email = novoUsuario.email;
-    userEntity.senha = novoUsuario.senha;
-    await this.usuarioRepository.save(userEntity);
-    return new ListarUsuarioDTO(userEntity.id, userEntity.nome);
+  async criar(novoUsuario: CriarUsuarioDTO) {
+    const usuarioEntity: UsuarioEntity = new UsuarioEntity();
+    usuarioEntity.nome = novoUsuario.nome;
+    usuarioEntity.email = novoUsuario.email;
+    usuarioEntity.senha = novoUsuario.senha;
+    await this.repository.save(usuarioEntity);
   }
 
-  async atualizar(id: string, user: AtualizarUsuarioDTO): Promise<void> {
-    await this.usuarioRepository.update(id, user);
+  async atualizar(id: number, usuario: AtualizarUsuarioDTO) {
+    await this.repository.update(id, usuario);
   }
 
-  async excluir(id: string): Promise<void> {
-    await this.usuarioRepository.delete(id);
+  async excluir(id: number) {
+    await this.repository.delete(id);
   }
 }

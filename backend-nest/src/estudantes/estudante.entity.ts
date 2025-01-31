@@ -7,10 +7,10 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity({ name: 'students' })
+@Entity({ name: 'estudantes' })
 export class EstudanteEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({ name: 'nome_completo', length: 100, nullable: false })
   nomeCompleto: string;
@@ -24,8 +24,8 @@ export class EstudanteEntity {
   @Column({ name: 'responsavel', length: 100, nullable: false })
   responsavel: string;
 
-  @Column({ name: 'parentesco_id', length: 100, nullable: false })
-  parentescoId: string;
+  @Column({ name: 'parentesco_id' })
+  parentescoId: number;
 
   @Column({ name: 'whatsapp', length: 50, nullable: false })
   whatsapp: string;
