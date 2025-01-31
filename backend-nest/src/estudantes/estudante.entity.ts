@@ -29,6 +29,7 @@ export class EstudanteEntity {
 
   @ManyToOne(() => ParentescoEntity, (parentesco) => parentesco.estudantes, {
     nullable: false,
+    eager: true,
   })
   @JoinColumn({ name: 'parentesco_id' })
   parentesco: ParentescoEntity;

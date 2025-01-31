@@ -15,7 +15,6 @@ export class EstudanteService {
   async buscarUm(id: number): Promise<EstudanteEntity> {
     const estudante = await this.repository.findOne({
       where: { id },
-      relations: ['parentesco'],
     });
     if (estudante) {
       return estudante;
@@ -25,9 +24,7 @@ export class EstudanteService {
   }
 
   async listar(): Promise<EstudanteEntity[]> {
-    const listaEstudantes = await this.repository.find({
-      relations: ['parentesco'],
-    });
+    const listaEstudantes = await this.repository.find();
     return listaEstudantes;
   }
 
