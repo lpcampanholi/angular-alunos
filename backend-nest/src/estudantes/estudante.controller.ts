@@ -7,10 +7,12 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { CriarEstudanteDTO } from './dto/criar-estudante.dto';
 import { AtualizarEstudanteDTO } from './dto/atualizar-estudante-dto';
 import { EstudanteEntity } from './estudante.entity';
+import { EstudantePaginadoDTO } from './dto/estudante-paginado.dto';
 
 @Controller('estudantes')
 export class EstudanteController {
@@ -25,29 +27,33 @@ export class EstudanteController {
   }
 
   @Get()
-  async buscarTodosEstudantes(): Promise<EstudanteEntity[]> {
-    const estudantes = await this.service.listar();
+  async buscarTodosEstudantes(
+    @Query('pagina') pagina = 1,
+    @Query('limite') limite = 10,
+    @Query('ordenarPor') ordenarPor = 'nomeCompleto',
+  ): Promise<EstudantePaginadoDTO> {
+    const estudantes = await this.service.listar(pagina, limite, ordenarPor);
     return estudantes;
   }
 
   @Post()
-  async criarEstudante(@Body() student: CriarEstudanteDTO) {
-    await this.service.criar(student);
-    return 'Estudante criado com sucesso';
+  async criarEstudante(@Body() novoEstudante: CriarEstudanteDTO) {
+    await this.service.criar(novoEstudante);
+    return { message: 'Estudante criado com sucesso' };
   }
 
   @Put('/:id')
   async atualizarEstudante(
     @Param('id') id: number,
-    @Body() newData: AtualizarEstudanteDTO,
+    @Body() estudanteAtualizado: AtualizarEstudanteDTO,
   ) {
-    await this.service.atualizar(id, newData);
-    return 'Estudante atualizado com sucesso';
+    await this.service.atualizar(id, estudanteAtualizado);
+    return { message: 'Estudante atualizado com sucesso' };
   }
 
   @Delete('/:id')
   async excluirEstudante(@Param('id') id: number) {
     await this.service.excluir(id);
-    return 'Estudante excluído com sucesso';
+    return { message: 'Estudante excluído com sucesso' };
   }
 }

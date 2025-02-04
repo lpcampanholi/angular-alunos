@@ -28,11 +28,11 @@ export class EstudanteEntity {
   responsavel: string;
 
   @ManyToOne(() => ParentescoEntity, (parentesco) => parentesco.estudantes, {
-    nullable: false,
+    nullable: true,
     eager: true,
   })
   @JoinColumn({ name: 'parentesco_id' })
-  parentesco: ParentescoEntity;
+  parentesco: ParentescoEntity | null;
 
   @Column({ name: 'whatsapp', length: 50, nullable: false })
   whatsapp: string;

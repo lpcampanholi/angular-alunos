@@ -33,7 +33,7 @@ export class ParentescoController {
   @Post()
   async criarParentesco(@Body() parentesco: CriarParentescoDTO) {
     await this.service.criar(parentesco);
-    return 'Parentesco criado com sucesso';
+    return { message: 'Parentesco criado com sucesso' };
   }
 
   @Put('/:id')
@@ -42,12 +42,12 @@ export class ParentescoController {
     @Body() newData: AtualizarParentescoDTO,
   ) {
     await this.service.atualizar(id, newData);
-    return 'Parentesco atualizado com sucesso';
+    return { message: 'Parentesco atualizado com sucesso' };
   }
 
   @Delete('/:id')
   async excluirParentesco(@Param('id') id: number) {
     await this.service.excluir(id);
-    return 'Parentesco excluído com sucesso';
+    return { message: 'Parentesco excluído com sucesso' };
   }
 }

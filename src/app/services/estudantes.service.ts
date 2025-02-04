@@ -18,11 +18,11 @@ export class EstudantesService {
     return this.http.get<Estudante>(url);
   }
 
-  listar(pagina: number, itensPorPagina: number, campoDeOrdenacao: string): Observable<EstudantePaginado> {
+  listar(pagina: number, limite: number, ordenarPor: string): Observable<EstudantePaginado> {
     const params = new HttpParams()
-      .set("_page", pagina)
-      .set("_per_page", itensPorPagina)
-      .set("_sort", campoDeOrdenacao);
+    .set("pagina", pagina)
+    .set("limite", limite)
+    .set("ordenarPor", ordenarPor);
     return this.http.get<EstudantePaginado>(this.api, { params });
   }
 
@@ -30,8 +30,8 @@ export class EstudantesService {
     return this.http.post<Estudante>(this.api, estudante);
   }
 
-  atualizar(estudante: Estudante): Observable<Estudante> {
-    const url = `${this.api}/${estudante.id}`;
+  atualizar(id: number, estudante: Estudante): Observable<Estudante> {
+    const url = `${this.api}/${id}`;
     return this.http.put<Estudante>(url, estudante);
   }
 

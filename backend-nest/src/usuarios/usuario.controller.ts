@@ -31,7 +31,7 @@ export class UsuarioController {
   @Post()
   async createUser(@Body() user: CriarUsuarioDTO) {
     await this.service.criar(user);
-    return 'Usuário criado com sucesso';
+    return { message: 'Usuário criado com sucesso' };
   }
 
   @Put('/:id')
@@ -40,12 +40,12 @@ export class UsuarioController {
     @Body() newData: AtualizarUsuarioDTO,
   ) {
     await this.service.atualizar(id, newData);
-    return 'Usuário atualizado com sucesso';
+    return { message: 'Usuário atualizado com sucesso' };
   }
 
   @Delete('/:id')
   async deleteUser(@Param('id') id: number) {
     await this.service.excluir(id);
-    return 'Usuário excluído com sucesso';
+    return { message: 'Usuário excluído com sucesso' };
   }
 }

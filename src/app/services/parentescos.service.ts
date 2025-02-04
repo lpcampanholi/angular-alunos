@@ -20,8 +20,8 @@ export class ParentescosService {
     return this.http.post<Parentesco>(this.api, parentesco);
   }
 
-  atualizar(parentesco: Parentesco): Observable<Parentesco> {
-    const url = `${this.api}/${parentesco.id}`;
+  atualizar(id: number, parentesco: Parentesco): Observable<Parentesco> {
+    const url = `${this.api}/${id}`;
     return this.http.put<Parentesco>(url, parentesco);
   }
 

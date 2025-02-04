@@ -33,7 +33,20 @@
 - CRUD de parentesco (botão editar, excluir) OK
 - Confirmar exclusão do parentesco OK
 
-
 - Criar componente de mensagem Toast (exibir mensagem quando editar, excluir, criar novo)
 - BACKEND
 - LOGIN
+
+
+
+_____________________________________________________
+- Adaptar end-points do back pro front
+  - listagem de estudantes OK
+  - listagem de parentescos OK
+  - Criar novo estudante OK
+  - Editar estudante OK
+  - Criar parentesco OK
+  - Editar parentesco OK
+  - Excluir parentesco
+- criar cadastro de usuários no front (componente usuário-lista, tela de cadastro de usuário)
+- Fazer tela de login no front

@@ -3,29 +3,28 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { EstudantesService } from '../../services/estudantes.service';
 import { Estudante } from '../../../models/estudante';
-import { ParentescosService } from '../../services/parentescos.service';
 import { Parentesco } from '../../../models/parentesco';
 import { TituloPrincipalComponent } from '../../shared/titulo-principal/titulo-principal.component';
 import { BotaoComponent } from '../../shared/botao/botao.component';
 import { AlertDialogExcluirComponent } from '../../components/alert-dialog-excluir-estudante/alert-dialog-excluir.component';
-import { ModalCadastroParentescoComponent } from '../../components/modal-cadastro-parentesco/modal-cadastro-parentesco.component';
 import { BotaoSecundarioComponent } from '../../shared/botao-secundario/botao-secundario.component';
-
+import { ParentescosService } from '../../services/parentescos.service';
+import { ModalParentescoComponent } from '../../components/modal-parentesco/modal-parentesco.component';
 
 @Component({
-  selector: 'app-detalhes-aluno',
+  selector: 'app-detalhes-estudante',
   imports: [
     ReactiveFormsModule,
     TituloPrincipalComponent,
     BotaoComponent,
     AlertDialogExcluirComponent,
-    ModalCadastroParentescoComponent,
+    ModalParentescoComponent,
     BotaoSecundarioComponent
   ],
-  templateUrl: './detalhes-estudante.component.html',
-  styleUrls: ['./detalhes-estudante.component.css']
+  templateUrl: './formulario-estudante.component.html',
+  styleUrls: ['./formulario-estudante.component.css']
 })
-export class DetalhesEstudanteComponent {
+export class FormularioEstudanteComponent {
 
   id: number | null = null;
   exibirModalExcluir: boolean = false;
@@ -38,9 +37,9 @@ export class DetalhesEstudanteComponent {
     nomeCompleto: new FormControl<string>('', Validators.required),
     endereco: new FormControl<string>('', Validators.required),
     bairro: new FormControl<string>('', Validators.required),
-    responsavelNome: new FormControl<string>('', Validators.required),
-    parentescoResponsavelId: new FormControl<number | null>(null, Validators.required),
-    whatsappResponsavel: new FormControl<string>('', Validators.required)
+    responsavel: new FormControl<string>('', Validators.required),
+    parentescoId: new FormControl<number | null>(null, Validators.required),
+    whatsapp: new FormControl<string>('', Validators.required)
   });
 
   constructor(
@@ -52,9 +51,9 @@ export class DetalhesEstudanteComponent {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const id = params.get('id');
-      if (id) {
-        this.id = Number(id);
+      const idFromRoute = params.get('id');
+      if (idFromRoute) {
+        this.id = Number(idFromRoute);
         this.buscarEstudante(this.id);
       }
     });
@@ -72,35 +71,51 @@ export class DetalhesEstudanteComponent {
   }
 
   buscarEstudante(id: number) {
-    this.estudantesService.buscarPorId(id).subscribe(aluno => {
+    this.estudantesService.buscarPorId(id).subscribe(estudante => {
       this.formulario.patchValue({
-        ...aluno,
-        parentescoResponsavelId: aluno.parentescoResponsavelId
+        nomeCompleto: estudante.nomeCompleto,
+        endereco: estudante.endereco,
+        bairro: estudante.bairro,
+        responsavel: estudante.responsavel,
+        parentescoId: estudante.parentesco.id,
+        whatsapp: estudante.whatsapp
       });
     });
   }
 
   criarEstudante() {
-    const novoAluno: Estudante = this.formulario.value as Estudante;
-    this.estudantesService.criar(novoAluno).subscribe(() => {
-      this.router.navigate(['/alunos']);
+    const novoEstudante: Estudante = {
+      nomeCompleto: this.formulario.get('nomeCompleto')?.value,
+      endereco: this.formulario.get('endereco')?.value,
+      bairro: this.formulario.get('bairro')?.value,
+      responsavel: this.formulario.get('responsavel')?.value,
+      parentesco: { id: this.formulario.get('parentescoId')?.value } as Parentesco,
+      whatsapp: this.formulario.get('whatsapp')?.value,
+      };
+      console.log(novoEstudante)
+    this.estudantesService.criar(novoEstudante).subscribe(() => {
+      this.router.navigate(['/estudantes']);
     });
   }
 
   atualizarEstudante() {
-    const alunoAtualizado: Estudante = {
-      id: this.id,
-      ...this.formulario.value
-    } as Estudante
-    this.estudantesService.atualizar(alunoAtualizado).subscribe(() => {
-      this.router.navigate(['/alunos']);
+    const estudanteAtualizado: Estudante = {
+      nomeCompleto: this.formulario.get('nomeCompleto')?.value,
+      endereco: this.formulario.get('endereco')?.value,
+      bairro: this.formulario.get('bairro')?.value,
+      responsavel: this.formulario.get('responsavel')?.value,
+      parentesco: { id: this.formulario.get('parentescoId')?.value } as Parentesco,
+      whatsapp: this.formulario.get('whatsapp')?.value,
+    };
+    this.estudantesService.atualizar(this.id, estudanteAtualizado).subscribe(() => {
+      this.router.navigate(['/estudantes']);
     });
   }
 
   excluirEstudante() {
     if (this.id) {
       this.estudantesService.excluir(this.id).subscribe(() => {
-        this.router.navigate(['/alunos']);
+        this.router.navigate(['/estudantes']);
       });
     }
   }
@@ -140,7 +155,7 @@ export class DetalhesEstudanteComponent {
 
   abrirModalCadastroEditar(event: Event) {
     event.preventDefault();
-    this.selecionarParentesco(this.formulario.get('parentescoResponsavelId')?.value);
+    this.selecionarParentesco(this.formulario.get('parentescoId')?.value);
     this.modalCadastroAberto = true;
   }
 
@@ -151,11 +166,11 @@ export class DetalhesEstudanteComponent {
   }
 
   cancelar() {
-    this.router.navigate(['/alunos']);
+    this.router.navigate(['/estudantes']);
   }
 
   get podeEditarParentesco(): boolean {
-    const idSelecionado = this.formulario.get('parentescoResponsavelId')?.value;
+    const idSelecionado = this.formulario.get('parentescoId')?.value;
     const parentesco = this.parentescos.find((p) => p.id === idSelecionado);
     return !!parentesco?.nome;
   }

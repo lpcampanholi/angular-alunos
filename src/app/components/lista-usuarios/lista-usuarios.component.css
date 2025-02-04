@@ -1,26 +1,26 @@
-.tabela-estudantes {
+.tabela-alunos {
   border-collapse: collapse;
 }
 
-.tabela-estudantes td,
-.tabela-estudantes th {
+.tabela-alunos td,
+.tabela-alunos th {
   padding: 0.5em;
   text-align: left;
 }
 
-.tabela-estudantes tr {
+.tabela-alunos tr {
   border-bottom: 1px solid var(--cinza-claro);
 }
 
-.tabela-estudantes span {
+.tabela-alunos span {
   text-decoration: underline;
 }
 
-.tabela-estudantes span:hover {
+.tabela-alunos span:hover {
   cursor: pointer;
 }
 
-.tabela-estudantes img {
+.tabela-alunos img {
   vertical-align: middle;
   height: 12px;
   margin-left: 3px;

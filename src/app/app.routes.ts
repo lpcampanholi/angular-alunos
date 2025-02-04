@@ -1,12 +1,20 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
 import { EstudantesComponent } from './pages/estudantes/estudantes.component';
-import { DetalhesEstudanteComponent } from './pages/detalhes-estudante/detalhes-estudante.component';
+import { FormularioEstudanteComponent } from './pages/formulario-estudante/formulario-estudante.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent
+    path: 'usuarios',
+    component: UsuariosComponent
+  },
+  {
+    path: 'usuarios/novo',
+    component: DetalhesUsuariosComponent
+  },
+  {
+    path: 'usuarios/:id',
+    component: DetalhesUsuariosComponent
   },
   {
     path: 'estudantes',
@@ -14,10 +22,10 @@ export const routes: Routes = [
   },
   {
     path: 'estudantes/novo',
-    component: DetalhesEstudanteComponent
+    component: FormularioEstudanteComponent
   },
   {
     path: 'estudantes/:id',
-    component: DetalhesEstudanteComponent
+    component: FormularioEstudanteComponent
   }
 ];

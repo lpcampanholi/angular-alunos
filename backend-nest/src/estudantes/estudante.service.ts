@@ -4,6 +4,7 @@ import { EstudanteEntity } from './estudante.entity';
 import { Repository } from 'typeorm';
 import { AtualizarEstudanteDTO } from './dto/atualizar-estudante-dto';
 import { CriarEstudanteDTO } from './dto/criar-estudante.dto';
+import { EstudantePaginadoDTO } from './dto/estudante-paginado.dto';
 
 @Injectable()
 export class EstudanteService {
@@ -23,9 +24,30 @@ export class EstudanteService {
     }
   }
 
-  async listar(): Promise<EstudanteEntity[]> {
-    const listaEstudantes = await this.repository.find();
-    return listaEstudantes;
+  async listar(
+    pagina: number,
+    limite: number,
+    ordenarPor: string,
+  ): Promise<EstudantePaginadoDTO> {
+    const [dados, total] = await this.repository.findAndCount({
+      skip: (pagina - 1) * limite,
+      take: limite,
+      order: {
+        [ordenarPor.replace('-', '')]: ordenarPor.startsWith('-')
+          ? 'DESC'
+          : 'ASC',
+      },
+    });
+    const ultimaPagina = Math.ceil(total / limite);
+    return {
+      first: 1,
+      prev: pagina > 1 ? pagina - 1 : null,
+      next: pagina < ultimaPagina ? pagina + 1 : null,
+      last: ultimaPagina,
+      pages: ultimaPagina,
+      items: total,
+      data: dados,
+    };
   }
 
   async criar(novoEstudante: CriarEstudanteDTO) {

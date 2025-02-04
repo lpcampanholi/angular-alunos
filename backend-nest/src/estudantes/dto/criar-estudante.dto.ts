@@ -1,3 +1,4 @@
+import { ParentescoEntity } from './../../parentescos/parentesco.entity';
 import { IsNotEmpty } from 'class-validator';
 
 export class CriarEstudanteDTO {
@@ -16,7 +17,7 @@ export class CriarEstudanteDTO {
   @IsNotEmpty({
     message: 'O id do parentesco do responsável não pode ser vazio',
   })
-  parentescoId: number;
+  parentesco: ParentescoEntity;
 
   @IsNotEmpty({ message: 'O whatsapp não pode ser vazio' })
   whatsapp: string;

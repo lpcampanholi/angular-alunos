@@ -7,12 +7,12 @@ import { CommonModule } from '@angular/common';
 import { BotaoAdicionarComponent } from "../botao-adicionar/botao-adicionar.component";
 
 @Component({
-  selector: 'app-lista-estudantes',
+  selector: 'app-lista-usuarios',
   imports: [FormsModule, RouterModule, CommonModule, BotaoAdicionarComponent],
-  templateUrl: './lista-estudantes.component.html',
-  styleUrl: './lista-estudantes.component.css'
+  templateUrl: './lista-usuarios.component.html',
+  styleUrl: './lista-usuarios.component.css'
 })
-export class ListaEstudantesComponent {
+export class ListaUsuariosComponent {
 
   estudantes: Estudante[] = [];
   limite: number[] = [10, 20, 30];

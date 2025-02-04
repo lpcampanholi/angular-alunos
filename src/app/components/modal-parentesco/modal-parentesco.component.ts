@@ -7,12 +7,13 @@ import { Parentesco } from '../../../models/parentesco';
 import { AlertDialogExcluirComponent } from "../alert-dialog-excluir-estudante/alert-dialog-excluir.component";
 
 @Component({
-  selector: 'app-modal-cadastro-parentesco',
+  selector: 'app-modal-parentesco',
+  standalone: true,
   imports: [ReactiveFormsModule, BotaoComponent, DialogModalComponent, AlertDialogExcluirComponent],
-  templateUrl: './modal-cadastro-parentesco.component.html',
-  styleUrl: './modal-cadastro-parentesco.component.css'
+  templateUrl: './modal-parentesco.component.html',
+  styleUrl: './modal-parentesco.component.css'
 })
-export class ModalCadastroParentescoComponent {
+export class ModalParentescoComponent {
 
   @Input() parentesco: Parentesco | null = null;
   @Output() aoModalCadastroFechado = new EventEmitter<void>();
@@ -46,11 +47,11 @@ export class ModalCadastroParentescoComponent {
   }
 
   atualizarParentesco() {
-    const parentescoAtualizado = {
-      id: this.parentesco.id!,
-      ...this.formulario.value
-    } as Parentesco;
-    this.parentescosService.atualizar(parentescoAtualizado).subscribe(() => {
+    const parentescoAtualizado: Parentesco = {
+      nome: this.formulario.get('nome')?.value,
+    };
+    console.log(parentescoAtualizado);
+    this.parentescosService.atualizar(this.parentesco.id, parentescoAtualizado).subscribe(() => {
       this.aoFecharModal();
     });
   }

@@ -1,7 +1,7 @@
 @if (id) {
 <app-titulo-principal>{{ formulario.value.nomeCompleto }}</app-titulo-principal>
 } @else {
-<app-titulo-principal>Novo aluno</app-titulo-principal>
+<app-titulo-principal>Novo estudante</app-titulo-principal>
 }
 
 <form [formGroup]="formulario" (ngSubmit)="submeterForm()">
@@ -49,28 +49,28 @@
   </div>
 
   <div class="campo">
-    <label for="responsavelNome">Responsável</label>
+    <label for="responsavel">Responsável</label>
     <input
       type="text"
-      id="responsavelNome"
+      id="responsavel"
       placeholder="Nome do responsável"
-      formControlName="responsavelNome"
+      formControlName="responsavel"
     />
-    @if (formulario.get('responsavelNome')?.invalid &&
-    formulario.get('responsavelNome')?.touched) {
+    @if (formulario.get('responsavel')?.invalid &&
+    formulario.get('responsavel')?.touched) {
     <span class="mensagem-validacao">Nome do responsável é obrigatório.</span>
     }
   </div>
 
   <div class="campo">
-    <label for="parentescoResponsavel">Parentesco</label>
+    <label for="parentesco">Parentesco</label>
     <div class="bloco">
       <select
-        id="parentescoResponsavel"
-        formControlName="parentescoResponsavelId"
+        id="parentesco"
+        formControlName="parentescoId"
         (change)="onParentescoChange($event)"
       >
-        @if (!formulario.get('parentescoResponsavelId')?.value) {
+        @if (!formulario.get('parentescoId')?.value) {
         <option [ngValue]="null" disabled>Selecione</option>
         } @for (parentesco of parentescos; track parentesco.id) {
         <option [ngValue]="parentesco.id">{{ parentesco.nome }}</option>
@@ -87,15 +87,15 @@
   </div>
 
   <div class="campo">
-    <label for="whatsappResponsavel">WhatsApp</label>
+    <label for="whatsapp">WhatsApp</label>
     <input
       type="text"
-      id="whatsappResponsavel"
+      id="whatsapp"
       placeholder="WhatsApp do responsável"
-      formControlName="whatsappResponsavel"
+      formControlName="whatsapp"
     />
-    @if (formulario.get('whatsappResponsavel')?.invalid &&
-    formulario.get('whatsappResponsavel')?.touched) {
+    @if (formulario.get('whatsapp')?.invalid &&
+    formulario.get('whatsapp')?.touched) {
     <span class="mensagem-validacao"
       >WhatsApp do responsável é obrigatório.</span
     >
@@ -121,9 +121,9 @@
 </app-alert-dialog-excluir>
 
 } @if (modalCadastroAberto) {
-<app-modal-cadastro-parentesco
+<app-modal-parentesco
   (aoModalCadastroFechado)="fecharModalCadastro()"
   [parentesco]="parentescoSelecionado"
 >
-</app-modal-cadastro-parentesco>
+</app-modal-parentesco>
 }
