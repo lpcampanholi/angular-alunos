@@ -4,11 +4,10 @@ import { EstudantesService } from '../../services/estudantes.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { BotaoAdicionarComponent } from "../botao-adicionar/botao-adicionar.component";
 
 @Component({
   selector: 'app-lista-estudantes',
-  imports: [FormsModule, RouterModule, CommonModule, BotaoAdicionarComponent],
+  imports: [FormsModule, RouterModule, CommonModule],
   templateUrl: './lista-estudantes.component.html',
   styleUrl: './lista-estudantes.component.css'
 })

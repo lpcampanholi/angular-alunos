@@ -50,7 +50,6 @@ export class ModalParentescoComponent {
     const parentescoAtualizado: Parentesco = {
       nome: this.formulario.get('nome')?.value,
     };
-    console.log(parentescoAtualizado);
     this.parentescosService.atualizar(this.parentesco.id, parentescoAtualizado).subscribe(() => {
       this.aoFecharModal();
     });

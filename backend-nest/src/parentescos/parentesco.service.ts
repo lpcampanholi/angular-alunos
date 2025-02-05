@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ParentescoEntity } from './parentesco.entity';
 import { Repository } from 'typeorm';
 import { CriarParentescoDTO } from './dto/criar-parentesco.dto';
-import { AtualizarParentescoDTO } from './dto/atualizar-parentesco-dto';
+import { AtualizarParentescoDTO } from './dto/atualizar-parentesco.dto';
 import { EstudanteEntity } from 'src/estudantes/estudante.entity';
 
 @Injectable()

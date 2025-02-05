@@ -1,10 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ListarUsuarioDTO } from './dto/listar-usuario-dto';
+import { ListarUsuarioDTO } from './dto/listar-usuario.dto';
 import { UsuarioEntity } from './usuario.entity';
 import { Repository } from 'typeorm';
-import { AtualizarUsuarioDTO } from './dto/atualizar-usuario-dto';
+import { AtualizarUsuarioDTO } from './dto/atualizar-usuario.dto';
 import { CriarUsuarioDTO } from './dto/criar-usuario.dto';
+import { UsuarioPaginadoDTO } from './dto/usuario-paginado.dto';
 
 @Injectable()
 export class UsuarioService {
@@ -16,7 +17,12 @@ export class UsuarioService {
   async buscarUm(id: number): Promise<ListarUsuarioDTO> {
     const usuario = await this.repository.findOneBy({ id });
     if (usuario) {
-      return new ListarUsuarioDTO(usuario.id, usuario.nome);
+      return new ListarUsuarioDTO(
+        usuario.id,
+        usuario.nome,
+        usuario.email,
+        usuario.senha,
+      );
     } else {
       throw new NotFoundException('Usuário não encontrado');
     }
@@ -27,12 +33,30 @@ export class UsuarioService {
     return !!usuario;
   }
 
-  async listar(): Promise<ListarUsuarioDTO[]> {
-    const usuariosSalvos = await this.repository.find();
-    const usuariosLista = usuariosSalvos.map(
-      (usuario) => new ListarUsuarioDTO(usuario.id, usuario.nome),
-    );
-    return usuariosLista;
+  async listar(
+    pagina: number,
+    limite: number,
+    ordenarPor: string,
+  ): Promise<UsuarioPaginadoDTO> {
+    const [dados, total] = await this.repository.findAndCount({
+      skip: (pagina - 1) * limite,
+      take: limite,
+      order: {
+        [ordenarPor.replace('-', '')]: ordenarPor.startsWith('-')
+          ? 'DESC'
+          : 'ASC',
+      },
+    });
+    const ultimaPagina = Math.ceil(total / limite);
+    return {
+      first: 1,
+      prev: pagina > 1 ? pagina - 1 : null,
+      next: pagina < ultimaPagina ? pagina + 1 : null,
+      last: ultimaPagina,
+      pages: ultimaPagina,
+      items: total,
+      data: dados,
+    };
   }
 
   async criar(novoUsuario: CriarUsuarioDTO) {

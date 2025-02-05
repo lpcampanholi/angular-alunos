@@ -7,10 +7,12 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { CriarUsuarioDTO } from './dto/criar-usuario.dto';
-import { ListarUsuarioDTO } from './dto/listar-usuario-dto';
-import { AtualizarUsuarioDTO } from './dto/atualizar-usuario-dto';
+import { ListarUsuarioDTO } from './dto/listar-usuario.dto';
+import { AtualizarUsuarioDTO } from './dto/atualizar-usuario.dto';
+import { UsuarioPaginadoDTO } from './dto/usuario-paginado.dto';
 
 @Controller('usuarios')
 export class UsuarioController {
@@ -23,9 +25,13 @@ export class UsuarioController {
   }
 
   @Get()
-  async findAllUsers(): Promise<ListarUsuarioDTO[]> {
-    const usuarios = await this.service.listar();
-    return usuarios;
+  async buscarTodosEstudantes(
+    @Query('pagina') pagina = 1,
+    @Query('limite') limite = 10,
+    @Query('ordenarPor') ordenarPor = 'nome',
+  ): Promise<UsuarioPaginadoDTO> {
+    const estudantes = await this.service.listar(pagina, limite, ordenarPor);
+    return estudantes;
   }
 
   @Post()

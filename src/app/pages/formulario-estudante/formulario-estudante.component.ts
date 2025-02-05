@@ -92,7 +92,6 @@ export class FormularioEstudanteComponent {
       parentesco: { id: this.formulario.get('parentescoId')?.value } as Parentesco,
       whatsapp: this.formulario.get('whatsapp')?.value,
       };
-      console.log(novoEstudante)
     this.estudantesService.criar(novoEstudante).subscribe(() => {
       this.router.navigate(['/estudantes']);
     });

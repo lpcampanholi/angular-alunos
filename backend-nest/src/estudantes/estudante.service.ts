@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EstudanteEntity } from './estudante.entity';
 import { Repository } from 'typeorm';
-import { AtualizarEstudanteDTO } from './dto/atualizar-estudante-dto';
+import { AtualizarEstudanteDTO } from './dto/atualizar-estudante.dto';
 import { CriarEstudanteDTO } from './dto/criar-estudante.dto';
 import { EstudantePaginadoDTO } from './dto/estudante-paginado.dto';
 

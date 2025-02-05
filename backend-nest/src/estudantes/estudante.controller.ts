@@ -10,7 +10,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { CriarEstudanteDTO } from './dto/criar-estudante.dto';
-import { AtualizarEstudanteDTO } from './dto/atualizar-estudante-dto';
+import { AtualizarEstudanteDTO } from './dto/atualizar-estudante.dto';
 import { EstudanteEntity } from './estudante.entity';
 import { EstudantePaginadoDTO } from './dto/estudante-paginado.dto';
 

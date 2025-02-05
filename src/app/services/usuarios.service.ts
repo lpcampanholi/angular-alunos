@@ -1,19 +1,29 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../../models/usuario';
+import { ListaPaginada } from '../../models/lista-paginada';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
 
-  private api = 'http://localhost:3000/usuarios';
+  private readonly api = 'http://localhost:3000/usuarios';
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.api);
+  buscarPorId(id: number): Observable<Usuario> {
+    const url = `${this.api}/${id}`;
+    return this.http.get<Usuario>(url);
+  }
+
+  listar(pagina: number, limite: number, ordenarPor: string): Observable<ListaPaginada<Usuario>> {
+    const params = new HttpParams()
+      .set("pagina", pagina)
+      .set("limite", limite)
+      .set("ordenarPor", ordenarPor);
+    return this.http.get<ListaPaginada<Usuario>>(this.api, { params });
   }
 
   criar(usuario: Usuario): Observable<Usuario> {

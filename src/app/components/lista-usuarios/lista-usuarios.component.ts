@@ -1,75 +1,74 @@
+import { Usuario } from './../../../models/usuario';
 import { RouterModule } from '@angular/router';
-import { Estudante } from '../../../models/estudante';
-import { EstudantesService } from '../../services/estudantes.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { BotaoAdicionarComponent } from "../botao-adicionar/botao-adicionar.component";
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-lista-usuarios',
-  imports: [FormsModule, RouterModule, CommonModule, BotaoAdicionarComponent],
+  imports: [FormsModule, RouterModule, CommonModule],
   templateUrl: './lista-usuarios.component.html',
   styleUrl: './lista-usuarios.component.css'
 })
 export class ListaUsuariosComponent {
 
-  estudantes: Estudante[] = [];
+  usuarios: Usuario[] = [];
   limite: number[] = [10, 20, 30];
   limiteSelecionado = 10;
   paginaAtual = 1;
   ultimaPagina = 0;
-  campoDeOrdenacao = 'nomeCompleto';
+  campoDeOrdenacao = 'nome';
   srcSetaOrdenacao = '';
 
   setasOrdenacao = {
     id: '',
-    nomeCompleto: 'assets/expand-arrow.png',
-    responsavel: ''
+    nome: 'assets/expand-arrow.png',
+    email: ''
   };
 
   ordem = {
     id: 'asc',
-    nomeCompleto: 'asc',
-    responsavel: 'asc'
+    nome: 'asc',
+    email: 'asc'
   };
 
-  constructor(private service: EstudantesService) { }
+  constructor(private service: UsuariosService) { }
 
   ngOnInit(): void {
-    this.listarEstudantesPrimeiraPagina();
+    this.listarPrimeiraPagina();
   }
 
-  listarEstudantesPrimeiraPagina() {
+  listarPrimeiraPagina() {
     this.paginaAtual = 1;
     this.service.listar(this.paginaAtual, this.limiteSelecionado, this.campoDeOrdenacao).subscribe((listaEstudantes) => {
-      this.estudantes = listaEstudantes.data;
+      this.usuarios = listaEstudantes.data;
       this.ultimaPagina = listaEstudantes.last;
     })
   }
 
-  listarEstudantesProximaPagina() {
+  listarProximaPagina() {
     if (this.paginaAtual < this.ultimaPagina) {
       this.paginaAtual++;
       this.service.listar(this.paginaAtual, this.limiteSelecionado, this.campoDeOrdenacao).subscribe((listaEstudantes) => {
-        this.estudantes = listaEstudantes.data;
+        this.usuarios = listaEstudantes.data;
       });
     }
   }
 
-  listarEstudantesPaginaAnterior() {
+  listarPaginaAnterior() {
     if (this.paginaAtual > 1) {
       this.paginaAtual--;
       this.service.listar(this.paginaAtual, this.limiteSelecionado, this.campoDeOrdenacao).subscribe((listaEstudantes) => {
-        this.estudantes = listaEstudantes.data;
+        this.usuarios = listaEstudantes.data;
       })
     }
   }
 
-  listarEstudantesUltimaPagina() {
+  listarUltimaPagina() {
     this.paginaAtual = this.ultimaPagina;
     this.service.listar(this.paginaAtual, this.limiteSelecionado, this.campoDeOrdenacao).subscribe((listaEstudantes) => {
-      this.estudantes = listaEstudantes.data;
+      this.usuarios = listaEstudantes.data;
     })
   }
 
@@ -90,7 +89,7 @@ export class ListaUsuariosComponent {
       }
     });
 
-    this.listarEstudantesPrimeiraPagina();
+    this.listarPrimeiraPagina();
   }
 
 }

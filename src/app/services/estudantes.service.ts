@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EstudantePaginado } from '../../models/estudante-paginado';
 import { Estudante } from '../../models/estudante';
+import { ListaPaginada } from '../../models/lista-paginada';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +18,12 @@ export class EstudantesService {
     return this.http.get<Estudante>(url);
   }
 
-  listar(pagina: number, limite: number, ordenarPor: string): Observable<EstudantePaginado> {
+  listar(pagina: number, limite: number, ordenarPor: string): Observable<ListaPaginada<Estudante>> {
     const params = new HttpParams()
-    .set("pagina", pagina)
-    .set("limite", limite)
-    .set("ordenarPor", ordenarPor);
-    return this.http.get<EstudantePaginado>(this.api, { params });
+      .set("pagina", pagina)
+      .set("limite", limite)
+      .set("ordenarPor", ordenarPor);
+    return this.http.get<ListaPaginada<Estudante>>(this.api, { params });
   }
 
   criar(estudante: Estudante): Observable<Estudante> {

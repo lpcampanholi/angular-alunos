@@ -1,4 +1,4 @@
-<table class="tabela-alunos">
+<table class="tabela">
   <thead>
     <tr>
       <th>
@@ -8,31 +8,29 @@
         >
       </th>
       <th>
-        <span (click)="alterarCampoDeOrdenacao('nomeCompleto')"
-          >Nome@if (setasOrdenacao.nomeCompleto) {
-          <img [src]="setasOrdenacao.nomeCompleto" alt="Seta de ordenação" />
+        <span (click)="alterarCampoDeOrdenacao('nome')"
+          >Nome@if (setasOrdenacao.nome) {
+          <img [src]="setasOrdenacao.nome" alt="Seta de ordenação" />
           }
         </span>
       </th>
       <th>
-        <span (click)="alterarCampoDeOrdenacao('responsavel')"
-          >Responsável @if (setasOrdenacao.responsavel) {
-          <img [src]="setasOrdenacao.responsavel" alt="Seta de ordenação" />
+        <span (click)="alterarCampoDeOrdenacao('email')"
+          >E-mail @if (setasOrdenacao.email) {
+          <img [src]="setasOrdenacao.email" alt="Seta de ordenação" />
           }
         </span>
       </th>
-      <th>WhatsApp</th>
     </tr>
   </thead>
   <tbody>
-    @for (estudante of estudantes; track estudante.id) {
+    @for (usuario of usuarios; track usuario.id) {
     <tr>
-      <td class="coluna-id">{{ estudante.id }}</td>
+      <td class="coluna-id">{{ usuario.id }}</td>
       <td class="coluna-principal">
-        <a routerLink="/estudantes/{{ estudante.id }}">{{ estudante.nomeCompleto }}</a>
+        <a routerLink="/usuarios/{{ usuario.id }}">{{ usuario.nome }}</a>
       </td>
-      <td class="coluna">{{ estudante.responsavel }}</td>
-      <td class="coluna">{{ estudante.whatsapp }}</td>
+      <td class="coluna">{{ usuario.email }}</td>
     </tr>
     }
   </tbody>
@@ -43,7 +41,7 @@
   <select
     class="limite-por-pagina"
     [(ngModel)]="limiteSelecionado"
-    (change)="listarEstudantesPrimeiraPagina()"
+    (change)="listarPrimeiraPagina()"
   >
     @for (item of limite; track item) {
     <option [value]="item">{{ item }}</option>
@@ -51,28 +49,28 @@
   </select>
   <span>Página {{ paginaAtual }} de {{ ultimaPagina }}</span>
   <button
-    (click)="listarEstudantesPrimeiraPagina()"
+    (click)="listarPrimeiraPagina()"
     [disabled]="paginaAtual === 1"
     [class.disabled]="paginaAtual === 1"
   >
     <img src="assets/double-left.png" alt="seta dupla para trás" />
   </button>
   <button
-    (click)="listarEstudantesPaginaAnterior()"
+    (click)="listarPaginaAnterior()"
     [disabled]="paginaAtual === 1"
     [class.disabled]="paginaAtual === 1"
   >
     <img src="assets/left.png" alt="seta para trás" />
   </button>
   <button
-    (click)="listarEstudantesProximaPagina()"
+    (click)="listarProximaPagina()"
     [disabled]="paginaAtual === ultimaPagina"
     [class.disabled]="paginaAtual === ultimaPagina"
   >
     <img src="assets/right.png" alt="seta para frente" />
   </button>
   <button
-    (click)="listarEstudantesUltimaPagina()"
+    (click)="listarUltimaPagina()"
     [disabled]="paginaAtual === ultimaPagina"
     [class.disabled]="paginaAtual === ultimaPagina"
   >
@@ -80,4 +78,6 @@
   </button>
 </div>
 
-<app-botao-adicionar></app-botao-adicionar>
+<button class="botao-adicionar" routerLink="/usuarios/novo">
+  <img src="assets/plus.png" alt="Símbolo de mais" />
+</button>

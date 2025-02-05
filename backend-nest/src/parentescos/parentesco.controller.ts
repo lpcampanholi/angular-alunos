@@ -9,7 +9,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { CriarParentescoDTO } from './dto/criar-parentesco.dto';
-import { AtualizarParentescoDTO } from './dto/atualizar-parentesco-dto';
+import { AtualizarParentescoDTO } from './dto/atualizar-parentesco.dto';
 import { ParentescoEntity } from './parentesco.entity';
 
 @Controller('parentescos')
