@@ -3,8 +3,13 @@ import { EstudantesComponent } from './pages/estudantes/estudantes.component';
 import { FormularioEstudanteComponent } from './pages/formulario-estudante/formulario-estudante.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
+import { FormularioLoginComponent } from './pages/formulario-login/formulario-login.component';
 
 export const routes: Routes = [
+  {
+    path: 'login',
+    component: FormularioLoginComponent
+  },
   {
     path: 'usuarios',
     component: UsuariosComponent

@@ -12,7 +12,7 @@ import { ParentescosService } from '../../services/parentescos.service';
 import { ModalParentescoComponent } from '../../components/modal-parentesco/modal-parentesco.component';
 
 @Component({
-  selector: 'app-detalhes-estudante',
+  selector: 'app-formulario-estudante',
   imports: [
     ReactiveFormsModule,
     TituloPrincipalComponent,

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Estudante } from '../../../models/estudante';
-import { Parentesco } from '../../../models/parentesco';
 import { TituloPrincipalComponent } from '../../shared/titulo-principal/titulo-principal.component';
 import { BotaoComponent } from '../../shared/botao/botao.component';
 import { AlertDialogExcluirComponent } from '../../components/alert-dialog-excluir-estudante/alert-dialog-excluir.component';
@@ -10,7 +8,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { Usuario } from '../../../models/usuario';
 
 @Component({
-  selector: 'app-detalhes-usuario',
+  selector: 'app-formulario-usuario',
   imports: [
     ReactiveFormsModule,
     TituloPrincipalComponent,

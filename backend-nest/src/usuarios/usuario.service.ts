@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { AtualizarUsuarioDTO } from './dto/atualizar-usuario.dto';
 import { CriarUsuarioDTO } from './dto/criar-usuario.dto';
 import { UsuarioPaginadoDTO } from './dto/usuario-paginado.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsuarioService {
@@ -31,6 +32,11 @@ export class UsuarioService {
   async existeComEmail(email: string): Promise<boolean> {
     const usuario = await this.repository.findOneBy({ email });
     return !!usuario;
+  }
+
+  async encontrarPorEmail(email: string): Promise<UsuarioEntity | null> {
+    const usuario = await this.repository.findOneBy({ email });
+    return usuario;
   }
 
   async listar(
@@ -63,7 +69,7 @@ export class UsuarioService {
     const usuarioEntity: UsuarioEntity = new UsuarioEntity();
     usuarioEntity.nome = novoUsuario.nome;
     usuarioEntity.email = novoUsuario.email;
-    usuarioEntity.senha = novoUsuario.senha;
+    usuarioEntity.senha = await bcrypt.hash(novoUsuario.senha, 10);
     await this.repository.save(usuarioEntity);
   }
 

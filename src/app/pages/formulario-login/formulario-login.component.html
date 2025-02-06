@@ -1,0 +1,38 @@
+<h1>Login</h1>
+
+<form [formGroup]="formulario" (ngSubmit)="submeterForm()">
+
+  <div class="campo">
+    <label for="email">E-mail</label>
+    <input
+      type="text"
+      id="email"
+      placeholder="E-mail"
+      formControlName="email"
+    />
+    @if (formulario.get('email')?.invalid &&
+    formulario.get('email')?.touched) {
+    <span class="mensagem-validacao">E-mail é obrigatório.</span>
+    }
+  </div>
+
+  <div class="campo">
+    <label for="senha">Senha</label>
+    <input
+      type="text"
+      id="senha"
+      placeholder="Senha"
+      formControlName="senha"
+    />
+    @if (formulario.get('senha')?.invalid &&
+    formulario.get('senha')?.touched) {
+    <span class="mensagem-validacao">Senha é obrigatório.</span>
+    }
+  </div>
+
+  <footer class="detalhes-rodape">
+    <app-botao type="submit" [disabled]="!formulario.valid">Login</app-botao>
+    <app-botao tipo="outline">Cancelar</app-botao>
+  </footer>
+
+</form>

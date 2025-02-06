@@ -18,6 +18,7 @@ async function bootstrap() {
     allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
   });
+
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
   await app.listen(process.env.PORT ?? 3000);
 }
