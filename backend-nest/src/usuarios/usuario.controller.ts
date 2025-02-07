@@ -19,13 +19,15 @@ export class UsuarioController {
   constructor(private service: UsuarioService) {}
 
   @Get('/:id')
-  async findUserById(@Param('id') id: number): Promise<ListarUsuarioDTO> {
+  async EncontrarUsuarioPeloId(
+    @Param('id') id: number,
+  ): Promise<ListarUsuarioDTO> {
     const usuario = await this.service.buscarUm(id);
     return usuario;
   }
 
   @Get()
-  async buscarTodosEstudantes(
+  async buscarTodosUsuarios(
     @Query('pagina') pagina = 1,
     @Query('limite') limite = 10,
     @Query('ordenarPor') ordenarPor = 'nome',
@@ -35,13 +37,13 @@ export class UsuarioController {
   }
 
   @Post()
-  async createUser(@Body() user: CriarUsuarioDTO) {
+  async criarUsuario(@Body() user: CriarUsuarioDTO) {
     await this.service.criar(user);
     return { message: 'Usuário criado com sucesso' };
   }
 
   @Put('/:id')
-  async updateUser(
+  async atualizarUsuario(
     @Param('id') id: number,
     @Body() newData: AtualizarUsuarioDTO,
   ) {
@@ -50,7 +52,7 @@ export class UsuarioController {
   }
 
   @Delete('/:id')
-  async deleteUser(@Param('id') id: number) {
+  async excluirUsuario(@Param('id') id: number) {
     await this.service.excluir(id);
     return { message: 'Usuário excluído com sucesso' };
   }

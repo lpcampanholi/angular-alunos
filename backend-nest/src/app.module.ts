@@ -7,7 +7,7 @@ import { EstudanteModule } from './estudantes/estudante.module';
 import { ParentescoModule } from './parentescos/parentesco.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
-import { AuthGuard } from '@nestjs/passport';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 @Module({
   imports: [
