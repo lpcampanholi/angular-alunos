@@ -1,4 +1,4 @@
-import { Usuario } from './../../../models/usuario';
+import { Usuario } from '../../../types/usuario.type';
 import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';

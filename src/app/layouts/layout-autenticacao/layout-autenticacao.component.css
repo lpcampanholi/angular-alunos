@@ -1,0 +1,15 @@
+.layout-autenticacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  background-color: var(--branco);
+  height: 95vh;
+}
+
+.container-central {
+  border: 0.5px solid var(--cor-destaque);
+  border-radius: 0.5em;
+  padding: 2em;
+}
+

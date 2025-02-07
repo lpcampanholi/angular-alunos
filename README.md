@@ -6,6 +6,7 @@
 22/01 09h às 12h, 13:30 às 18h
 23/01
 24/01
+tarde inteira 07/02
 
 ## Implementações:
 
@@ -50,3 +51,15 @@ _____________________________________________________
   - Excluir parentesco
 - criar cadastro de usuários no front (componente usuário-lista, tela de cadastro de usuário)
 - Fazer tela de login no front
+
+
+_____________________________________________________
+implementar autorização
+terminar desenho das telas de login e cadastre-se
+
+aparecer toast no crud de usuário
+configurar rota padrão da aplicação
+transformar o input em componente
+criar componente cabecalho
+
+abordagem da Kipper: colocar o componente layout dentro de cada página como wrapper

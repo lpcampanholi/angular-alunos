@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Usuario } from '../../models/usuario';
-import { ListaPaginada } from '../../models/lista-paginada';
+import { Usuario } from '../../types/usuario.type';
+import { ListaPaginada } from '../../types/lista-paginada.type';
 
 @Injectable({
   providedIn: 'root'

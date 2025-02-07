@@ -1,5 +1,5 @@
 import { RouterModule } from '@angular/router';
-import { Estudante } from '../../../models/estudante';
+import { Estudante } from '../../../types/estudante.type';
 import { EstudantesService } from '../../services/estudantes.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';

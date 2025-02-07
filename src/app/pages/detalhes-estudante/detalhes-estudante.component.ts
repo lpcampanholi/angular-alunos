@@ -2,29 +2,31 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EstudantesService } from '../../services/estudantes.service';
-import { Estudante } from '../../../models/estudante';
-import { Parentesco } from '../../../models/parentesco';
+import { Estudante } from '../../../types/estudante.type';
+import { Parentesco } from '../../../types/parentesco.type';
 import { TituloPrincipalComponent } from '../../shared/titulo-principal/titulo-principal.component';
 import { BotaoComponent } from '../../shared/botao/botao.component';
-import { AlertDialogExcluirComponent } from '../../components/alert-dialog-excluir-estudante/alert-dialog-excluir.component';
+import { AlertDialogExcluirComponent } from '../../components/alert-dialog-excluir/alert-dialog-excluir.component';
 import { BotaoSecundarioComponent } from '../../shared/botao-secundario/botao-secundario.component';
 import { ParentescosService } from '../../services/parentescos.service';
 import { ModalParentescoComponent } from '../../components/modal-parentesco/modal-parentesco.component';
+import { LayoutPrincipalComponent } from "../../layouts/layout-principal/layout-principal.component";
 
 @Component({
-  selector: 'app-formulario-estudante',
+  selector: 'app-detalhes-estudante',
   imports: [
     ReactiveFormsModule,
     TituloPrincipalComponent,
     BotaoComponent,
     AlertDialogExcluirComponent,
     ModalParentescoComponent,
-    BotaoSecundarioComponent
-  ],
-  templateUrl: './formulario-estudante.component.html',
-  styleUrls: ['./formulario-estudante.component.css']
+    BotaoSecundarioComponent,
+    LayoutPrincipalComponent
+],
+  templateUrl: './detalhes-estudante.component.html',
+  styleUrls: ['./detalhes-estudante.component.css']
 })
-export class FormularioEstudanteComponent {
+export class DetalhesEstudanteComponent {
 
   id: number | null = null;
   exibirModalExcluir: boolean = false;

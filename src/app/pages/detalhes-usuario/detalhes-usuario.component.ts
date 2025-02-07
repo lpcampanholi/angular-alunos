@@ -3,22 +3,24 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { TituloPrincipalComponent } from '../../shared/titulo-principal/titulo-principal.component';
 import { BotaoComponent } from '../../shared/botao/botao.component';
-import { AlertDialogExcluirComponent } from '../../components/alert-dialog-excluir-estudante/alert-dialog-excluir.component';
+import { AlertDialogExcluirComponent } from '../../components/alert-dialog-excluir/alert-dialog-excluir.component';
 import { UsuariosService } from '../../services/usuarios.service';
-import { Usuario } from '../../../models/usuario';
+import { Usuario } from '../../../types/usuario.type';
+import { LayoutPrincipalComponent } from "../../layouts/layout-principal/layout-principal.component";
 
 @Component({
-  selector: 'app-formulario-usuario',
+  selector: 'app-detalhes-usuario',
   imports: [
     ReactiveFormsModule,
     TituloPrincipalComponent,
     BotaoComponent,
     AlertDialogExcluirComponent,
-  ],
-  templateUrl: './formulario-usuario.component.html',
-  styleUrls: ['./formulario-usuario.component.css']
+    LayoutPrincipalComponent
+],
+  templateUrl: './detalhes-usuario.component.html',
+  styleUrls: ['./detalhes-usuario.component.css']
 })
-export class FormularioUsuarioComponent {
+export class DetalhesUsuarioComponent {
 
   id: number | null = null;
   exibirModalExcluir: boolean = false;

@@ -1,37 +1,20 @@
 import { Routes } from '@angular/router';
+import { DetalhesEstudanteComponent } from './pages/detalhes-estudante/detalhes-estudante.component';
+import { DetalhesUsuarioComponent } from './pages/detalhes-usuario/detalhes-usuario.component';
 import { EstudantesComponent } from './pages/estudantes/estudantes.component';
-import { FormularioEstudanteComponent } from './pages/formulario-estudante/formulario-estudante.component';
+import { LoginComponent } from './pages/login/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
-import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
-import { FormularioLoginComponent } from './pages/formulario-login/formulario-login.component';
+import { CadastreSeComponent } from './pages/cadastre-se/cadastre-se.component';
 
 export const routes: Routes = [
-  {
-    path: 'login',
-    component: FormularioLoginComponent
-  },
-  {
-    path: 'usuarios',
-    component: UsuariosComponent
-  },
-  {
-    path: 'usuarios/novo',
-    component: FormularioUsuarioComponent
-  },
-  {
-    path: 'usuarios/:id',
-    component: FormularioUsuarioComponent
-  },
-  {
-    path: 'estudantes',
-    component: EstudantesComponent
-  },
-  {
-    path: 'estudantes/novo',
-    component: FormularioEstudanteComponent
-  },
-  {
-    path: 'estudantes/:id',
-    component: FormularioEstudanteComponent
-  }
+  { path: 'login', component: LoginComponent },
+  { path: 'usuarios', component: UsuariosComponent },
+  { path: 'usuarios/novo', component: DetalhesEstudanteComponent },
+  { path: 'usuarios/:id', component: DetalhesUsuarioComponent },
+  { path: 'estudantes', component: EstudantesComponent },
+  { path: 'estudantes/novo', component: DetalhesEstudanteComponent },
+  { path: 'estudantes/:id', component: DetalhesEstudanteComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'cadastrar', component: CadastreSeComponent },
+  { path: '**', redirectTo: 'login' }
 ];

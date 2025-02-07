@@ -1,4 +1,4 @@
-import { Parentesco } from "./parentesco"
+import { Parentesco } from "./parentesco.type"
 
 export type Estudante = {
   id?: number,

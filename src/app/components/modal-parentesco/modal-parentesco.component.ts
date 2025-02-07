@@ -3,8 +3,8 @@ import { BotaoComponent } from "../../shared/botao/botao.component";
 import { DialogModalComponent } from "../../shared/dialog-modal/dialog-modal.component";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ParentescosService } from '../../services/parentescos.service';
-import { Parentesco } from '../../../models/parentesco';
-import { AlertDialogExcluirComponent } from "../alert-dialog-excluir-estudante/alert-dialog-excluir.component";
+import { Parentesco } from '../../../types/parentesco.type';
+import { AlertDialogExcluirComponent } from "../alert-dialog-excluir/alert-dialog-excluir.component";
 
 @Component({
   selector: 'app-modal-parentesco',

@@ -1,3 +1,24 @@
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.form-header img {
+  height: 40px;
+}
+
+.form-header h1 {
+  font-size: 1.6em;
+  font-weight: 300;
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+.link {
+  cursor: pointer;
+}
+
 .bloco {
   display: flex;
   align-items: center;
