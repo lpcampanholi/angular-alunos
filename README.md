@@ -68,3 +68,4 @@ coisas extras:
 - mostrar mensagens de erro que vem do backend
 - implementar verificação no back-end se o usuário está logado
 - implmentar no back-end criptografar senha que vem do front, antes de comparar com a senha do banco
+- deixar de ser uma aplicação server-side-rendering
