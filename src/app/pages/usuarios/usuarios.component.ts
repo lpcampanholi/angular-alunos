@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TituloPrincipalComponent } from "../../shared/titulo-principal/titulo-principal.component";
+import { TituloPrincipalComponent } from "../../components/titulo-principal/titulo-principal.component";
 import { ListaUsuariosComponent } from "../../components/lista-usuarios/lista-usuarios.component";
 import { LayoutPrincipalComponent } from "../../layouts/layout-principal/layout-principal.component";
 

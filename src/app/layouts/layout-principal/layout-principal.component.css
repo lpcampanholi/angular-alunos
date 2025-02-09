@@ -12,6 +12,6 @@
   overflow-y: auto;
 }
 
-main {
-  padding: 1.5em;
+.conteudo-central {
+  padding: 2em;
 }

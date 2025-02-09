@@ -3,8 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-  --cor-destaque: #7a19f8;
+  --cor-destaque: #7b1bf8;
   --cor-destaque-hover: #9c50ff;
+  --cor-destaque-escuro: #320552;
   --vermelho: #7f1d1d;
   --vermelho-hover: #9f2e2e;
   --branco: #eeeeee;
@@ -16,8 +17,6 @@
   font-family: "PT Sans", serif;
   color: var(--cinza-escuro);
 }
-
-
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RodapeComponent } from "../../components/rodape/rodape.component";
-import { RouterOutlet } from '@angular/router';
 import { MenuLateralComponent } from "../../components/menu-lateral/menu-lateral.component";
+import { BarraSuperiorComponent } from "../../components/barra-superior/barra-superior.component";
 
 @Component({
   selector: 'app-layout-principal',
-  imports: [RouterOutlet, RodapeComponent, MenuLateralComponent],
+  imports: [RodapeComponent, MenuLateralComponent, BarraSuperiorComponent],
   templateUrl: './layout-principal.component.html',
   styleUrl: './layout-principal.component.css'
 })

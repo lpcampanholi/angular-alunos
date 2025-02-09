@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { BotaoComponent } from "../../shared/botao/botao.component";
-import { DialogModalComponent } from "../../shared/dialog-modal/dialog-modal.component";
+import { BotaoComponent } from "../botao/botao.component";
+import { DialogModalComponent } from "../dialog-modal/dialog-modal.component";
 
 @Component({
   selector: 'app-alert-dialog-excluir',

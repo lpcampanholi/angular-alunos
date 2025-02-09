@@ -1,0 +1,28 @@
+.cabecalho {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid var(--cinza-claro);
+  padding: 0 2em;
+}
+
+.cabecalho img {
+  height: 25px;
+}
+
+.area {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+}
+
+.botao-sair {
+  font-family: "PT Sans", serif;
+  font-size: 1em;
+  color: var(--cinza-escuro);
+  cursor: pointer;
+  border: none;
+}
+
+.botao-sair:hover {
+  text-decoration: underline;
+}

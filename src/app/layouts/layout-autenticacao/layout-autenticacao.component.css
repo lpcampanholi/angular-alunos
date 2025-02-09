@@ -2,14 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
-  background-color: var(--branco);
-  height: 95vh;
+  justify-content: center;
+  background-color: var(--cor-destaque-escuro);
+  height: 100vh;
 }
 
 .container-central {
-  border: 0.5px solid var(--cor-destaque);
+  background-color: var(--branco);
   border-radius: 0.5em;
   padding: 2em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 

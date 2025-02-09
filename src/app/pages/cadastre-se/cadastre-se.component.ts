@@ -1,42 +1,50 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BotaoComponent } from '../../shared/botao/botao.component';
-import { loginService } from '../../services/login.service';
+import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
 import { LayoutAutenticacaoComponent } from "../../layouts/layout-autenticacao/layout-autenticacao.component";
+import { UsuariosService } from '../../services/usuarios.service';
+import { BotaoComponent } from '../../components/botao/botao.component';
+import { Usuario } from '../../../types/usuario.type';
 
 @Component({
   selector: 'app-formulario-cadastre-se',
   imports: [
     ReactiveFormsModule,
     BotaoComponent,
-    LayoutAutenticacaoComponent
-],
+    LayoutAutenticacaoComponent,
+    RouterModule,
+  ],
   templateUrl: './cadastre-se.component.html',
   styleUrls: ['./cadastre-se.component.css']
 })
-export class CadastreSeComponent {
+export class CadastreseComponent {
 
   formulario = new FormGroup({
+    nome: new FormControl<string>('', Validators.required),
     email: new FormControl<string>('', Validators.required),
     senha: new FormControl<string>('', Validators.required),
   });
 
   constructor(
     private router: Router,
-    private loginService: loginService,
     private toastService: ToastrService,
+    private usuarioService: UsuariosService,
   ) { }
 
   submeterForm() {
-    this.loginService.login(this.formulario.value.email, this.formulario.value.senha).subscribe(
+    const novoUsuario: Usuario = {
+      nome: this.formulario.value.nome,
+      email: this.formulario.value.email,
+      senha: this.formulario.value.senha
+    }
+    this.usuarioService.criar(novoUsuario).subscribe(
       {
         next: () => {
-          this.toastService.success("Login feito com sucesso!");
-          this.router.navigate(['/estudantes']);
+          this.toastService.success("Usuário cadastrado com sucesso!");
+          this.router.navigate(['/login']);
         },
-        error: () => this.toastService.error("Credenciais inválidas!"),
+        error: () => this.toastService.error("Algo deu errado."),
       });
   }
 

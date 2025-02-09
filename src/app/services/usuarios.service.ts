@@ -40,4 +40,8 @@ export class UsuariosService {
     return this.http.delete<Usuario>(url);
   }
 
+  obterNomeUsuario(): string {
+    return localStorage.getItem('username');
+  }
+
 }

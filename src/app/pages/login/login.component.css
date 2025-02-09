@@ -1,6 +1,7 @@
 .form-header {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5em;
 }
 
@@ -17,12 +18,8 @@
 
 .link {
   cursor: pointer;
-}
-
-.bloco {
-  display: flex;
-  align-items: center;
-  gap: 1em;
+  color: blue;
+  text-decoration: underline;
 }
 
 .campo {

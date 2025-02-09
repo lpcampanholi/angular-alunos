@@ -6,7 +6,7 @@ import { Observable, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class loginService {
+export class AutenticacaoService {
 
   private readonly api = "http://localhost:3000";
 
@@ -15,13 +15,17 @@ export class loginService {
   login(email: string, senha: string): Observable<loginResponse> {
     return this.http.post<loginResponse>(`${this.api}/login`, { email, senha }).pipe(
       tap((value) => {
-      sessionStorage.setItem('auth-token', value.token);
-      sessionStorage.setItem('username', value.name);
+      localStorage.setItem('auth-token', value.token);
+      localStorage.setItem('username', value.name);
     }));
   }
 
-  logout() {
-    sessionStorage.removeItem('auth-token');
-    sessionStorage.removeItem('username');
+  deslogar() {
+    localStorage.clear();
   }
+
+  estaLogado(): boolean {
+    return !!localStorage.getItem('auth-token');
+  }
+
 }

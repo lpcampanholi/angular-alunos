@@ -8,6 +8,10 @@
   text-align: left;
 }
 
+.tabela th {
+  font-weight: 700;
+}
+
 .tabela tr {
   border-bottom: 1px solid var(--cinza-claro);
 }

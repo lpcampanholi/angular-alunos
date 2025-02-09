@@ -1,0 +1,12 @@
+<div class="campo">
+  <label [for]="inputNome">{{ rotulo }}</label>
+  <input
+    [type]="tipo"
+    [placeholder]="placeholder"
+    [value]="valor"
+    (input)="onInput($event)"
+  />
+  <!-- @if (formulario.get('email')?.invalid && formulario.get('email')?.touched) {
+  <span class="mensagem-validacao">E-mail é obrigatório.</span>
+  } -->
+</div>

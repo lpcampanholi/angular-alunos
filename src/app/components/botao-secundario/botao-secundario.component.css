@@ -1,6 +1,7 @@
 .botao-secundario {
+  font-family: "PT Sans", serif;
   color: white;
-  font-weight: 900;
+  font-weight: 500;
   font-size: 0.8em;
   border-radius: 0.2em;
   padding: 0.5em;

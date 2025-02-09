@@ -2,14 +2,14 @@
 
 <header class="form-header">
   <img src="assets/dark-logo.png" alt="Logo">
-  <h1>School</h1>
+  <h1>NetSchool</h1>
 </header>
 
 <form [formGroup]="formulario" (ngSubmit)="submeterForm()">
   <div class="campo">
     <label for="email">E-mail</label>
     <input
-      type="text"
+      type="email"
       id="email"
       placeholder="E-mail"
       formControlName="email"
@@ -22,13 +22,13 @@
 
   <div class="campo">
     <label for="senha">Senha</label>
-    <input type="text" id="senha" placeholder="Senha" formControlName="senha" />
+    <input type="password" id="senha" placeholder="Senha" formControlName="senha" />
     @if (formulario.get('senha')?.invalid && formulario.get('senha')?.touched) {
     <span class="mensagem-validacao">Senha é obrigatório.</span>
     }
   </div>
 
-  <p>Não possui conta? <a class=".link" routerLink="/cadastrar" >Cadastre-se.</a></p>
+  <p>Não possui conta? <a class="link" routerLink="/cadastrar" >Cadastre-se.</a></p>
 
   <footer class="detalhes-rodape">
     <app-botao type="submit" [disabled]="!formulario.valid">Login</app-botao>

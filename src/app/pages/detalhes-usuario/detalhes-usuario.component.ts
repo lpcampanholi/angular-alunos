@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TituloPrincipalComponent } from '../../shared/titulo-principal/titulo-principal.component';
-import { BotaoComponent } from '../../shared/botao/botao.component';
+import { TituloPrincipalComponent } from '../../components/titulo-principal/titulo-principal.component';
+import { BotaoComponent } from '../../components/botao/botao.component';
 import { AlertDialogExcluirComponent } from '../../components/alert-dialog-excluir/alert-dialog-excluir.component';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Usuario } from '../../../types/usuario.type';

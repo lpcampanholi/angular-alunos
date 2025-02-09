@@ -69,7 +69,8 @@ export class UsuarioService {
     const usuarioEntity: UsuarioEntity = new UsuarioEntity();
     usuarioEntity.nome = novoUsuario.nome;
     usuarioEntity.email = novoUsuario.email;
-    usuarioEntity.senha = await bcrypt.hash(novoUsuario.senha, 10);
+    // usuarioEntity.senha = await bcrypt.hash(novoUsuario.senha, 10);
+    usuarioEntity.senha = novoUsuario.senha;
     await this.repository.save(usuarioEntity);
   }
 

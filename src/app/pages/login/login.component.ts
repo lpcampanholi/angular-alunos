@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BotaoComponent } from '../../shared/botao/botao.component';
-import { loginService } from '../../services/login.service';
-import { Router } from '@angular/router';
+import { BotaoComponent } from '../../components/botao/botao.component';
+import { AutenticacaoService } from '../../services/autenticacao.service';
+import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LayoutAutenticacaoComponent } from "../../layouts/layout-autenticacao/layout-autenticacao.component";
 
@@ -11,7 +11,8 @@ import { LayoutAutenticacaoComponent } from "../../layouts/layout-autenticacao/l
   imports: [
     ReactiveFormsModule,
     BotaoComponent,
-    LayoutAutenticacaoComponent
+    LayoutAutenticacaoComponent,
+    RouterModule
 ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -25,7 +26,7 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private loginService: loginService,
+    private autenticacaoService: AutenticacaoService,
     private toastService: ToastrService,
   ) { }
 
@@ -33,7 +34,7 @@ export class LoginComponent {
   }
 
   submeterForm() {
-    this.loginService.login(this.formulario.value.email, this.formulario.value.senha).subscribe(
+    this.autenticacaoService.login(this.formulario.value.email, this.formulario.value.senha).subscribe(
       {
         next: () => {
           this.toastService.success("Login feito com sucesso!");
