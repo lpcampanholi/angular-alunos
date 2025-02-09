@@ -6,7 +6,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
-import { AutenticacaoInterceptor } from './interceptors/auth.interceptor.ts.interceptor';
+import { AutenticacaoInterceptor } from './interceptors/autenticacao.interceptor.ts.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

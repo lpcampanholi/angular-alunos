@@ -60,7 +60,7 @@ _____________________________________________________
 - implementar autorização (guards) OK
 - cadastrar novo usuário no cadastre-se OK
 - criar componente cabecalho, mostrar o usuário que está logado e fazer logoff OK
-- Como colocar o token que está salvo na minha local storage no cabeçalho das requisições para o back-end
+- Como colocar o token que está salvo na minha local storage no cabeçalho das requisições para o back-end OK
 
 coisas extras:
 - aparecer toast no crud de usuário
