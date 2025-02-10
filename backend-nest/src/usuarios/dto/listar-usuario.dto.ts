@@ -3,6 +3,6 @@ export class ListarUsuarioDTO {
     readonly id: number,
     readonly nome: string,
     readonly email: string,
-    readonly senha: string,
+    readonly senha?: string,
   ) {}
 }

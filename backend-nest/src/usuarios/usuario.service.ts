@@ -39,6 +39,11 @@ export class UsuarioService {
     return usuario;
   }
 
+  async encontrarPorId(id: number): Promise<UsuarioEntity | null> {
+    const usuario = await this.repository.findOneBy({ id });
+    return usuario;
+  }
+
   async listar(
     pagina: number,
     limite: number,

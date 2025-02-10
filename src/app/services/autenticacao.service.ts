@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { loginResponse } from '../../types/login-response.type';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, map, catchError, of } from 'rxjs';
 import { CredenciaisLogin } from '../../types/login-credenciais.type';
 
 @Injectable({
@@ -25,8 +25,14 @@ export class AutenticacaoService {
     localStorage.clear();
   }
 
-  estaLogado(): boolean {
-    return !!localStorage.getItem('auth-token');
+  verificaSessao(): Observable<boolean> {
+    return this.http.get(`${this.api}/me`).pipe(
+      map(() => true),
+      catchError(() => {
+        this.deslogar();
+        return of(false);
+      })
+    )
   }
 
 }
