@@ -1,18 +1,18 @@
 <div class="campo">
-  <label [for]="inputNome">{{ rotulo }}</label>
+  <label [for]="nome">{{ rotulo }}</label>
   <input
     [type]="tipo"
     [placeholder]="placeholder"
     [value]="valor"
+    [id]="nome"
     (input)="onInput($event)"
   />
 </div>
 
-
-<!-- <app-primary-input
+<!-- <app-campo-texto
 formControlName="email"
-inputName="email"
-type="email"
-label="Email"
+tipo="email"
+nome="email"
+rotulo="Email"
 placeholder="johndoe@gmail.com"
 > -->

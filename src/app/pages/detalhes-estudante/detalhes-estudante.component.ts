@@ -25,7 +25,7 @@ import { CampoTextoComponent } from "../../components/campo-texto/campo-texto.co
     BotaoSecundarioComponent,
     LayoutPrincipalComponent,
     MensagemValidacaoComponent,
-    CampoTextoComponent
+    CampoTextoComponent,
 ],
   templateUrl: './detalhes-estudante.component.html',
   styleUrls: ['./detalhes-estudante.component.css']
@@ -64,6 +64,8 @@ export class DetalhesEstudanteComponent {
       }
     });
     this.buscarParentescos();
+    console.log(this.formulario.value.whatsapp);
+    console.log(this.formulario.get('whatsapp')?.value);
   }
 
   submeterForm() {

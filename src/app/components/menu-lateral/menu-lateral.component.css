@@ -2,7 +2,7 @@
   width: 250px;
   height: 100vh;
   /* background-color: var(--cor-destaque); */
-  background: linear-gradient(0deg, rgba(132,41,198,1) 0%, rgba(123,27,248,1) 44%);
+  background: linear-gradient(0deg, rgba(132,41,198,1) 0%, rgba(123,27,248,1) 50%);
   padding: 2em 0.5em;
   box-sizing: border-box;
   display: flex;

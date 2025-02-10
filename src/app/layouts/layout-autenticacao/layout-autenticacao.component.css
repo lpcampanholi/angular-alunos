@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   background-color: var(--cor-destaque-escuro);
-  /* background: linear-gradient(0deg, rgba(132,41,198,1) 0%, rgba(123,27,248,1) 44%); */
   height: 100vh;
 }
 

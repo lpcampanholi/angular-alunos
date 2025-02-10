@@ -15,9 +15,9 @@ export class AutenticacaoService {
   login(email: string, senha: string): Observable<loginResponse> {
     return this.http.post<loginResponse>(`${this.api}/login`, { email, senha }).pipe(
       tap((value) => {
-      localStorage.setItem('auth-token', value.token);
-      localStorage.setItem('username', value.name);
-    }));
+        localStorage.setItem('auth-token', value.token);
+        localStorage.setItem('username', value.nome);
+      }));
   }
 
   deslogar() {

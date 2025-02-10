@@ -63,8 +63,8 @@ _____________________________________________________
 - Como colocar o token que está salvo na minha local storage no cabeçalho das requisições para o back-end OK
 
 coisas extras:
-- aparecer toast no crud de usuário
 - componentizar o input para Campo-Texto
+- aparecer toast no crud de usuário
 - mostrar mensagens de erro que vem do backend
 - implementar verificação no back-end se o usuário está logado
 - implmentar no back-end criptografar senha que vem do front, antes de comparar com a senha do banco

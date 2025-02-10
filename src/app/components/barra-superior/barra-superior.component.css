@@ -21,6 +21,9 @@
   color: var(--cinza-escuro);
   cursor: pointer;
   border: none;
+  padding-left: 0;
+  padding-bottom: 2px;
+  vertical-align: top;
 }
 
 .botao-sair:hover {

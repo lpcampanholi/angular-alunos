@@ -20,7 +20,7 @@ export class CampoTextoComponent implements ControlValueAccessor {
   @Input() tipo: inputTipos = "text";
   @Input() placeholder: string = "";
   @Input() rotulo: string = "";
-  @Input() inputNome: string = "";
+  @Input() nome: string = "";
 
   valor: string = '';
   onChange: any = () => {}
