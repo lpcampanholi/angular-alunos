@@ -13,6 +13,7 @@ import { LayoutPrincipalComponent } from "../../layouts/layout-principal/layout-
 import { EstudantesService } from '../../services/estudantes.service';
 import { ParentescosService } from '../../services/parentescos.service';
 import { CampoTextoComponent } from "../../components/campo-texto/campo-texto.component";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detalhes-estudante',
@@ -25,8 +26,8 @@ import { CampoTextoComponent } from "../../components/campo-texto/campo-texto.co
     BotaoSecundarioComponent,
     LayoutPrincipalComponent,
     MensagemValidacaoComponent,
-    CampoTextoComponent,
-],
+    // CampoTextoComponent,
+  ],
   templateUrl: './detalhes-estudante.component.html',
   styleUrls: ['./detalhes-estudante.component.css']
 })
@@ -52,7 +53,8 @@ export class DetalhesEstudanteComponent {
     private route: ActivatedRoute,
     private router: Router,
     private estudantesService: EstudantesService,
-    private paretescosService: ParentescosService
+    private paretescosService: ParentescosService,
+    private toastService: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -64,8 +66,6 @@ export class DetalhesEstudanteComponent {
       }
     });
     this.buscarParentescos();
-    console.log(this.formulario.value.whatsapp);
-    console.log(this.formulario.get('whatsapp')?.value);
   }
 
   submeterForm() {
@@ -99,9 +99,20 @@ export class DetalhesEstudanteComponent {
       responsavel: this.formulario.get('responsavel')?.value,
       parentesco: { id: this.formulario.get('parentescoId')?.value } as Parentesco,
       whatsapp: this.formulario.get('whatsapp')?.value,
-      };
-    this.estudantesService.criar(novoEstudante).subscribe(() => {
-      this.router.navigate(['/estudantes']);
+    };
+    this.estudantesService.criar(novoEstudante).subscribe({
+      next: () => {
+        this.toastService.success('Estudante criado');
+        this.router.navigate(['/estudantes']);
+      },
+      error: (err) => {
+        if (Array.isArray(err.error?.message)) {
+          err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+        } else {
+          const mensagemErro = err.error?.message || 'Erro ao criar estudante';
+          this.toastService.error(mensagemErro);
+        }
+      },
     });
   }
 
@@ -114,15 +125,37 @@ export class DetalhesEstudanteComponent {
       parentesco: { id: this.formulario.get('parentescoId')?.value } as Parentesco,
       whatsapp: this.formulario.get('whatsapp')?.value,
     };
-    this.estudantesService.atualizar(this.id, estudanteAtualizado).subscribe(() => {
-      this.router.navigate(['/estudantes']);
+    this.estudantesService.atualizar(this.id, estudanteAtualizado).subscribe({
+      next: () => {
+        this.toastService.success('Estudante atualizado');
+        this.router.navigate(['/estudantes']);
+      },
+      error: (err) => {
+        if (Array.isArray(err.error?.message)) {
+          err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+        } else {
+          const mensagemErro = err.error?.message || 'Erro ao atualizar estudante';
+          this.toastService.error(mensagemErro);
+        }
+      },
     });
   }
 
   excluirEstudante() {
     if (this.id) {
-      this.estudantesService.excluir(this.id).subscribe(() => {
-        this.router.navigate(['/estudantes']);
+      this.estudantesService.excluir(this.id).subscribe({
+        next: () => {
+          this.toastService.success('Estudante excluído');
+          this.router.navigate(['/estudantes']);
+        },
+        error: (err) => {
+          if (Array.isArray(err.error?.message)) {
+            err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+          } else {
+            const mensagemErro = err.error?.message || 'Erro ao excluir estudante';
+            this.toastService.error(mensagemErro);
+          }
+        },
       });
     }
   }

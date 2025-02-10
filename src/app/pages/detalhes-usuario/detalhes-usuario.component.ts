@@ -8,6 +8,7 @@ import { MensagemValidacaoComponent } from "../../components/mensagem-validacao/
 import { TituloPrincipalComponent } from '../../components/titulo-principal/titulo-principal.component';
 import { LayoutPrincipalComponent } from "../../layouts/layout-principal/layout-principal.component";
 import { UsuariosService } from '../../services/usuarios.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detalhes-usuario',
@@ -38,6 +39,7 @@ export class DetalhesUsuarioComponent {
     private route: ActivatedRoute,
     private router: Router,
     private service: UsuariosService,
+    private toastService: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -76,8 +78,19 @@ export class DetalhesUsuarioComponent {
       email: this.formulario.get('email')?.value,
       senha: this.formulario.get('senha')?.value,
       };
-    this.service.criar(novoUsuario).subscribe(() => {
-      this.router.navigate(['/usuarios']);
+    this.service.criar(novoUsuario).subscribe({
+      next: () => {
+        this.toastService.success('Usuário criado');
+        this.router.navigate(['/usuarios']);
+      },
+      error: (err) => {
+        if (Array.isArray(err.error?.message)) {
+          err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+        } else {
+          const mensagemErro = err.error?.message || 'Erro ao criar usuário';
+          this.toastService.error(mensagemErro);
+        }
+      },
     });
   }
 
@@ -87,15 +100,37 @@ export class DetalhesUsuarioComponent {
       email: this.formulario.get('email')?.value,
       senha: this.formulario.get('senha')?.value,
     };
-    this.service.atualizar(this.id, usuarioAtualizado).subscribe(() => {
-      this.router.navigate(['/usuarios']);
+    this.service.atualizar(this.id, usuarioAtualizado).subscribe({
+      next: () => {
+        this.toastService.success('Usuário atualizado');
+        this.router.navigate(['/usuarios']);
+      },
+      error: (err) => {
+        if (Array.isArray(err.error?.message)) {
+          err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+        } else {
+          const mensagemErro = err.error?.message || 'Erro ao atualizar usuário';
+          this.toastService.error(mensagemErro);
+        }
+      },
     });
   }
 
   excluir() {
     if (this.id) {
-      this.service.excluir(this.id).subscribe(() => {
-        this.router.navigate(['/usuarios']);
+      this.service.excluir(this.id).subscribe({
+        next: () => {
+          this.toastService.success('Usuário excluído');
+          this.router.navigate(['/usuarios']);
+        },
+        error: (err) => {
+          if (Array.isArray(err.error?.message)) {
+            err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+          } else {
+            const mensagemErro = err.error?.message || 'Erro ao excluir usuário';
+            this.toastService.error(mensagemErro);
+          }
+        },
       });
     }
   }

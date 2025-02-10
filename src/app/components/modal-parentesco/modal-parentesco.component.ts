@@ -6,6 +6,7 @@ import { ParentescosService } from '../../services/parentescos.service';
 import { Parentesco } from '../../../types/parentesco.type';
 import { AlertDialogExcluirComponent } from "../alert-dialog-excluir/alert-dialog-excluir.component";
 import { MensagemValidacaoComponent } from "../mensagem-validacao/mensagem-validacao.component";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-modal-parentesco',
@@ -24,7 +25,10 @@ export class ModalParentescoComponent {
     nome: new FormControl<string>('', Validators.required)
   })
 
-  constructor(private parentescosService: ParentescosService) { }
+  constructor(
+    private parentescosService: ParentescosService,
+    private toastService: ToastrService,
+  ) { }
 
   ngOnInit() {
     this.formulario.patchValue(this.parentesco);
@@ -42,8 +46,19 @@ export class ModalParentescoComponent {
 
   criarParentesco() {
     const novoParentesco = this.formulario.value as Parentesco;
-    this.parentescosService.criar(novoParentesco).subscribe(() => {
-      this.aoFecharModal();
+    this.parentescosService.criar(novoParentesco).subscribe({
+      next: () => {
+        this.toastService.success('Parentesco criado');
+        this.aoFecharModal();
+      },
+      error: (err) => {
+        if (Array.isArray(err.error?.message)) {
+          err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+        } else {
+          const mensagemErro = err.error?.message || 'Erro ao criar parentesco';
+          this.toastService.error(mensagemErro);
+        }
+      },
     });
   }
 
@@ -51,15 +66,37 @@ export class ModalParentescoComponent {
     const parentescoAtualizado: Parentesco = {
       nome: this.formulario.get('nome')?.value,
     };
-    this.parentescosService.atualizar(this.parentesco.id, parentescoAtualizado).subscribe(() => {
-      this.aoFecharModal();
+    this.parentescosService.atualizar(this.parentesco.id, parentescoAtualizado).subscribe({
+      next: () => {
+        this.toastService.success('Parentesco atualizado');
+        this.aoFecharModal();
+      },
+      error: (err) => {
+        if (Array.isArray(err.error?.message)) {
+          err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+        } else {
+          const mensagemErro = err.error?.message || 'Erro ao atualizar parentesco';
+          this.toastService.error(mensagemErro);
+        }
+      },
     });
   }
 
   excluirParentesco() {
     if (this.parentesco) {
-      this.parentescosService.excluir(this.parentesco.id).subscribe(() => {
-        this.aoFecharModal();
+      this.parentescosService.excluir(this.parentesco.id).subscribe({
+        next: () => {
+          this.toastService.success('Paresntesco Excluído');
+          this.aoFecharModal();
+        },
+        error: (err) => {
+          if (Array.isArray(err.error?.message)) {
+            err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+          } else {
+            const mensagemErro = err.error?.message || 'Erro ao excluir parentesco';
+            this.toastService.error(mensagemErro);
+          }
+        },
       });
     }
   }

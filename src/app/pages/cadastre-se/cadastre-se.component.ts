@@ -16,7 +16,7 @@ import { UsuariosService } from '../../services/usuarios.service';
     LayoutAutenticacaoComponent,
     RouterModule,
     MensagemValidacaoComponent
-],
+  ],
   templateUrl: './cadastre-se.component.html',
   styleUrls: ['./cadastre-se.component.css']
 })
@@ -43,10 +43,17 @@ export class CadastreseComponent {
     this.usuarioService.criar(novoUsuario).subscribe(
       {
         next: () => {
-          this.toastService.success("Usuário cadastrado com sucesso!");
+          this.toastService.success("Usuário cadastrado");
           this.router.navigate(['/login']);
         },
-        error: () => this.toastService.error("Algo deu errado."),
+        error: (err) => {
+          if (Array.isArray(err.error?.message)) {
+            err.error.message.forEach((mensagem: string) => this.toastService.error(mensagem));
+          } else {
+            const mensagemErro = err.error?.message || 'Erro ao cadastrar novo usuário';
+            this.toastService.error(mensagemErro);
+          }
+        },
       });
   }
 
