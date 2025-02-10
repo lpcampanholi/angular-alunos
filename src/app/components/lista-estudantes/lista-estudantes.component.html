@@ -1,3 +1,7 @@
+@if (estudantes.length === 0) {
+  <p>Não foi possível carregar a lista.</p>
+} @else {
+
 <table class="tabela">
   <thead>
     <tr>
@@ -79,8 +83,4 @@
     <img src="assets/double-right.png" alt="seta dupla para frente" />
   </button>
 </div>
-
-<button class="botao-adicionar" routerLink="/estudantes/novo">
-  <img src="assets/plus.png" alt="Símbolo de mais" />
-</button>
-
+}

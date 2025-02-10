@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EstudantesService } from '../../services/estudantes.service';
 import { Estudante } from '../../../types/estudante.type';
 import { Parentesco } from '../../../types/parentesco.type';
-import { TituloPrincipalComponent } from '../../components/titulo-principal/titulo-principal.component';
-import { BotaoComponent } from '../../components/botao/botao.component';
 import { AlertDialogExcluirComponent } from '../../components/alert-dialog-excluir/alert-dialog-excluir.component';
 import { BotaoSecundarioComponent } from '../../components/botao-secundario/botao-secundario.component';
-import { ParentescosService } from '../../services/parentescos.service';
+import { BotaoComponent } from '../../components/botao/botao.component';
+import { MensagemValidacaoComponent } from "../../components/mensagem-validacao/mensagem-validacao.component";
 import { ModalParentescoComponent } from '../../components/modal-parentesco/modal-parentesco.component';
+import { TituloPrincipalComponent } from '../../components/titulo-principal/titulo-principal.component';
 import { LayoutPrincipalComponent } from "../../layouts/layout-principal/layout-principal.component";
+import { EstudantesService } from '../../services/estudantes.service';
+import { ParentescosService } from '../../services/parentescos.service';
+import { CampoTextoComponent } from "../../components/campo-texto/campo-texto.component";
 
 @Component({
   selector: 'app-detalhes-estudante',
@@ -21,7 +23,9 @@ import { LayoutPrincipalComponent } from "../../layouts/layout-principal/layout-
     AlertDialogExcluirComponent,
     ModalParentescoComponent,
     BotaoSecundarioComponent,
-    LayoutPrincipalComponent
+    LayoutPrincipalComponent,
+    MensagemValidacaoComponent,
+    CampoTextoComponent
 ],
   templateUrl: './detalhes-estudante.component.html',
   styleUrls: ['./detalhes-estudante.component.css']

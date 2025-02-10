@@ -5,6 +5,7 @@ import { AutenticacaoService } from '../../services/autenticacao.service';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LayoutAutenticacaoComponent } from "../../layouts/layout-autenticacao/layout-autenticacao.component";
+import { MensagemValidacaoComponent } from "../../components/mensagem-validacao/mensagem-validacao.component";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { LayoutAutenticacaoComponent } from "../../layouts/layout-autenticacao/l
     ReactiveFormsModule,
     BotaoComponent,
     LayoutAutenticacaoComponent,
-    RouterModule
+    RouterModule,
+    MensagemValidacaoComponent
 ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']

@@ -4,36 +4,31 @@
   } @else {
   <h2>Novo parentesco</h2>
   }
+
   <form [formGroup]="formulario" (ngSubmit)="submeterForm()">
+    
     <div class="campo">
       <label for="nome">Parentesco</label>
-      <input
-        type="text"
-        id="nome"
-        placeholder="Parentesco"
-        formControlName="nome"
-        autofocus
-      />
+      <input type="text" id="nome" placeholder="Parentesco" formControlName="nome" autofocus />
       @if (formulario.get('nome')?.invalid && formulario.get('nome')?.touched) {
-      <span class="mensagem-validacao">O campo está vazio</span>
+      <app-mensagem-validacao>O campo está vazio</app-mensagem-validacao>
       }
     </div>
+
     <footer class="rodape">
       <app-botao type="submit" [disabled]="!formulario.valid">{{
         parentesco ? "Salvar" : "Criar"
-      }}</app-botao>
-      @if (parentesco) {<app-botao tipo="excluir" (click)="abrirModalExcluir()"
-        >Excluir</app-botao
-      >}
+        }}</app-botao>
+      @if (parentesco) {
+      <app-botao tipo="excluir" (click)="abrirModalExcluir()">Excluir</app-botao>}
       <app-botao tipo="outline" (click)="aoFecharModal()">Cancelar</app-botao>
     </footer>
+
   </form>
+  
 </app-dialog-modal>
 
 @if (modalExcluirAberto) {
-<app-alert-dialog-excluir
-  (aoModalFechado)="fecharModalExcluir()"
-  (aoConfirmarExclusao)="confirmarExclusao()"
->
+<app-alert-dialog-excluir (aoModalFechado)="fecharModalExcluir()" (aoConfirmarExclusao)="confirmarExclusao()">
 </app-alert-dialog-excluir>
 }

@@ -1,133 +1,99 @@
 <app-layout-principal>
 
-@if (id) {
-<app-titulo-principal>{{ formulario.value.nomeCompleto }}</app-titulo-principal>
-} @else {
-<app-titulo-principal>Novo estudante</app-titulo-principal>
-}
+  @if (id) {
+  <app-titulo-principal>{{ formulario.value.nomeCompleto }}</app-titulo-principal>
+  } @else {
+  <app-titulo-principal>Novo estudante</app-titulo-principal>
+  }
 
-<form [formGroup]="formulario" (ngSubmit)="submeterForm()">
-  <div class="campo">
-    <label for="nomeCompleto">Nome completo</label>
-    <input
-      type="text"
-      id="nomeCompleto"
-      placeholder="Nome completo"
-      formControlName="nomeCompleto"
-      autofocus
-    />
-    @if (formulario.get('nomeCompleto')?.invalid &&
-    formulario.get('nomeCompleto')?.touched) {
-    <span class="mensagem-validacao">Nome é obrigatório.</span>
-    }
-  </div>
-
-  <div class="campo">
-    <label for="endereco">Endereço</label>
-    <input
-      type="text"
-      id="endereco"
-      placeholder="Endereço"
-      formControlName="endereco"
-    />
-    @if (formulario.get('endereco')?.invalid &&
-    formulario.get('endereco')?.touched) {
-    <span class="mensagem-validacao">Endereço é obrigatório.</span>
-    }
-  </div>
-
-  <div class="campo">
-    <label for="bairro">Bairro</label>
-    <input
-      type="text"
-      id="bairro"
-      placeholder="Bairro"
-      formControlName="bairro"
-    />
-    @if (formulario.get('bairro')?.invalid && formulario.get('bairro')?.touched)
-    {
-    <span class="mensagem-validacao">Bairro é obrigatório.</span>
-    }
-  </div>
-
-  <div class="campo">
-    <label for="responsavel">Responsável</label>
-    <input
-      type="text"
-      id="responsavel"
-      placeholder="Nome do responsável"
-      formControlName="responsavel"
-    />
-    @if (formulario.get('responsavel')?.invalid &&
-    formulario.get('responsavel')?.touched) {
-    <span class="mensagem-validacao">Nome do responsável é obrigatório.</span>
-    }
-  </div>
-
-  <div class="campo">
-    <label for="parentesco">Parentesco</label>
-    <div class="bloco">
-      <select
-        id="parentesco"
-        formControlName="parentescoId"
-        (change)="onParentescoChange($event)"
-      >
-        @if (!formulario.get('parentescoId')?.value) {
-        <option [ngValue]="null" disabled>Selecione</option>
-        } @for (parentesco of parentescos; track parentesco.id) {
-        <option [ngValue]="parentesco.id">{{ parentesco.nome }}</option>
-        }
-      </select>
-      <app-botao-secundario (click)="abrirModalCadastroEditar($event)"
-      [disabled]="!podeEditarParentesco"
-        >Editar</app-botao-secundario
-      >
-      <app-botao-secundario (click)="abrirModalCadastroNovo($event)"
-        >Novo</app-botao-secundario
-      >
+  <form [formGroup]="formulario" (ngSubmit)="submeterForm()">
+    
+    <div class="campo">
+      <label for="nomeCompleto">Nome completo</label>
+      <input type="text" id="nomeCompleto" placeholder="Nome completo" formControlName="nomeCompleto" autofocus />
+      @if (formulario.get('nomeCompleto')?.invalid &&
+      formulario.get('nomeCompleto')?.touched) {
+        <app-mensagem-validacao>Nome é obrigatório.</app-mensagem-validacao>
+      }
     </div>
-  </div>
 
-  <div class="campo">
-    <label for="whatsapp">WhatsApp</label>
-    <input
-      type="text"
-      id="whatsapp"
-      placeholder="WhatsApp do responsável"
-      formControlName="whatsapp"
-    />
-    @if (formulario.get('whatsapp')?.invalid &&
-    formulario.get('whatsapp')?.touched) {
-    <span class="mensagem-validacao"
-      >WhatsApp do responsável é obrigatório.</span
-    >
-    }
-  </div>
+    <div class="campo">
+      <label for="endereco">Endereço</label>
+      <input type="text" id="endereco" placeholder="Endereço" formControlName="endereco" />
+      @if (formulario.get('endereco')?.invalid &&
+      formulario.get('endereco')?.touched) {
+        <app-mensagem-validacao>Endereço é obrigatório.</app-mensagem-validacao>
+      }
+    </div>
 
-  <footer class="detalhes-rodape">
-    <app-botao type="submit" [disabled]="!formulario.valid">{{
-      id ? "Salvar" : "Criar"
-    }}</app-botao>
-    @if (id) {
-    <app-botao tipo="excluir" (click)="abrirModalExcluir()">Excluir</app-botao>
-    }
-    <app-botao tipo="outline" (click)="cancelar()">Cancelar</app-botao>
-  </footer>
-</form>
+    <div class="campo">
+      <label for="bairro">Bairro</label>
+      <input type="text" id="bairro" placeholder="Bairro" formControlName="bairro" />
+      @if (formulario.get('bairro')?.invalid && formulario.get('bairro')?.touched) {
+        <app-mensagem-validacao>Bairro é obrigatório.</app-mensagem-validacao>
+      }
+    </div>
 
-@if (exibirModalExcluir) {
-<app-alert-dialog-excluir
-  (aoModalFechado)="fecharModalExcluir()"
-  (aoConfirmarExclusao)="confirmarExclusao()"
->
-</app-alert-dialog-excluir>
+    <div class="campo">
+      <label for="responsavel">Responsável</label>
+      <input type="text" id="responsavel" placeholder="Nome do responsável" formControlName="responsavel" />
+      @if (formulario.get('responsavel')?.invalid &&
+      formulario.get('responsavel')?.touched) {
+        <app-mensagem-validacao>Nome do responsável é obrigatório.</app-mensagem-validacao>
+      }
+    </div>
 
-} @if (modalCadastroAberto) {
-<app-modal-parentesco
-  (aoModalCadastroFechado)="fecharModalCadastro()"
-  [parentesco]="parentescoSelecionado"
->
-</app-modal-parentesco>
-}
+    <div class="campo">
+      <label for="parentesco">Parentesco</label>
+      <div class="bloco">
+        <select id="parentesco" formControlName="parentescoId" (change)="onParentescoChange($event)">
+          @if (!formulario.get('parentescoId')?.value) {
+          <option [ngValue]="null" disabled>Selecione</option>
+          } @for (parentesco of parentescos; track parentesco.id) {
+          <option [ngValue]="parentesco.id">{{ parentesco.nome }}</option>
+          }
+        </select>
+        <app-botao-secundario (click)="abrirModalCadastroEditar($event)"
+          [disabled]="!podeEditarParentesco">Editar</app-botao-secundario>
+        <app-botao-secundario (click)="abrirModalCadastroNovo($event)">Novo</app-botao-secundario>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label for="whatsapp">WhatsApp</label>
+      <input type="text" id="whatsapp" placeholder="WhatsApp do responsável" formControlName="whatsapp" />
+      @if (formulario.get('whatsapp')?.invalid &&
+      formulario.get('whatsapp')?.touched) {
+        <app-mensagem-validacao>WhatsApp do responsável é obrigatório.</app-mensagem-validacao>
+      }
+    </div>
+
+    <app-campo-texto
+    tipo="text"
+    placeholder="Digite seu nome"
+    valor="formulario."
+
+
+    ></app-campo-texto>
+
+    <footer class="detalhes-rodape">
+      <app-botao type="submit" [disabled]="!formulario.valid">{{
+        id ? "Salvar" : "Criar"
+        }}</app-botao>
+      @if (id) {
+      <app-botao tipo="excluir" (click)="abrirModalExcluir()">Excluir</app-botao>
+      }
+      <app-botao tipo="outline" (click)="cancelar()">Cancelar</app-botao>
+    </footer>
+  </form>
+
+  @if (exibirModalExcluir) {
+  <app-alert-dialog-excluir (aoModalFechado)="fecharModalExcluir()" (aoConfirmarExclusao)="confirmarExclusao()">
+  </app-alert-dialog-excluir>
+
+  } @if (modalCadastroAberto) {
+  <app-modal-parentesco (aoModalCadastroFechado)="fecharModalCadastro()" [parentesco]="parentescoSelecionado">
+  </app-modal-parentesco>
+  }
 
 </app-layout-principal>

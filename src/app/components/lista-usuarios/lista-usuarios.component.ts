@@ -1,8 +1,8 @@
-import { Usuario } from '../../../types/usuario.type';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Usuario } from '../../../types/usuario.type';
 import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({

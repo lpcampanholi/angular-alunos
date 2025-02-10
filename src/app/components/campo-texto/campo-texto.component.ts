@@ -4,30 +4,30 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@a
 type inputTipos = "text" | "email" | "password";
 
 @Component({
-  selector: 'app-input-texto',
+  selector: 'app-campo-texto',
   imports: [ReactiveFormsModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputTextoComponent),
+      useExisting: forwardRef(() => CampoTextoComponent),
       multi: true
     }
   ],
-  templateUrl: './input-texto.component.html',
-  styleUrl: './input-texto.component.css',
+  templateUrl: './campo-texto.component.html',
+  styleUrl: './campo-texto.component.css',
 })
-export class InputTextoComponent implements ControlValueAccessor {
+export class CampoTextoComponent implements ControlValueAccessor {
   @Input() tipo: inputTipos = "text";
   @Input() placeholder: string = "";
   @Input() rotulo: string = "";
   @Input() inputNome: string = "";
 
-  valor: string = ''
+  valor: string = '';
   onChange: any = () => {}
   onTouched: any = () => {}
 
   onInput(event: Event){
-    const value = (event.target as HTMLInputElement).value
+    const value = (event.target as HTMLInputElement).value;
     this.onChange(value);
   }
 

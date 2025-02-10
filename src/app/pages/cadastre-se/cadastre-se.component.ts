@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Usuario } from '../../../types/usuario.type';
+import { BotaoComponent } from '../../components/botao/botao.component';
+import { MensagemValidacaoComponent } from "../../components/mensagem-validacao/mensagem-validacao.component";
 import { LayoutAutenticacaoComponent } from "../../layouts/layout-autenticacao/layout-autenticacao.component";
 import { UsuariosService } from '../../services/usuarios.service';
-import { BotaoComponent } from '../../components/botao/botao.component';
-import { Usuario } from '../../../types/usuario.type';
 
 @Component({
   selector: 'app-formulario-cadastre-se',
@@ -14,7 +15,8 @@ import { Usuario } from '../../../types/usuario.type';
     BotaoComponent,
     LayoutAutenticacaoComponent,
     RouterModule,
-  ],
+    MensagemValidacaoComponent
+],
   templateUrl: './cadastre-se.component.html',
   styleUrls: ['./cadastre-se.component.css']
 })

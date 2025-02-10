@@ -65,8 +65,3 @@
   gap: 1em;
   margin-top: 2em;
 }
-
-.mensagem-validacao {
-  color: var(--vermelho);
-  font-size: 0.8em;
-}

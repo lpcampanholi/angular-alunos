@@ -1,9 +1,9 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Estudante } from '../../../types/estudante.type';
 import { EstudantesService } from '../../services/estudantes.service';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-lista-estudantes',

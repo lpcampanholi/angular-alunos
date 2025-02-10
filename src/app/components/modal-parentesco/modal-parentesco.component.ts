@@ -5,11 +5,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ParentescosService } from '../../services/parentescos.service';
 import { Parentesco } from '../../../types/parentesco.type';
 import { AlertDialogExcluirComponent } from "../alert-dialog-excluir/alert-dialog-excluir.component";
+import { MensagemValidacaoComponent } from "../mensagem-validacao/mensagem-validacao.component";
 
 @Component({
   selector: 'app-modal-parentesco',
   standalone: true,
-  imports: [ReactiveFormsModule, BotaoComponent, DialogModalComponent, AlertDialogExcluirComponent],
+  imports: [ReactiveFormsModule, BotaoComponent, DialogModalComponent, AlertDialogExcluirComponent, MensagemValidacaoComponent],
   templateUrl: './modal-parentesco.component.html',
   styleUrl: './modal-parentesco.component.css'
 })
